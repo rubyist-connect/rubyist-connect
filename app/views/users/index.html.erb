@@ -1,1 +1,13 @@
-login
+<h1>Listing Kobe Rubyists</h1>
+
+<div class="table-responsive">
+
+    <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-md-8">
+        <%= image_tag( user.image, :class => "img-circle" ,:size => "100x100") %><br>
+        <%= user.name %>
+      </div>
+    </div>
+    <% end %>
+</div>

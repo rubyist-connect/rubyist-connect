@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'top#index'
   get '/auth/:provider/callback', to: 'sessions#create'
-  get '/nnect' => 'user#index'
+  get '/nnect' => 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
