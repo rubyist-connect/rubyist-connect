@@ -1,6 +1,6 @@
 <% if signed_in? %>
   <%# ログイン済み %>
-  <%= render partial: '/layouts/user_icon', locals: { user: current_user, size: "72x72", klass: "margin_minus2" } %>
+  <%#= render partial: '/layouts/user_icon', locals: { user: current_user, size: "72x72", klass: "margin_minus2" } %>
   <%= link_to "Top", "/nnect" %>
   <%= link_to "Logout", "/signout" %>
 <% else %>
