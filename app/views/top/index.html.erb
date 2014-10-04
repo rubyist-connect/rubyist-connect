@@ -1,0 +1,55 @@
+<% if signed_in? %>
+  <%# ログイン済み %>
+  <%= render partial: '/layouts/user_icon', locals: { user: current_user, size: "72x72", klass: "margin_minus2" } %>
+  <%= link_to "Top", "/nnect" %>
+  <%= link_to "Logout", "/signout" %>
+<% else %>
+<div class="site-wrapper">
+
+  <div class="site-wrapper-inner">
+
+    <div class="cover-container">
+
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">rubyist.co</h3>
+          <ul class="nav masthead-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="inner cover">
+        <h1 class="cover-heading">Kobe Rubyist Connect</h1>
+        <p class="lead">神戸の Rubyist を繋げたいという想いから生まれました。</p>
+        <p class="lead">
+          <a href="/auth/github" class="btn btn-default">GitHub Login</a>
+        </p>
+      </div>
+
+      <div class="mastfoot">
+        <div class="inner">
+          <p>Author by <a href="https://twitter.com/yuji_shimoda">@yuji_shimoda</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+  <%#= link_to "GitHub", "/auth/github" %>
+<% end %>
+
+<%# 通知／エラーメッセージ %>
+<%= simple_format(flash[:notice], style: "color: green;") if flash[:notice].present? %>
+<%= simple_format(flash[:alert], style: "color: red;") if flash[:alert].present? %>
+
+<%#= yield %>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
