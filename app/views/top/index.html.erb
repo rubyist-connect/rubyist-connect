@@ -1,7 +1,9 @@
+<% content_for :head do %>
+　<%= stylesheet_link_tag "cover" %>
+<% end %>
+
 <% if signed_in? %>
   <%# ログイン済み %>
-  <%#= render partial: '/layouts/user_icon', locals: { user: current_user, size: "72x72", klass: "margin_minus2" } %>
-  <%= link_to "Top", "/nnect" %>
   <%= link_to "Logout", "/signout" %>
 <% else %>
 <div class="site-wrapper">
@@ -40,7 +42,6 @@
   </div>
 
 </div>
-  <%#= link_to "GitHub", "/auth/github" %>
 <% end %>
 
 <%# 通知／エラーメッセージ %>
