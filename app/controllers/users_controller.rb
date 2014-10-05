@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_access
+
   def index
     @users = User.all
   end
@@ -30,5 +32,9 @@ class UsersController < ApplicationController
   def user_params
     #params[:user]
     params.require(:user).permit(:introduction)
+  end
+
+  def authorize_access
+    redirect_to root_path unless signed_in?
   end
 end
