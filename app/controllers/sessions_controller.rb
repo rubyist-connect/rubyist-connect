@@ -15,6 +15,13 @@ class SessionsController < ApplicationController
     redirect_to "/nnect"
   end
 
+  # ログアウト
+  def destroy
+    session[:user_id] = nil
+
+    redirect_to :root, notice: "ログアウトしました。" and return
+  end
+
   protected
 
   def auth_hash
