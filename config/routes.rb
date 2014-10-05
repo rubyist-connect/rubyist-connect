@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #get '/nnect' => 'users#index'
   #get '/nnect/:id' => 'users#show'
   resources :users , path: "nnect"
+  get '/signout' => 'sessions#destroy'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
