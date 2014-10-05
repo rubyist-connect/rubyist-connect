@@ -15,31 +15,29 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="/nnect/<%= current_user.id %>/edit">Settings</a></li>
+        <li class="active"><a href="/nnect">Home</a></li>
+        <li><a href="/settings">Settings</a></li>
         <li><a href="/signout">Sign out</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
 
-<div class="container">
-
-<div class="table-responsive">
-
-    <% @users.each do |user| %>
-    <div class="row">
-      <div class="col-md-2" >
-        <%= image_tag( user.image, :class => "img-circle" ,:size => "100x100" ) %><br>
-        <%= user.name %>
-      </div>
-      <div class="col-md-8" >
-        <pre><%= user.introduction %></pre>
-      </div>
-      <div class="col-md-2">
-      </div>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     </div>
-    <% end %>
-</div>
-
-</div><!-- /.container -->
+  <% end %>
+  <div class="form-group form-group-lg">
+    <%= f.text_area :introduction , :rows => 10, :class => "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit(:class => "btn btn-success btn-lg", :value => "Update" )%>
+  </div>
+<% end %>
