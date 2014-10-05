@@ -1,6 +1,4 @@
-<% content_for :head do %>
-　<%= stylesheet_link_tag "cover" %>
-<% end %>
+
 
 <% if signed_in? %>
   <%# ログイン済み %>
@@ -16,9 +14,6 @@
         <div class="inner">
           <h3 class="masthead-brand">rubyist.co</h3>
           <ul class="nav masthead-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -43,14 +38,3 @@
 
 </div>
 <% end %>
-
-<%# 通知／エラーメッセージ %>
-<%= simple_format(flash[:notice], style: "color: green;") if flash[:notice].present? %>
-<%= simple_format(flash[:alert], style: "color: red;") if flash[:alert].present? %>
-
-<%#= yield %>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
