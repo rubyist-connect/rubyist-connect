@@ -1,30 +1,3 @@
-<% content_for :head do %>
-　<%= stylesheet_link_tag "starter-template" %>
-<% end %>
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Kobe Rubyist Connect</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="/nnect/<%= current_user.id %>/edit">Settings</a></li>
-        <li><a href="/signout">Sign out</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</div>
-
-<div class="container">
-
 <div class="table-responsive">
 
     <% @users.each do |user| %>
@@ -43,5 +16,3 @@
     </div>
     <% end %>
 </div>
-
-</div><!-- /.container -->
