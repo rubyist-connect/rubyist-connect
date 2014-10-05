@@ -30,14 +30,16 @@
     <% @users.each do |user| %>
     <div class="row">
       <div class="col-md-2" >
-        <%= image_tag( user.image, :class => "img-circle" ,:size => "100x100" ) %><br>
+        <%= link_to( image_tag( user.image, :class => "img-circle", :size => "100x100" ), user) %><br>
         <%= user.name %>
       </div>
-      <div class="col-md-8" >
+      <div class="col-md-1">
+        <%= link_to_if(user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{user.twitter_name}") %>
+      </div>
+      <div class="col-md-9" >
         <pre><%= user.introduction %></pre>
       </div>
-      <div class="col-md-2">
-      </div>
+
     </div>
     <% end %>
 </div>

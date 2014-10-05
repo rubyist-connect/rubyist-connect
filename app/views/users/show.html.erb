@@ -29,6 +29,8 @@
 
 <pre><%= @user.introduction %></pre>
 
+<%= link_to_if(@user.twitter_name.present? , fa_icon("twitter").html_safe, "https://twitter.com/#{@user.twitter_name}") %>
+
 <%= link_to 'Edit', edit_user_path(@user) %>
 
 </div><!-- /.container -->

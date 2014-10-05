@@ -39,5 +39,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-github'
+gem "font-awesome-rails"
 gem 'better_errors' , group: :development
 gem 'binding_of_caller' , group: :development
