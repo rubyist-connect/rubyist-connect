@@ -10,9 +10,11 @@
     </div>
   <% end %>
   <div class="form-group form-group-lg">
+    <%= f.label "自己紹介文" %>
     <%= f.text_area :introduction , :rows => 10, :class => "form-control" %>
   </div>
   <div class="form-group form-group-lg">
+    <%= f.label "Twitter ユーザ名" %>
     <div class="input-group">
       <span class="input-group-addon">@</span>
       <%= f.text_field :twitter_name , :class => "form-control" %>
