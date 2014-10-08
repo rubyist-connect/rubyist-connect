@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
 
     if oauth["info"].present?
       user.name     = oauth["info"]["name"]
-      #user.nickname = oauth["info"]["nickname"]
       user.image    = oauth["info"]["image"]
       user.email    = oauth["info"]["email"]
+      user.github_url = oauth["info"]["urls"]["GitHub"]
+      #user.nickname = oauth["info"]["nickname"]
       #user.location = oauth["info"]["location"]
     end
 
