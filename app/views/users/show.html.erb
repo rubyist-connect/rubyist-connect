@@ -3,6 +3,7 @@
     <%= image_tag( @user.image, :class => "img-circle", :size => "150x150") %><br>
     <%= @user.name %><br>
     <%= link_to_if(@user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{@user.twitter_name}") %>
+    <%= link_to_if(@user.github_url.present? , fa_icon("github 5x").html_safe, "#{@user.github_url}") %>
   </div>
   <div class="col-md-10">
     <pre><%= @user.introduction %></pre>
