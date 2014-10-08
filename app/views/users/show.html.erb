@@ -1,7 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<pre><%= @user.introduction %></pre>
-
-<%= link_to_if(@user.twitter_name.present? , fa_icon("twitter").html_safe, "https://twitter.com/#{@user.twitter_name}") %>
-
-<%= link_to 'Edit', edit_user_path(@user) %>
+<div class="table-responsive">
+  <div class="col-md-2" >
+    <%= image_tag( @user.image, :class => "img-circle", :size => "150x150") %><br>
+    <%= @user.name %><br>
+    <%= link_to_if(@user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{@user.twitter_name}") %>
+  </div>
+  <div class="col-md-10">
+    <pre><%= @user.introduction %></pre>
+  </div>
+</div>
