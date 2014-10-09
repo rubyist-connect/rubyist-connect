@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   #get '/nnect' => 'users#index'
   #get '/nnect/:id' => 'users#show'
-  resources :users , path: "nnect"
+  resources :users , path: "nnect" , only:[ :index, :update, :show]
+  get '/settings' => 'users#edit'
   get '/signout' => 'sessions#destroy'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
