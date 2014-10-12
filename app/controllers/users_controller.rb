@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update]
   before_action :authorize_access
 
   def index
@@ -16,12 +16,21 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Successfully updated.' }
+        format.html { redirect_to @user, notice: '更新しました。' }
       else
         format.html { render :edit }
       end
     end
   end
+
+  def destroy
+    @user = User.find(session[:user_id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to :root, notice: '退会しました。' }
+    end
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
