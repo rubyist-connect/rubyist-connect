@@ -8,4 +8,9 @@
   <div class="col-md-10">
     <pre><%= @user.introduction %></pre>
   </div>
+  <div class="col-md-11">
+  </div>
+  <div class="col-md-1">
+    <%= link_to '退会', @user, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: "btn btn-danger btn-lg" %>
+  </div>
 </div>
