@@ -1,15 +1,10 @@
-
-
 <% if signed_in? %>
   <%# ログイン済み %>
   <%= link_to "Logout", "/signout" %>
 <% else %>
 <div class="site-wrapper">
-
   <div class="site-wrapper-inner">
-
     <div class="cover-container">
-
       <div class="masthead clearfix">
         <div class="inner">
           <h3 class="masthead-brand">rubyist.co</h3>
@@ -17,7 +12,6 @@
           </ul>
         </div>
       </div>
-
       <div class="inner cover">
         <h1 class="cover-heading">Kobe Rubyist Connect</h1>
         <p class="lead">神戸の Rubyist を繋げたいという想いから生まれました。</p>
@@ -25,16 +19,12 @@
           <a href="/auth/github" class="btn btn-default">GitHub Login</a>
         </p>
       </div>
-
       <div class="mastfoot">
         <div class="inner">
           <p>Author by <a href="https://twitter.com/yuji_shimoda">@yuji_shimoda</a>.</p>
         </div>
       </div>
-
     </div>
-
   </div>
-
 </div>
 <% end %>
