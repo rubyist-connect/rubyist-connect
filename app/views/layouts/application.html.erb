@@ -31,12 +31,10 @@
   </div>
 
   <div class="container">
+    <%= yield %>
+  </div><!-- /.container -->
 
-<%= yield %>
-
-</div><!-- /.container -->
-
-<%= yield :foot %>
+  <%= yield :foot %>
 
 </body>
 </html>
