@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize_access
 
   def index
-    @users = User.all
+    @users = User.search(params[:search])
   end
 
   def show

@@ -1,5 +1,5 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [ :show, :edit, :destroy ]
+  before_action :set_interest, only: [ :show, :edit, :destroy, :update ]
   def index
     @interests = Interest.all
   end
@@ -23,6 +23,16 @@ class InterestsController < ApplicationController
         format.html { redirect_to @interest, notice: 'Tag was successfully created.' }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @interest.update(interest_params)
+        format.html { redirect_to @interest, notice: 'Tag was successfully updated.' }
+      else
+        format.html { render :edit }
       end
     end
   end

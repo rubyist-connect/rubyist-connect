@@ -23,7 +23,10 @@
   <div class="col-md-2">
     <h2><%= link_to "タグ一覧" , "/tags" %></h2>
     <% @user.interests.each do |interest| %>
-      <%= link_to interest.content, interest.content_url, class: "btn btn-success btn-lg" %>
+      <%#= link_to interest.content, interest.content_url, class: "btn btn-success btn" %>
+      <table class="table">
+      <%= link_to interest.content, interest.content_url %>
+      </table>
     <% end %>
     <%= link_to 'タグ作成', "/tags/new", class: "btn btn-primary btn-lg" %>
   </div>

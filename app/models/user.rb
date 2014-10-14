@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
     find_by_github_id(auth_hash["uid"]) || create_with_omniauth(auth_hash)
   end
 
-    def self.create_with_omniauth(oauth)
+  def self.create_with_omniauth(oauth)
     # auth情報登録
     user = User.new
     user.github_id      = oauth["uid"]
@@ -31,5 +31,13 @@ class User < ActiveRecord::Base
     user.save!
 
     return user
+  end
+
+  def self.search(query)
+    if query
+      User.where(['name like ?', "%#{query}%"])
+    else
+      User.all
+    end
   end
 end
