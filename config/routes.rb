@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'top#index'
   get '/auth/:provider/callback', to: 'sessions#create'
-  #get '/nnect' => 'users#index'
-  #get '/nnect/:id' => 'users#show'
   resources :users , path: "nnect" , only:[ :index, :update, :show, :destroy]
-  resources :interests, path: "tags" , only:[ :new, :create, :index, :edit , :show, :update, :destroy]
+  resources :interests, path: "tags" , only:[ :new, :create, :index, :show, :update, :destroy]
+  get '/tag_settings' => 'interests#edit'
   get '/settings' => 'users#edit'
   get '/signout' => 'sessions#destroy'
   # Example of regular route:

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       return
     end
 
-    redirect_to "/nnect"
+    redirect_to users_path
   end
 
   # ログアウト

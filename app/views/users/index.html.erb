@@ -6,8 +6,8 @@
         <%= user.name %>
       </div>
       <div class="col-md-10" >
-        <%= link_to_if(user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{user.twitter_name}") %>
         <%= link_to_if(user.github_url.present? , fa_icon("github 5x").html_safe, "#{user.github_url}") %>
+        <%= link_to_if(user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{user.twitter_name}") %>
         <%= link_to_if(user.facebook_name.present? , fa_icon("facebook 5x").html_safe, "https://www.facebook.com/#{user.facebook_name}") %>
         <br><pre><%= user.introduction %></pre>
       </div>

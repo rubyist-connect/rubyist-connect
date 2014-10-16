@@ -1,6 +1,7 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [ :show, :edit, :destroy, :update ]
+  before_action :set_interest, only: [ :show, :destroy, :update ]
   def index
+    @user = User.find(session[:user_id])
     @interests = Interest.all
   end
 
@@ -8,6 +9,7 @@ class InterestsController < ApplicationController
   end
 
   def edit
+    @interest = Interest.find(params[:id])
   end
 
   def new
@@ -20,7 +22,7 @@ class InterestsController < ApplicationController
     @interest = @user.interests.build(interest_params)
     respond_to do |format|
       if @interest.save
-        format.html { redirect_to @interest, notice: 'Tag was successfully created.' }
+        format.html { redirect_to interests_path, notice: 'Tag was successfully created.' }
       else
         format.html { render :new }
       end
@@ -30,7 +32,7 @@ class InterestsController < ApplicationController
   def update
     respond_to do |format|
       if @interest.update(interest_params)
-        format.html { redirect_to @interest, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to interests_path, notice: 'Tag was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -51,6 +53,6 @@ class InterestsController < ApplicationController
     end
 
     def interest_params
-      params.require(:interest).permit(:user_id, :content, :content_url)
+      params.require(:interest).permit( :content, :content_url)
     end
 end

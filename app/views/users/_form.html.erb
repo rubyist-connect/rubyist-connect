@@ -1,3 +1,5 @@
+<div class="container">
+<div class="col-md-10" >
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -30,4 +32,13 @@
   <div class="actions">
     <%= f.submit(:class => "btn btn-success btn-lg", :value => "更新" )%>
   </div>
+  </div>
 <% end %>
+  <div class="col-md-2" >
+    <h2>タグの作成</h2>
+    <%= link_to 'タグ作成', new_interest_path, class: "btn btn-primary btn-lg" %>
+    <h2>退会する</h2>
+    <%= link_to '退会', @user, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: "btn btn-danger btn-lg" %>
+  </div>
+</div>
+</div><!-- /.container -->

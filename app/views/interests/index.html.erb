@@ -1,14 +1,23 @@
 <div class="table-responsive">
 <h2>タグ一覧</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>URL</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @interests.each do |interest| %>
-    <div class="row">
-      <div class="col-md-2" >
-        <%= link_to_if(interest.content_url.present? , interest.content, "#{interest.content_url}", class: "btn btn-success btn-lg") %>
-      </div>
-      <div class="col-md-3" >
-        <%= link_to "タグの編集" , edit_interest_path(interest), class: "btn btn-primary btn-lg" %>
-        <%= link_to 'タグの削除', interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-lg" %>
-      </div>
-    </div>
+      <tr>
+        <td><%= interest.content %></td>
+        <td><%= interest.content_url %></td>
+        <td><%= flag = (interest.user_id == @user.id) ? link_to("タグの編集" , "/tag_settings" , class: "btn btn-primary" ) : "" %></td>
+        <td><%= flag = (interest.user_id == @user.id) ? link_to("タグの削除" , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" ) : "" %></td>
+      </tr>
     <% end %>
+</table>
 </div>

@@ -14,21 +14,18 @@
     <%= link_to_if(@user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{@user.twitter_name}") %>
     <%= link_to_if(@user.github_url.present? , fa_icon("github 5x").html_safe, "#{@user.github_url}") %>
     <%= link_to_if(@user.facebook_name.present? , fa_icon("facebook 5x").html_safe, "https://www.facebook.com/#{@user.facebook_name}") %>
-    <br>
-    <br><%= link_to '退会', @user, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: "btn btn-danger btn-lg" %>
   </div>
   <div class="col-md-8">
     <pre><%= @user.introduction %></pre>
   </div>
-  <div class="col-md-2">
-    <h2><%= link_to "タグ一覧" , "/tags" %></h2>
-    <% @user.interests.each do |interest| %>
-      <%#= link_to interest.content, interest.content_url, class: "btn btn-success btn" %>
-      <table class="table">
-      <%= link_to interest.content, interest.content_url %>
-      </table>
-    <% end %>
-    <%= link_to 'タグ作成', "/tags/new", class: "btn btn-primary btn-lg" %>
+  <div class="col-md-2" >
+  <h2><%= link_to "タグ一覧" , interests_path %></h2>
+  <% @user.interests.each do |interest| %>
+    <%#= link_to interest.content, interest.content_url, class: "btn btn-success btn" %>
+    <table class="table">
+    <%= link_to interest.content, interest.content_url %>
+    </table>
+  <% end %>
   </div>
 </div><!-- /.container -->
 </div>
