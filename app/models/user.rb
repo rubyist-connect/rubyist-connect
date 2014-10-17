@@ -10,12 +10,13 @@ class User < ActiveRecord::Base
     user.github_id      = oauth["uid"]
 
     if oauth["info"].present?
-      user.name     = oauth["info"]["name"]
-      user.image    = oauth["info"]["image"]
-      user.email    = oauth["info"]["email"]
+      user.name       = oauth["info"]["name"]
+      user.image      = oauth["info"]["image"]
+      user.email      = oauth["info"]["email"]
+      user.nickname   = oauth["info"]["nickname"]
+      user.location   = oauth["info"]["location"]
       user.github_url = oauth["info"]["urls"]["GitHub"]
-      #user.nickname = oauth["info"]["nickname"]
-      #user.location = oauth["info"]["location"]
+      user.blog       = oauth["info"]["urls"]["Blog"]
     end
 
     # if oauth["credentials"].present?
