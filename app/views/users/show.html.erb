@@ -2,7 +2,7 @@
   <div class="container"> -->
     <div class="col-sm-6 col-md-4" >
       <%= image_tag( @user.image, :class => "img-circle", :size => "150x150") %><br>
-      <%= @user.nickname.present? ? @user.nickname : @user.name %><br>
+      <%= @user.name.present? ? @user.name : @user.nickname %><br>
       <% if @user.location.present? %>
         <i class="fa fa-map-marker"><%= @user.location %></i><br>
       <% end %>
