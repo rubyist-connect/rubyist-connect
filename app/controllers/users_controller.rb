@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: '更新しました。' }
+        format.html { redirect_to user_url(nickname: @user.nickname), notice: '更新しました。' }
       else
         format.html { render :edit }
       end
