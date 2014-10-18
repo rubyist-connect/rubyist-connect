@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'top#index'
-  get '/auth/:provider/callback', to: 'sessions#create'
-  resources :users , path: "nnect" , only:[ :index, :update, :show, :destroy]
+  get '/nnect/:nickname' => 'users#show', as: :user	
+  resources :users , path: "nnect" , only:[ :index, :update, :destroy]
   resources :interests, path: "tags" , only:[ :new, :create, :index, :show, :update, :destroy]
+  get '/auth/:provider/callback', to: 'sessions#create'
   get '/tag_settings' => 'interests#edit'
   get '/settings' => 'users#edit'
   get '/signout' => 'sessions#destroy'
+  root 'top#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

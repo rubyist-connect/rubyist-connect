@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: [:update]
   before_action :authorize_access
 
   def index
@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
   end
 
   def edit

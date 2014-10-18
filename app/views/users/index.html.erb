@@ -2,7 +2,7 @@
     <% @users.each do |user| %>
     <div class="row">
       <div class="col-md-2" >
-        <%= link_to( image_tag( user.image, :class => "img-circle", :size => "100x100" ), user) %><br>
+        <%= link_to( image_tag( user.image, :class => "img-circle", :size => "100x100" ), "/nnect/#{user.nickname}" ) %><br>
         <%= user.name.present? ? user.name : user.nickname %>
       </div>
       <div class="col-md-10" >
