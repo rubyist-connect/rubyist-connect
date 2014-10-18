@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  get '/nnect/:nickname' => 'users#show', as: :user	
-  resources :users , path: "nnect" , only:[ :index, :update, :destroy]
+  patch '/nnect/:id' => 'users#update'
+  put '/nnect/:id' => 'users#update'
+  resources :users , path: "nnect" , only:[ :index, :show, :destroy], param: :nickname
   resources :interests, path: "tags" , only:[ :new, :create, :index, :show, :update, :destroy]
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/tag_settings' => 'interests#edit'
