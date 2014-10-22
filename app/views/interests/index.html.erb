@@ -15,7 +15,7 @@
       <tr>
         <td><%= interest.content %></td>
         <td><%= interest.content_url %></td>
-        <td><%= flag = (interest.user_id == @user.id) ? link_to("タグの編集" , "/tag_settings" , class: "btn btn-primary" ) : "" %></td>
+        <td><%= flag = (interest.user_id == @user.id) ? link_to("タグの編集" , tag_settings_path , class: "btn btn-primary" ) : "" %></td>
         <td><%= flag = (interest.user_id == @user.id) ? link_to("タグの削除" , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" ) : "" %></td>
       </tr>
     <% end %>
