@@ -14,10 +14,16 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'omniauth-github'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'unicorn'
+
+group :production, :staging do
+  gem 'rails_12factor'
+end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'heroku_san'
 end
