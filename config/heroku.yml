@@ -19,8 +19,3 @@ staging:
     # SECRET_KEY_BASE: (secret)
     # GITHUB_CLIENT_ID: (secret)
     # GITHUB_SECRET: (secret)
-  addons:
-    - pgbackups:auto-week
-    - memcache:5mb
-    - logging:basic
-    - scheduler:standard
