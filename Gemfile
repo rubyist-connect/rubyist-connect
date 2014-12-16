@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'omniauth-github'
 gem 'font-awesome-rails'
 gem 'unicorn'
+gem 'newrelic_rpm'
 
 group :production, :staging do
   gem 'rails_12factor'
