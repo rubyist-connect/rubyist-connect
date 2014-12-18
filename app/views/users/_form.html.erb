@@ -12,33 +12,33 @@
     </div>
   <% end %>
   <div class="form-group form-group-lg">
-    <%= f.label "自己紹介文" %>
+    <%= f.label :introduction %>
     <%= f.text_area :introduction , :rows => 10, :class => "form-control" %>
   </div>
   <div class="form-group form-group-lg">
-    <%= f.label "Twitter ユーザ名" %>
+    <%= f.label :twitter_name %>
     <div class="input-group">
       <span class="input-group-addon">@</span>
       <%= f.text_field :twitter_name , :class => "form-control" %>
     </div>
   </div>
   <div class="form-group form-group-lg">
-    <%= f.label "Facebook ユーザ名" %>
+    <%= f.label :facebook_name %>
     <div class="input-group">
       <span class="input-group-addon">https://www.facebook.com/</span>
       <%= f.text_field :facebook_name , :class => "form-control" %>
     </div>
   </div>
   <div class="form-group form-group-lg">
-    <%= f.label "名前" %>
+    <%= f.label :name %>
     <%= f.text_field :name , :class => "form-control" %>
   </div>
   <div class="form-group form-group-lg">
-    <%= f.label "場所" %>
+    <%= f.label :location %>
     <%= f.text_field :location , :class => "form-control" %>
   </div>
   <div class="form-group form-group-lg">
-    <%= f.label "ブログ URL" %>
+    <%= f.label :blog %>
     <%= f.text_field :blog , :class => "form-control" %>
   </div>
   <div class="actions">

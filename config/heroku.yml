@@ -1,0 +1,21 @@
+production:
+  app: rubyist-connect
+  stack: cedar
+  config:
+    BUNDLE_WITHOUT: "development:test"
+    TZ: Asia/Tokyo
+    # SECRET_KEY_BASE: (secret)
+    # GITHUB_CLIENT_ID: (secret)
+    # GITHUB_SECRET: (secret)
+
+staging:
+  app: rubyist-connect-staging
+  stack: cedar
+  config: &default
+    BUNDLE_WITHOUT: "development:test"
+    TZ: Asia/Tokyo
+    RACK_ENV: staging
+    RAILS_ENV: staging
+    # SECRET_KEY_BASE: (secret)
+    # GITHUB_CLIENT_ID: (secret)
+    # GITHUB_SECRET: (secret)
