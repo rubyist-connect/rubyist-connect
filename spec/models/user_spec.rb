@@ -4,7 +4,7 @@ describe User do
   describe '::create_with_omniauth' do
     let(:oauth_params) do
       params = {}
-      params['uid'] = 123
+      params['uid'] = '123'
       info = params['info'] = {}
       info['name'] = 'alice'
       info['image'] = 'https://avatars.githubusercontent.com/u/1148320?v=2'
@@ -21,7 +21,7 @@ describe User do
     it 'saves attributes' do
       user = User.create_with_omniauth(oauth_params)
       expected_attributes = {
-          github_id: 123,
+          github_id: '123',
           name: 'alice',
           image: 'https://avatars.githubusercontent.com/u/1148320?v=2',
           email: 'alice@example.com',

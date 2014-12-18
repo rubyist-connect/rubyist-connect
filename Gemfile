@@ -27,6 +27,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'heroku_san'
+  gem 'i18n_generators'
 end
 
 group :development, :test do

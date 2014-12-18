@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      interest: interest  #g
+      user: user  #g
+
+    attributes:
+      interest:
+        content: content  #g
+        content_url: content_url  #g
+        user: :activerecord.models.user  #g
+
+      user:
+        blog: ブログ URL
+        email: email  #g
+        facebook_name: Facebook ユーザ名
+        github_url: github_url  #g
+        image: image  #g
+        interests: interests  #g
+        introduction: 自己紹介文
+        location: 場所
+        name: 名前
+        nickname: nickname  #g
+        twitter_name: Twitter ユーザ名
