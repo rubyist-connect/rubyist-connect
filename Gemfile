@@ -28,3 +28,13 @@ group :development do
   gem 'spring'
   gem 'heroku_san'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'spring-commands-rspec', '~> 1.0.2'
+end
+
+group :test do
+  gem 'capybara', '~> 2.4.4'
+end
