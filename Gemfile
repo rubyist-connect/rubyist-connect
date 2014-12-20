@@ -17,6 +17,7 @@ gem 'omniauth-github'
 gem 'font-awesome-rails'
 gem 'unicorn'
 gem 'newrelic_rpm'
+gem 'rails_config'
 
 group :production, :staging do
   gem 'rails_12factor'
