@@ -1,22 +1,19 @@
-- if signed_in?
-  = link_to "Logout", "/signout"
-- else
-  .site-wrapper
-    .site-wrapper-inner
-      .cover-container
-        .masthead.clearfix
-          .inner
-            h3.masthead-brand rubyist.co
-            ul.nav.masthead-nav
+.site-wrapper
+  .site-wrapper-inner
+    .cover-container
+      .masthead.clearfix
+        .inner
+          h3.masthead-brand rubyist.co
+          ul.nav.masthead-nav
 
-        .inner.cover
-          h1.cover-heading Kobe Rubyist Connect
-          p.lead 神戸の Rubyist を繋げたいという想いから生まれました。
-          p.lead
-            = link_to 'GitHub Login', user_omniauth_authorize_path(:github), class: 'btn btn-success btn-lg'
-        .mastfoot
-          .inner
-            p
-              | Author by 
-              a[href="https://twitter.com/yuji_shimoda"] @yuji_shimoda
-              | .
+      .inner.cover
+        h1.cover-heading Kobe Rubyist Connect
+        p.lead 神戸の Rubyist を繋げたいという想いから生まれました。
+        p.lead
+          = link_to 'GitHub Login', user_omniauth_authorize_path(:github), class: 'btn btn-success btn-lg'
+      .mastfoot
+        .inner
+          p
+            | Author by
+            a[href="https://twitter.com/yuji_shimoda"] @yuji_shimoda
+            | .
