@@ -15,4 +15,12 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.infer_spec_type_from_file_location!
+
+  # open_on_error: trueのFeature specが落ちたらsave_and_open_pageをコールする
+  # http://stackoverflow.com/a/16935806/1058763
+  config.after do |example|
+    if example.metadata[:type] == :feature and example.exception.present? and example.metadata[:open_on_error] == true
+      save_and_open_page
+    end
+  end
 end

@@ -9,7 +9,8 @@ class InterestsController < ApplicationController
   end
 
   def edit
-    @interest = Interest.find(session[:user_id])
+    # FIXME このままだと1ユーザーにつき1タグしか編集できない
+    @interest = Interest.find_by(user_id: session[:user_id])
   end
 
   def new
