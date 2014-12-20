@@ -1,5 +1,4 @@
 - if signed_in?
-  - # ログイン済み
   = link_to "Logout", "/signout"
 - else
   .site-wrapper
@@ -7,22 +6,17 @@
       .cover-container
         .masthead.clearfix
           .inner
-            h3.masthead-brand
-              | rubyist.co
+            h3.masthead-brand rubyist.co
             ul.nav.masthead-nav
 
         .inner.cover
-          h1.cover-heading
-            | Kobe Rubyist Connect
+          h1.cover-heading Kobe Rubyist Connect
+          p.lead 神戸の Rubyist を繋げたいという想いから生まれました。
           p.lead
-            | 神戸の Rubyist を繋げたいという想いから生まれました。
-          p.lead
-            a.btn.btn-success.btn-lg[href="/auth/github"]
-              | GitHub Login
+            a.btn.btn-success.btn-lg[href="/auth/github"] GitHub Login
         .mastfoot
           .inner
             p
               | Author by 
-              a[href="https://twitter.com/yuji_shimoda"]
-                | @yuji_shimoda
+              a[href="https://twitter.com/yuji_shimoda"] @yuji_shimoda
               | .

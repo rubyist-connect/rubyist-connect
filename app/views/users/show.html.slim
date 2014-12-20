@@ -4,25 +4,21 @@
   = @user.name.present? ? @user.name : @user.nickname
   br
   - if @user.location.present?
-    i.fa.fa-map-marker
-      = @user.location
+    i.fa.fa-map-marker = @user.location
     br
   - if @user.blog.present?
     h6
-      i.fa.fa-bookmark-o
-        = link_to @user.blog, @user.blog
+      i.fa.fa-bookmark-o = link_to @user.blog, @user.blog
     br
   = link_to_if(@user.github_url.present? , fa_icon("github 5x").html_safe, "#{@user.github_url}")
   = link_to_if(@user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{@user.twitter_name}")
   = link_to_if(@user.facebook_name.present? , fa_icon("facebook 5x").html_safe, "https://www.facebook.com/#{@user.facebook_name}")
-  h2
-    = link_to "タグ一覧" , interests_path
+  h2 = link_to "タグ一覧" , interests_path
   table.interests
     - @user.interests.each do |interest|
       - #= link_to interest.content, interest.content_url, class: "btn btn-success btn"
       tr
-        td
-          = link_to interest.content, interest.content_url
+        td = link_to interest.content, interest.content_url
 .col-sm-6.col-md-8
   pre
     = @user.introduction
