@@ -2,7 +2,8 @@
   - @users.each do |user|
     .row
       .col-md-2.user-image
-        = link_to( image_tag( user.image, :class => "img-circle", :size => "100x100" ), "/nnect/#{user.nickname}" )
+        = link_to user_path(user.nickname) do
+          = image_tag user.image, class: 'img-circle', size: '100x100'
         br
         = user.name.present? ? user.name : user.nickname
       .col-md-10
