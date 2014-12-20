@@ -19,10 +19,11 @@ html
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li
-              a[href='/nnect']
-                i.fa.fa-home
+              = link_to users_path do
+                = fa_icon 'home'
             li
-              = link_to fa_icon('gears').html_safe, settings_path, class: 'settings-link'
+              = link_to settings_path, class: 'settings-link' do
+                = fa_icon 'gears'
             li
               = link_to 'Sign out', destroy_user_session_path, method: :delete
           form.navbar-form.navbar-right[action='/nnect' method='get' role='search']
