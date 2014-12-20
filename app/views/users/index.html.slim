@@ -10,4 +10,4 @@
         = render 'sns_links', user: user
         br
         pre
-          = user.introduction.nil? ? "" : user.introduction.split(/\n/)[0]
+          = user.introduction.to_s.lines.first
