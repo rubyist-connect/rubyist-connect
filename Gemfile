@@ -32,6 +32,7 @@ group :development do
   gem 'spring'
   gem 'heroku_san'
   gem 'i18n_generators'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
