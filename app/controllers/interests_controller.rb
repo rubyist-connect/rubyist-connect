@@ -1,11 +1,9 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [ :show, :destroy, :update ]
+  before_action :set_interest, only: [ :destroy, :update ]
+
   def index
     @user = User.find(session[:user_id])
     @interests = Interest.all
-  end
-
-  def show
   end
 
   def edit

@@ -1,6 +1,0 @@
-<div class="table-responsive">
-  <div class="col-md-12" >
-    <%= link_to_if(@interest.content_url.present? , @interest.content, "#{@interest.content_url}") %>
-  </div>
-  <%= link_to "編集" , interests_path(@interest) %>
-</div>
