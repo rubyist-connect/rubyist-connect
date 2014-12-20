@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
       User.all
     end
   end
+
+  def name_or_nickname
+    name.presence || nickname
+  end
 end

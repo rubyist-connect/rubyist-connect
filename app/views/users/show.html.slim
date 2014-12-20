@@ -1,7 +1,7 @@
 .col-sm-6.col-md-4
-  = image_tag( @user.image, :class => "img-circle", :size => "150x150")
+  = image_tag @user.image, class: 'img-circle', size: '150x150'
   br
-  = @user.name.present? ? @user.name : @user.nickname
+  = @user.name_or_nickname
   br
   - if @user.location.present?
     i.fa.fa-map-marker = @user.location
@@ -11,10 +11,9 @@
       i.fa.fa-bookmark-o = link_to @user.blog, @user.blog
     br
   = render 'sns_links', user: @user
-  h2 = link_to "タグ一覧" , interests_path
+  h2 = link_to 'タグ一覧' , interests_path
   table.interests
     - @user.interests.each do |interest|
-      - #= link_to interest.content, interest.content_url, class: "btn btn-success btn"
       tr
         td = link_to interest.content, interest.content_url
 .col-sm-6.col-md-8
