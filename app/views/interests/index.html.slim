@@ -5,11 +5,11 @@
       tr
         th Tag
         th URL
-        th[colspan="2"]
+        th[colspan='2']
     tbody
       - @interests.each do |interest|
         tr
           td = interest.content
           td = interest.content_url
-          td = flag = (interest.user == current_user) ? link_to("タグの編集" , tag_settings_path , class: "btn btn-primary" ) : ""
-          td = flag = (interest.user == current_user) ? link_to("タグの削除" , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" ) : ""
+          td = flag = (interest.user == current_user) ? link_to('タグの編集' , tag_settings_path , class: 'btn btn-primary' ) : ''
+          td = flag = (interest.user == current_user) ? link_to('タグの削除' , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' ) : ''
