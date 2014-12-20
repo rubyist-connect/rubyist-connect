@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User do
   describe '::create_with_omniauth' do
-    let(:oauth_params) do
+    let(:params) do
       params = {}
       params['uid'] = '123'
       info = params['info'] = {}
@@ -19,7 +19,7 @@ describe User do
     end
 
     it 'saves attributes' do
-      user = User.create_with_omniauth(oauth_params)
+      user = User.create_with_omniauth(params)
       expected_attributes = {
           github_id: '123',
           name: 'alice',
