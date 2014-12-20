@@ -21,6 +21,8 @@ gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'rails_config'
 gem 'slim-rails'
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'autoprefixer-rails'
 
 group :production, :staging do
   gem 'rails_12factor'
