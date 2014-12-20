@@ -26,11 +26,11 @@ html
                 = fa_icon 'gears'
             li
               = link_to 'Sign out', destroy_user_session_path, method: :delete
-          form.navbar-form.navbar-right[action='/nnect' method='get' role='search']
+          = form_tag users_path, method: :get, role: 'search', class: 'navbar-form navbar-right' do
             .form-group
-              input#search-form.form-control[type='text' name='search' placeholder='User Search']
-            button.btn.btn-primary[type='submit']
-              i.fa.fa-search
+              = text_field_tag :search, '', placeholder: 'User Search', id: 'search-form', class: 'form-control'
+            = button_tag class: 'btn btn-primary' do
+              = fa_icon 'search'
     .container.container-main
       = yield
     = yield :foot
