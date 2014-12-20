@@ -2,23 +2,20 @@ class InterestsController < ApplicationController
   before_action :set_interest, only: [ :destroy, :update ]
 
   def index
-    @user = User.find(session[:user_id])
     @interests = Interest.all
   end
 
   def edit
     # FIXME このままだと1ユーザーにつき1タグしか編集できない
-    @interest = Interest.find_by(user_id: session[:user_id])
+    @interest = Interest.find_by(user_id: current_user.id)
   end
 
   def new
-    @user = User.find(session[:user_id])
-    @interest = @user.interests.build
+    @interest = current_user.interests.build
   end
 
   def create
-    @user = User.find(session[:user_id])
-    @interest = @user.interests.build(interest_params)
+    @interest = current_user.interests.build(interest_params)
     respond_to do |format|
       if @interest.save
         format.html { redirect_to interests_path, notice: 'Tag was successfully created.' }

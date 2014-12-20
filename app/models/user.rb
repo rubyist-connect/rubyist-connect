@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
+  devise :omniauthable, omniauth_providers: [:github]
+
   has_many :interests
+
   def self.find_or_create_from_auth_hash(auth_hash)
     find_by_github_id(auth_hash["uid"]) || create_with_omniauth(auth_hash)
   end
