@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
     return user
   end
 
+  # TODO Ransackを使うと便利です
   def self.search(query)
     if query
       User.where(['name like ?', "%#{query}%"])
