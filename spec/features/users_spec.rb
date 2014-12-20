@@ -33,4 +33,16 @@ feature 'Users spec' do
     click_on 'Sign out'
     expect(page).to have_content '神戸の Rubyist を繋げたいという想いから生まれました。'
   end
+
+  scenario '退会ができること' do
+    sign_in_as_new_user
+
+    expect(page).to have_content 'alice'
+
+    find('.settings-link').click
+
+    expect{click_link '退会'}.to change{User.count}.by(-1)
+
+    expect(page).to have_content '神戸の Rubyist を繋げたいという想いから生まれました。'
+  end
 end
