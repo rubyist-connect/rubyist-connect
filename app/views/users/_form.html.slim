@@ -1,6 +1,6 @@
 .container
   .col-md-10
-    = form_for(@user) do |f|
+    = form_for @user do |f|
       - if @user.errors.any?
         #error_explanation
           h2
