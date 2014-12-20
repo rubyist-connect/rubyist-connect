@@ -5,6 +5,7 @@
       tr
         th Tag
         th URL
+        th Created by
         th
         th
     tbody
@@ -13,6 +14,12 @@
         tr
           td = interest.content
           td = interest.content_url
+          td
+            - user = interest.user
+            - if user.present?
+              = link_to user.name_or_nickname, user_path(user.nickname)
+            - else
+              = interest.user_id
           td
             = link_to_if interest_owner, 'タグの編集', [:edit, interest], class: 'btn btn-primary' do
               nil
