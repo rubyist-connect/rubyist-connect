@@ -1,6 +1,6 @@
-= link_to_if_with_block user.github_url.present?, user.github_url do
+= link_to_if_with_block user.github_url.present?, user.github_url, target: '_blank' do
   = fa_icon("github 5x")
-= link_to_if_with_block user.twitter_name.present?, "https://twitter.com/#{user.twitter_name}" do
+= link_to_if_with_block user.twitter_name.present?, "https://twitter.com/#{user.twitter_name}", target: '_blank' do
   = fa_icon("twitter 5x")
-= link_to_if_with_block user.facebook_name.present?, "https://www.facebook.com/#{user.facebook_name}" do
+= link_to_if_with_block user.facebook_name.present?, "https://www.facebook.com/#{user.facebook_name}", target: '_blank' do
   = fa_icon("facebook 5x")
