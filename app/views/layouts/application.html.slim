@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title
+      | Kobe Rubyist Connect
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    |  　
+    = stylesheet_link_tag "starter-template"
+  body
+    .navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
+      .container
+        .navbar-header
+          button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "Kobe Rubyist Connect", users_path, class: "navbar-brand text-muted logo"
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a[href="/nnect"]
+                i.fa.fa-home
+            li
+              = link_to fa_icon("gears").html_safe, settings_path, class: 'settings-link'
+            li
+              a[href="/signout"]
+                | Sign out
+          form.navbar-form.navbar-right[action="/nnect" method="get" role="search"]
+            .form-group
+              input#search-form.form-control[type="text" name="search" placeholder="User Search"]
+            button.btn.btn-primary[type="submit"]
+              i.fa.fa-search
+    .container
+      = yield
+    = yield :foot
