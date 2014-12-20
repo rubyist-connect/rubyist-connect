@@ -4,10 +4,12 @@ Rails.application.routes.draw do
     delete '/users/sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  patch '/nnect/:id' => 'users#update'
   resources :users , path: "nnect" , only: [:index, :show, :destroy], param: :nickname
+  get '/settings' => 'users#edit'
+  patch '/nnect/:id' => 'users#update'
+
   resources :interests, path: "tags" , only: [:new, :create, :index, :update, :destroy]
   get '/tag_settings' => 'interests#edit'
-  get '/settings' => 'users#edit'
+
   root 'top#index'
 end
