@@ -1,13 +1,8 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [ :destroy, :update ]
+  before_action :set_interest, only: [ :destroy, :edit, :update ]
 
   def index
     @interests = Interest.all
-  end
-
-  def edit
-    # FIXME このままだと1ユーザーにつき1タグしか編集できない
-    @interest = Interest.find_by(user_id: current_user.id)
   end
 
   def new
@@ -23,6 +18,9 @@ class InterestsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -45,7 +43,7 @@ class InterestsController < ApplicationController
   private
 
     def set_interest
-      @interest = Interest.find(params[:id])
+      @interest = current_user.interests.find(params[:id])
     end
 
     def interest_params

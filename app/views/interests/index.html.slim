@@ -14,7 +14,7 @@
           td = interest.content
           td = interest.content_url
           td
-            = link_to_if interest_owner, 'タグの編集', tag_settings_path, class: 'btn btn-primary' do
+            = link_to_if interest_owner, 'タグの編集', [:edit, interest], class: 'btn btn-primary' do
               nil
           td
             = link_to_if interest_owner, 'タグの削除', interest, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do

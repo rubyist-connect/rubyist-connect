@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get '/settings' => 'users#edit'
   patch '/nnect/:id' => 'users#update'
 
-  resources :interests, path: "tags" , only: [:new, :create, :index, :update, :destroy]
-  get '/tag_settings' => 'interests#edit'
+  resources :interests, path: "tags" , only: [:new, :create, :index, :edit, :update, :destroy]
 
   root 'top#index'
 end
