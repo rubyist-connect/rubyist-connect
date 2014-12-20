@@ -1,12 +1,11 @@
 doctype html
 html
   head
-    title
-      | Kobe Rubyist Connect
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    title Kobe Rubyist Connect
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'starter-template'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    = stylesheet_link_tag "starter-template"
   body
     .navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
       .container

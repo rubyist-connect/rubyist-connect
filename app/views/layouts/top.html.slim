@@ -2,10 +2,10 @@ doctype html
 html
   head
     title Kobe Rubyist Connect
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'cover'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    = stylesheet_link_tag "cover"
   body
     = yield
     = simple_format(flash[:notice], style: "color: green;") if flash[:notice].present?
