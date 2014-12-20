@@ -1,15 +1,14 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [ :show, :destroy, :update ]
+  before_action :set_interest, only: [ :destroy, :update ]
+
   def index
     @user = User.find(session[:user_id])
     @interests = Interest.all
   end
 
-  def show
-  end
-
   def edit
-    @interest = Interest.find(session[:user_id])
+    # FIXME このままだと1ユーザーにつき1タグしか編集できない
+    @interest = Interest.find_by(user_id: session[:user_id])
   end
 
   def new

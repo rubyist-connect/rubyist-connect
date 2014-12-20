@@ -13,12 +13,16 @@
       <%= link_to_if(@user.twitter_name.present? , fa_icon("twitter 5x").html_safe, "https://twitter.com/#{@user.twitter_name}") %>
       <%= link_to_if(@user.facebook_name.present? , fa_icon("facebook 5x").html_safe, "https://www.facebook.com/#{@user.facebook_name}") %>
       <h2><%= link_to "タグ一覧" , interests_path %></h2>
+      <table class="interests">
       <% @user.interests.each do |interest| %>
         <%#= link_to interest.content, interest.content_url, class: "btn btn-success btn" %>
-        <table class="table">
-          <%= link_to interest.content, interest.content_url %>
-        </table>
+          <tr>
+            <td>
+              <%= link_to interest.content, interest.content_url %>
+            </td>
+          </tr>
       <% end %>
+      </table>
     </div>
     <div class="col-sm-6 col-md-8">
       <pre><%= @user.introduction %></pre>

@@ -6,8 +6,8 @@ ja:
 
     attributes:
       interest:
-        content: content  #g
-        content_url: content_url  #g
+        content: タグ（任意の文字列）
+        content_url: タグに対するURL（あれば）
         user: :activerecord.models.user  #g
 
       user:

@@ -27,6 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -89,6 +90,8 @@ GEM
     json (1.8.1)
     jwt (1.0.0)
     kgio (2.9.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mechanize (2.7.3)
@@ -231,6 +234,7 @@ DEPENDENCIES
   i18n_generators
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   newrelic_rpm
   omniauth-github
   pg
