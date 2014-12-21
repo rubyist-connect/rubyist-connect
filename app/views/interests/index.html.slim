@@ -1,0 +1,15 @@
+.table-responsive
+  h2 タグ一覧
+  table.table.table-hover
+    thead
+      tr
+        th Tag
+        th URL
+        th[colspan="2"]
+    tbody
+      - @interests.each do |interest|
+        tr
+          td = interest.content
+          td = interest.content_url
+          td = flag = (interest.user_id == @user.id) ? link_to("タグの編集" , tag_settings_path , class: "btn btn-primary" ) : ""
+          td = flag = (interest.user_id == @user.id) ? link_to("タグの削除" , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" ) : ""
