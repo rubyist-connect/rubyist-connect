@@ -4,10 +4,10 @@ module LoginMacros
     params['provider'] = 'github'
     params['uid'] = '123'
     info = params['info'] = {}
-    info['name'] = 'alice'
+    info['name'] = 'Alice'
     info['image'] = 'https://avatars.githubusercontent.com/u/1148320?v=2'
     info['email'] = 'alice@example.com'
-    info['nickname'] = 'Alice-chan'
+    info['nickname'] = 'alice'
     info['location'] = 'Kobe'
     urls = info['urls'] = {}
     urls['GitHub'] = 'https://github.com/alice-foo-bar'
