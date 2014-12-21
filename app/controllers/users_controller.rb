@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_nickname(params[:nickname])
+    @user = User.find_by_nickname!(params[:nickname])
   end
 
   def edit

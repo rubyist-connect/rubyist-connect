@@ -6,10 +6,10 @@ describe User do
       params = {}
       params['uid'] = '123'
       info = params['info'] = {}
-      info['name'] = 'alice'
+      info['name'] = 'Alice'
       info['image'] = 'https://avatars.githubusercontent.com/u/1148320?v=2'
       info['email'] = 'alice@example.com'
-      info['nickname'] = 'Alice-chan'
+      info['nickname'] = 'alice'
       info['location'] = 'Kobe'
       urls = info['urls'] = {}
       urls['GitHub'] = 'https://github.com/alice-foo-bar'
@@ -22,10 +22,10 @@ describe User do
       user = User.create_with_omniauth(params)
       expected_attributes = {
           github_id: '123',
-          name: 'alice',
+          name: 'Alice',
           image: 'https://avatars.githubusercontent.com/u/1148320?v=2',
           email: 'alice@example.com',
-          nickname: 'Alice-chan',
+          nickname: 'alice',
           location: 'Kobe',
           github_url: 'https://github.com/alice-foo-bar',
           blog: 'http://blog.example.com'
