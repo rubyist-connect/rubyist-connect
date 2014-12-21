@@ -11,5 +11,5 @@
         tr
           td = interest.content
           td = interest.content_url
-          td = flag = (interest.user_id == @user.id) ? link_to("タグの編集" , tag_settings_path , class: "btn btn-primary" ) : ""
-          td = flag = (interest.user_id == @user.id) ? link_to("タグの削除" , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" ) : ""
+          td = flag = (interest.user == current_user) ? link_to("タグの編集" , tag_settings_path , class: "btn btn-primary" ) : ""
+          td = flag = (interest.user == current_user) ? link_to("タグの削除" , interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" ) : ""

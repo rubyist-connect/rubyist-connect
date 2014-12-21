@@ -24,7 +24,7 @@ html
             li
               = link_to fa_icon("gears").html_safe, settings_path, class: 'settings-link'
             li
-              a[href="/signout" data={no_turbolink: true} ] Sign out
+              = link_to 'Sign out', destroy_user_session_path, method: :delete
           form.navbar-form.navbar-right[action="/nnect" method="get" role="search"]
             .form-group
               input#search-form.form-control[type="text" name="search" placeholder="User Search"]
