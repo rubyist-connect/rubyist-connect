@@ -4,7 +4,7 @@ feature 'Users spec' do
   scenario 'ログイン - 登録情報変更 - ユーザ検索 - ログアウトができること' do
     sign_in_as_new_user
 
-    expect(page).to have_content 'alice'
+    expect(page).to have_content 'Alice'
 
     find('.settings-link').click
 
@@ -37,12 +37,19 @@ feature 'Users spec' do
   scenario '退会ができること' do
     sign_in_as_new_user
 
-    expect(page).to have_content 'alice'
+    expect(page).to have_content 'Alice'
 
     find('.settings-link').click
 
     expect{click_link '退会'}.to change{User.count}.by(-1)
 
     expect(page).to have_content '神戸の Rubyist を繋げたいという想いから生まれました。'
+  end
+
+  scenario '存在しないユーザーを表示しようとした場合はNot foundとすること' do
+    sign_in_as_new_user
+
+    expect{visit user_path('alice')}.to_not raise_error
+    expect{visit user_path('Tom')}.to raise_error ActiveRecord::RecordNotFound
   end
 end

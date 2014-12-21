@@ -4,10 +4,15 @@ Rails.application.routes.draw do
     delete '/users/sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  patch '/nnect/:id' => 'users#update'
-  resources :users , path: "nnect" , only: [:index, :show, :destroy], param: :nickname
-  resources :interests, path: "tags" , only: [:new, :create, :index, :update, :destroy]
-  get '/tag_settings' => 'interests#edit'
-  get '/settings' => 'users#edit'
+  scope 'nnect' do
+    get '/edit', to: 'users#edit', as: :edit_user
+    patch '/' => 'users#update'
+    delete '/' => 'users#destroy'
+    # editより必ずあとに持ってくる（editがnicknameとして扱われるため）
+    resources :users, path: '', only: [:index, :show], param: :nickname
+  end
+
+  resources :interests, path: "tags" , only: [:new, :create, :index, :edit, :update, :destroy]
+
   root 'top#index'
 end
