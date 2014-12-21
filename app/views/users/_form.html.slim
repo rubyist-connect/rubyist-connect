@@ -1,6 +1,6 @@
 .container
   .col-md-10
-    = form_for @user do |f|
+    = form_for @user, url: users_path do |f|
       - if @user.errors.any?
         #error_explanation
           h2
@@ -37,4 +37,4 @@
     h2 タグの作成
     = link_to 'タグ作成', new_interest_path, class: 'btn btn-primary btn-lg'
     h2 退会する
-    = link_to '退会', @user, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: 'btn btn-danger btn-lg'
+    = link_to '退会', users_path, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: 'btn btn-danger btn-lg'
