@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :interests
 
   validates :github_id, presence: true, uniqueness: true
-  validates :nickname, presence: true, uniqueness: true
+  # ユーザ設定画面のpathと重複するのでeditさんのアカウント登録はNGとする
+  validates :nickname, presence: true, uniqueness: true, format: { without: /\Aedit\z/i }
 
   def self.find_or_create_from_auth_hash(auth_hash)
     find_by_github_id(auth_hash['uid']) || create_with_omniauth(auth_hash)

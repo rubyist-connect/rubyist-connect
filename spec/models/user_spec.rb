@@ -34,4 +34,17 @@ describe User do
       expect(user).to be_persisted
     end
   end
+
+  describe 'validation' do
+    it 'editは無効なnicknameとすること' do
+      user = User.new(github_id: '123', nickname: 'Alice')
+      expect(user).to be_valid
+
+      user.nickname = 'edit'
+      expect(user).to be_invalid
+
+      user.nickname = 'Edit'
+      expect(user).to be_invalid
+    end
+  end
 end
