@@ -1,9 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+    user = User.find_or_create_from_auth_hash(auth_hash)
+    sign_in_and_redirect user, event: :authentication #this will throw if @user is not activated
 
-    # TODO 認証に失敗したときの処理も必要。以下は公式ページのサンプルコード。
+    # TODO 認証を拒否した場合のフローも必要な気がするが、GitHubは拒否するボタンがないのでテストできない？
+    # 以下は公式ページのサンプルコード
     # # You need to implement the method below in your model (e.g. app/models/user.rb)
     # @user = User.from_omniauth(request.env["omniauth.auth"])
     #
