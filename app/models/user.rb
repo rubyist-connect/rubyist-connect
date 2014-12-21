@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :omniauthable, omniauth_providers: [:github]
+  devise :trackable, :omniauthable, omniauth_providers: [:github]
 
   has_many :interests
 
