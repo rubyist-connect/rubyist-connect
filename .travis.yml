@@ -13,3 +13,11 @@ before_script:
 script: bundle exec rspec
 #debug
 #script: "RAILS_ENV=test bundle exec rake test:ci --trace"
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/047149ce1ecf8d572a02
+    on_success: change
+    on_failure: always
+    on_start: false     # default: false
+
