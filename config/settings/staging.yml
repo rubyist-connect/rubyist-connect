@@ -1,3 +1,6 @@
 github:
   client_id: '<%= ENV["GITHUB_CLIENT_ID"] %>'
   secret: '<%= ENV["GITHUB_SECRET"] %>'
+
+analytics:
+  tracking_id: 'UA-58130400-2'
