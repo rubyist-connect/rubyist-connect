@@ -1,11 +1,43 @@
 # rubyist-connect
 
 [![Build Status](https://travis-ci.org/yuji-shimoda/rubyist-connect.svg?branch=master)](https://travis-ci.org/yuji-shimoda/rubyist-connect)
-
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/yuji-shimoda/rubyist-connect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+rubyist-connect は、Rubyist と Rubyist を繋げるための Rails アプリケーションです。
 
+See also [Kobe Rubyist Connect](http://kobe.rubyist.co/).
 
+## Contributing
 * [開発環境作成手順](https://github.com/yuji-shimoda/rubyist-connect/wiki/How-to-create-local-environment)
 * [開発手順](https://github.com/yuji-shimoda/rubyist-connect/wiki/How-to-develop)
 * [デプロイ手順](https://github.com/yuji-shimoda/rubyist-connect/wiki/How-to-deploy)
+
+## Install dependencies
+* Ruby 2.2.0
+* Ruby on Rails 4.1.8
+* PostgreSQL 9.3 or later
+
+## License
+MIT license (&copy; 2015 rubyist-connect developers)
+
+## rubyist-connect 概要
+
+### このアプリが目指すこと
+- Rubyist と Rubyist を繋ぎ、神戸界隈の Ruby コミュニティを（もっともっと）活性化したい
+
+### このアプリでやること
+- Rubyist のリスト化
+- 勉強会にあると便利な機能の提供
+
+### このアプリでやらないこと
+- 他のSNSサービスなどで代替出来る機能の提供
+
+### ターゲット
+- Rubyist（これから Ruby を勉強する方も歓迎）
+- 地域は問わず（神戸に限定せず）
+
+### 主な機能（予定を含む）
+- Rubyist のプロフィール情報（自己紹介文や興味、SNS アカウント）等の情報を集約
+- 興味の対象が似た Rubyist の検索
+- 新着 Rubyist の通知
+- 勉強会情報の共有や管理、サポート（例えば、勉強会毎のリストを作成し、勉強会に参加する Rubyist を管理する）
