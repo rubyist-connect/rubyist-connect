@@ -1,0 +1,198 @@
+body.toppage
+  @mixin main_font
+    font-family: 'Noto Sans', sans-serif
+    font-weight: 700
+  
+  margin: 0
+  padding: 0
+  color: #333
+  font-family: "Noto Sans","Helvetica Neue",Helvetica,Arial,"游ゴシック体","Yu Gothic",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif
+  background: image-url("debut_light.png") #f8f8f8
+
+  // layouts
+  .wrapper
+    margin: 0
+    padding: 0
+    text-align: center
+
+  header, article
+    width: 100% 
+    text-align: center
+    border-bottom: 1px solid rgba(0,0,0,0.1)
+    box-shadow: 0 1px 0 rgba(255,255,255,0.3)
+
+  article
+    margin: 50px auto
+    padding-bottom: 70px
+
+  // common parts
+  h2
+    font-size: 55px
+    margin: 20px 0
+    font-weight: normal
+    font-kerning: normal
+    @include main_font
+
+  article h2
+    margin-bottom: 50px
+    font-size: 40px
+    color: #9b1c16
+    text-shadow: -1px 2px 0 #fff
+
+  .text-emboss
+    text-shadow: -1px 1px 0 rgba(255,255,255,1)
+
+  .shadow-border
+    border-bottom: 1px solid rgba(0,0,0,0.1)
+    box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+
+  .btn
+    display: inline-block
+    margin: 20px 0
+    padding: 5px 20px
+    color: #9b1c16
+    font-size: 18px
+    text-decoration: none
+    border: 1px solid #9b1c16
+    border-radius: 8px
+    background-color: rgba(255,255,255,0.7)
+
+  .btn:hover
+    text-shadow: -1 1px 0 rgba(255,255,255,1)
+    background-color: rgba(155,28,22,0.2)
+
+
+  // header
+  header
+    min-height: 400px
+    position: relative
+    overflow: hidden
+    color: #fff
+    background-color: #9b1c16
+
+    .overlay
+      position: absolute
+      width: 100%
+      height: 100%
+      padding-top: 50px
+
+    .photo-bg
+      background: image-url("flat_surface_bg.png") center center
+      background-size: cover
+      opacity: 0.3
+
+    .noise
+      background: image-url("noise.png")
+      opacity: 0.075
+
+    h2
+      margin: 20px 0
+      text-shadow: 2px -1px 0 rgba(0,0,0,0.3)
+
+    .catch
+      font-size: 17px
+
+    .header-lead
+      width: 95%
+      max-width: 440px
+      margin: auto
+      text-align: left
+      font-size: 16px
+      line-height: 1.7
+
+    .login-btn
+      margin: 30px 0 50px 0
+      padding: 10px 30px
+      color: #fff
+      font-size: 23px
+      border: 2px solid #fff
+      background: none
+
+    .login-btn:hover
+      background-color: rgba(0,0,0,0.1)
+
+
+  // about
+  .about
+    ul
+      display: block
+      width: 796px
+      margin: auto
+      padding: 3px
+      overflow: hidden
+
+    li
+      float: left
+      list-style: none
+      width: 240px
+      margin-left: 30px
+      padding: 20px
+      background-color: rgba(255,255,255,0.7)
+      border: 1px solid #fff
+      border-radius: 8px
+      box-shadow: 0 0 3px rgba(0,0,0,0.15)
+
+    li:first-child
+      margin-left: 0 
+
+    li h3
+      margin: 10px 0
+      font-size: 30px
+      color: #555
+
+    li p
+      font-size: 16px
+
+    i
+      display: inline-block
+      font-size: 50px
+      margin: 20px 0 25px 0
+      color: rgba(155,28,22,0.8)
+      text-shadow: -1px 2px 0 rgba(255,255,255,1)
+
+
+  // new members
+  .new-members
+    ul
+      width: 790px
+      margin: auto
+      overflow: hidden
+
+    li
+      float: left
+      list-style: none
+      margin-left: 17px
+      margin-bottom: 20px
+
+    li img
+      width: 80px
+      border-radius: 80px
+
+
+
+  footer
+    p
+      text-align: center
+      padding-bottom: 20px
+
+  @media screen and (max-width: 600px)
+    header
+      min-height: 450px
+    
+    article
+      
+
+    .about
+      ul
+        width: 100%
+      li
+        width: 90%
+        float: none
+        margin: 0 
+        margin: 10px auto
+      li:first-child
+        margin: 10px auto
+    .new-members
+      ul
+        width: 100%
+
