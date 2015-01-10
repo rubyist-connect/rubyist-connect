@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.search(params[:search]).page params[:page]
+    flash.now[:alert] = "該当するユーザーが見つかりません" if @users.empty?
   end
 
   def show
