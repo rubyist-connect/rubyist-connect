@@ -18,6 +18,10 @@ html
             span.icon-bar
           = link_to 'Kobe Rubyist Connect', users_path, class: 'navbar-brand text-muted logo'
         .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              = link_to events_path do
+                = fa_icon 'calendar', text: 'Event'
           ul.nav.navbar-nav.navbar-right
             li
               = link_to users_path do
