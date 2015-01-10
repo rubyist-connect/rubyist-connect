@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i(edit update destroy)
 
   def index
-    @users = User.search(params[:search])
+    @users = User.search(params[:search]).page params[:page]
   end
 
   def show
@@ -37,6 +37,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:introduction, :twitter_name, :facebook_name, :location, :name, :blog)
+    params.require(:user).permit(:introduction, :twitter_name, :facebook_name, :qiita_name, :location, :name, :blog, :birthday)
   end
 end

@@ -3,6 +3,8 @@
   br
   = @user.name_or_nickname
   br
+  = @user.age
+  br
   - if @user.location.present?
     i.fa.fa-map-marker = @user.location
     br

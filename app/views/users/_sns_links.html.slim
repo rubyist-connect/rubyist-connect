@@ -4,3 +4,5 @@
   = fa_icon("twitter 5x")
 = link_to_if_with_block user.facebook_name.present?, "https://www.facebook.com/#{user.facebook_name}", target: '_blank' do
   = fa_icon("facebook 5x")
+= link_to_if_with_block user.qiita_name.present?, "https://qiita.com/#{user.qiita_name}", target: '_blank' do
+  = fa_icon("search 5x")

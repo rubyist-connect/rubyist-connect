@@ -24,6 +24,11 @@
           span.input-group-addon https://www.facebook.com/
           = f.text_field :facebook_name, class: 'form-control'
       .form-group.form-group-lg
+        = f.label :qiita_name
+        .input-group
+          span.input-group-addon https://qiita.com/
+          = f.text_field :qiita_name, class: 'form-control'
+      .form-group.form-group-lg
         = f.label :name
         = f.text_field :name, class: 'form-control'
       .form-group.form-group-lg
@@ -32,6 +37,9 @@
       .form-group.form-group-lg
         = f.label :blog
         = f.text_field :blog, class: 'form-control'
+      .form-group.form-group-lg
+        = f.label :birthday
+        = f.date_field :birthday, class: 'form-control', placeholder: '2015/01/01'
       .actions
         = f.submit(class: 'btn btn-success btn-lg', value: '更新' )
   .col-md-2
