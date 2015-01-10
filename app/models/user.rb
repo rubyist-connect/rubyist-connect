@@ -40,4 +40,11 @@ class User < ActiveRecord::Base
   def name_or_nickname
     name.presence || nickname
   end
+
+  def age
+    return if birthday.nil?
+    d1 = birthday.strftime("%Y%m%d").to_i
+    d2 = Date.today.strftime("%Y%m%d").to_i
+    (d2 - d1) / 10000
+  end
 end
