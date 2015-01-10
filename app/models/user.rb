@@ -30,15 +30,6 @@ class User < ActiveRecord::Base
     return user
   end
 
-  # TODO Ransackを使うと便利です
-  def self.search(query)
-    if query
-      User.where(['name like ?', "%#{query}%"])
-    else
-      User.all
-    end
-  end
-
   def name_or_nickname
     name.presence || nickname
   end
