@@ -1,8 +1,23 @@
 = link_to_if_with_block user.github_url.present?, user.github_url, target: '_blank' do
-  = fa_icon("github 5x")
+  - if user.github_url.present?
+    = fa_icon("github 3x fw", style:"color:#BF1E56")
+  - else
+    = fa_icon("github 3x fw")
+
 = link_to_if_with_block user.twitter_name.present?, "https://twitter.com/#{user.twitter_name}", target: '_blank' do
-  = fa_icon("twitter 5x")
+  - if user.twitter_name.present?
+    = fa_icon("twitter 3x fw", style:"color:#55ACEE")
+  - else
+    = fa_icon("twitter 3x fw")
+
 = link_to_if_with_block user.facebook_name.present?, "https://www.facebook.com/#{user.facebook_name}", target: '_blank' do
-  = fa_icon("facebook 5x")
+  - if user.facebook_name.present?
+    = fa_icon("facebook-square 3x fw", style:"color:#3B5998")
+  - else
+    = fa_icon("facebook-square 3x fw")
+    
 = link_to_if_with_block user.qiita_name.present?, "https://qiita.com/#{user.qiita_name}", target: '_blank' do
-  = fa_icon("search 5x")
+  - if user.qiita_name.present?
+    = fa_icon("search 3x fw", style:"color:#59BB0C")
+  - else
+    = fa_icon("search 3x fw")
