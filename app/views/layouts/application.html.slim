@@ -8,7 +8,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    .navbar.navbar-inverse.navbar-fixed-top[role='navigation']
+    .navbar.navbar-fixed-top[role='navigation']
       .container
         .navbar-header
           button.navbar-toggle[type='button' data-toggle='collapse' data-target='.navbar-collapse']
@@ -25,16 +25,16 @@ html
           ul.nav.navbar-nav.navbar-right
             li
               = link_to users_path do
-                = fa_icon 'home'
+                = fa_icon 'home 2x'
             li
               = link_to edit_user_path, class: 'settings-link' do
-                = fa_icon 'gears'
-            li
+                = fa_icon 'gears 2x'
+            li#signout
               = link_to 'Sign out', destroy_user_session_path, method: :delete
           = search_form_for @q, url: users_path , class: 'navbar-form navbar-right' do |f|
             .form-group
               = f.search_field :name_or_twitter_name_or_facebook_name_or_qiita_name_or_nickname_cont, placeholder: 'User Search', class: 'form-control'
-              = button_tag class: 'btn btn-primary' do
+              = button_tag class: 'btn btn-primary btn-navbar' do
                 = fa_icon 'search'
     .container.container-main
       = simple_format(flash[:notice], class: "alert alert-success") if flash[:notice].present?

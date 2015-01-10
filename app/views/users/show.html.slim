@@ -12,7 +12,8 @@
     h6
       i.fa.fa-bookmark-o = link_to @user.blog, @user.blog, target: '_blank'
     br
-  = render 'sns_links', user: @user
+  .sns-icon
+    = render 'sns_links', user: @user
   h2 = link_to 'タグ一覧' , interests_path
   table.interests
     - @user.interests.each do |interest|
