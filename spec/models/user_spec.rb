@@ -86,21 +86,12 @@ describe User do
       end
     end
 
-    context '不正な日付の場合' do
-      it 'nilが返ること' do
-        user = User.new(be_rubyist_at: '2013/11/35')
-        year, month = user.rubyist_year_month
-        expect(year).to eq nil
-        expect(month).to eq nil
-      end
-    end
-
     context 'Ruby歴がnilの場合' do
       it 'nilが返ること' do
         user = User.new(be_rubyist_at: nil)
         year, month = user.rubyist_year_month
-        expect(year).to eq nil
-        expect(month).to eq nil
+        expect(year).to be_blank
+        expect(month).to be_blank
       end
     end
   end

@@ -26,4 +26,4 @@ ja:
         be_rubyist_at: Rubyistになった日
   users:
     show:
-      year_month: "%{year}年 %{month}ヶ月"
+      year_month: "Ruby歴 %{year}年 %{month}ヶ月"

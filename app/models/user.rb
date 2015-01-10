@@ -57,6 +57,6 @@ class User < ActiveRecord::Base
     today_months = today.year * 12 + today.month
     rubyist_months = be_rubyist_at.year * 12 + be_rubyist_at.month
     months = today_months - rubyist_months
-    return months / 12, months % 12
+    return months.divmod(12)
   end
 end
