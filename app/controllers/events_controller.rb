@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i(show edit update)
+  before_action :set_event, only: %i(show edit update destroy)
   before_action :set_users, only: %i(new edit create update)
 
   def index
@@ -33,6 +33,13 @@ class EventsController < ApplicationController
       else
         format.html { render :edit }
       end
+    end
+  end
+
+  def destroy
+    @event.destroy
+    respond_to do |format|
+      format.html { redirect_to events_path, notice: 'Event was successfully destroyed.' }
     end
   end
 

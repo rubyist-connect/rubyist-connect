@@ -11,3 +11,4 @@ table.table.table-hover
         - # TODO: i18n化
         td #{event.users.count} 人
         td= link_to 'Edit', edit_event_path(event)
+        td= link_to fa_icon('trash-o', text: '削除'), event_path(event), method: :delete, data: { confirm: '本当に削除しますか？' }
