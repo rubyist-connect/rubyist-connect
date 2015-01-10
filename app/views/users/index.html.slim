@@ -9,5 +9,5 @@
       .col-md-10
         = render 'sns_links', user: user
         br
-        pre
+        .well
           = markdown_to_html(user.introduction.to_s.lines.first)
