@@ -17,7 +17,7 @@
         = f.label :users
         br
         - # TODO: 見苦しい
-        = f.collection_check_boxes :user_ids, @users, :id, :name
+        = f.collection_check_boxes :user_ids, @users, :id, :name_or_nickname
 
       .actions
         = f.submit(class: 'btn btn-success btn-lg')
