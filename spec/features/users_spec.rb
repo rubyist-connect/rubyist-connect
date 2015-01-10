@@ -11,6 +11,7 @@ feature 'Users spec' do
     fill_in '自己紹介文', with: 'よろしくお願いします。'
     fill_in 'Twitter ユーザ名', with: 'alice-twitter'
     fill_in 'Facebook ユーザ名', with: 'alice-facebook'
+    fill_in 'Qiita ユーザ名', with: 'alice-qiita'
     fill_in '名前', with: 'ありす'
     click_on '更新'
 
@@ -32,6 +33,12 @@ feature 'Users spec' do
 
     within '.navbar form' do
       fill_in 'User Search', with: 'twitter'
+      find('.btn').click
+    end
+    expect(page).to have_content 'ありす'
+
+    within '.navbar form' do
+      fill_in 'User Search', with: 'qiita'
       find('.btn').click
     end
     expect(page).to have_content 'ありす'

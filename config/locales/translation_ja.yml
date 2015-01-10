@@ -22,4 +22,5 @@ ja:
         name: 名前
         nickname: nickname  #g
         twitter_name: Twitter ユーザ名
+        qiita_name: Qiita ユーザ名
         birthday: 生年月日
