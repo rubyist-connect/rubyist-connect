@@ -9,5 +9,5 @@ html
     = csrf_meta_tags
   body
     = yield
-    = simple_format(flash[:notice], style: "color: green;") if flash[:notice].present?
-    = simple_format(flash[:alert], style: "color: red;") if flash[:alert].present?
+    = simple_format(flash[:notice], class: "alert alert-success") if flash[:notice].present?
+    = simple_format(flash[:alert], class: "alert alert-warning") if flash[:alert].present?
