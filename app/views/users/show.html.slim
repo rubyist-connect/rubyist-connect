@@ -19,5 +19,5 @@
       tr
         td = link_to_if interest.content_url.present?, interest.content, interest.content_url, target: '_blank'
 .col-sm-6.col-md-8
-  pre
-    = @user.introduction
+  .well
+    = markdown_to_html(@user.introduction)
