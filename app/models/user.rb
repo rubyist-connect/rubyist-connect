@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # ユーザ設定画面のpathと重複するのでeditさんのアカウント登録はNGとする
   validates :nickname, presence: true, uniqueness: true, format: { without: /\Aedit\z/i }
 
+  validates_date :birthday, allow_blank: true
+
   def self.find_or_create_from_auth_hash(auth_hash)
     find_by_github_id(auth_hash['uid']) || create_with_omniauth(auth_hash)
   end
@@ -39,5 +41,12 @@ class User < ActiveRecord::Base
 
   def name_or_nickname
     name.presence || nickname
+  end
+
+  def age
+    return if birthday.blank?
+    d1 = birthday.strftime("%Y%m%d").to_i
+    d2 = Date.current.strftime("%Y%m%d").to_i
+    (d2 - d1) / 10000
   end
 end

@@ -47,4 +47,19 @@ describe User do
       expect(user).to be_invalid
     end
   end
+
+  describe '#age' do
+    before do
+      Timecop.travel(2013, 1, 10)
+    end
+    it '年齢が自動計算されること' do
+      user = User.new(birthday: '1981/1/16')
+      expect(user.age).to eq 31
+    end
+
+    it '生年月日が入力されていなければnilが返って来ること' do
+      user = User.new(birthday: nil)
+      expect(user.age).to eq nil
+    end
+  end
 end

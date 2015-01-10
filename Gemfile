@@ -25,6 +25,7 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'jc-validates_timeliness'
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -48,4 +49,5 @@ end
 group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'launchy'
+  gem 'timecop'
 end
