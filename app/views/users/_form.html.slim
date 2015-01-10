@@ -24,6 +24,11 @@
           span.input-group-addon https://www.facebook.com/
           = f.text_field :facebook_name, class: 'form-control'
       .form-group.form-group-lg
+        = f.label :qiita_name
+        .input-group
+          span.input-group-addon https://qiita.com/
+          = f.text_field :qiita_name, class: 'form-control'
+      .form-group.form-group-lg
         = f.label :name
         = f.text_field :name, class: 'form-control'
       .form-group.form-group-lg

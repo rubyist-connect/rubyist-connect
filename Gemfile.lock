@@ -101,6 +101,12 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     kgio (2.9.2)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -266,6 +272,8 @@ DEPENDENCIES
   i18n_generators
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
+  kaminari-bootstrap
   launchy
   newrelic_rpm
   omniauth

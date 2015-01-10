@@ -11,3 +11,4 @@
         br
         pre
           = markdown_to_html(user.introduction.to_s.lines.first)
+= paginate @users

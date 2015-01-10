@@ -24,6 +24,8 @@ gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 gem 'redcarpet', '~> 3.2.2'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 group :production, :staging do
   gem 'rails_12factor'
