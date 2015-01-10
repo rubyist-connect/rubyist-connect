@@ -5,6 +5,9 @@
   br
   = @user.age
   br
+  - year, month = @user.rubyist_year_month
+  = t(".year_month", year: year, month: month) if month.present?
+  br
   - if @user.location.present?
     i.fa.fa-map-marker = @user.location
     br

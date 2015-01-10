@@ -62,4 +62,46 @@ describe User do
       expect(user.age).to eq nil
     end
   end
+
+  describe '#be_rubyist_at' do
+    before do
+      Timecop.travel(2015, 1, 10)
+    end
+
+    context 'Ruby歴が1年未満の場合' do
+      it '0年nヶ月が返ること' do
+        user = User.new(be_rubyist_at: '2014/12/31')
+        year, month = user.rubyist_year_month
+        expect(year).to eq 0
+        expect(month).to eq 1
+      end
+    end
+
+    context 'Ruby歴が1年以上の場合' do
+      it 'y年mヶ月が返ること' do
+        user = User.new(be_rubyist_at: '2013/11/30')
+        year, month = user.rubyist_year_month
+        expect(year).to eq 1
+        expect(month).to eq 2
+      end
+    end
+
+    context '不正な日付の場合' do
+      it 'nilが返ること' do
+        user = User.new(be_rubyist_at: '2013/11/35')
+        year, month = user.rubyist_year_month
+        expect(year).to eq nil
+        expect(month).to eq nil
+      end
+    end
+
+    context 'Ruby歴がnilの場合' do
+      it 'nilが返ること' do
+        user = User.new(be_rubyist_at: nil)
+        year, month = user.rubyist_year_month
+        expect(year).to eq nil
+        expect(month).to eq nil
+      end
+    end
+  end
 end

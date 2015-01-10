@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :nickname, presence: true, uniqueness: true, format: { without: /\Aedit\z/i }
 
   validates_date :birthday, allow_blank: true
+  validates_date :be_rubyist_at, allow_blank: true
 
   def self.find_or_create_from_auth_hash(auth_hash)
     find_by_github_id(auth_hash['uid']) || create_with_omniauth(auth_hash)
@@ -48,5 +49,14 @@ class User < ActiveRecord::Base
     d1 = birthday.strftime("%Y%m%d").to_i
     d2 = Date.current.strftime("%Y%m%d").to_i
     (d2 - d1) / 10000
+  end
+
+  def rubyist_year_month
+    return if be_rubyist_at.blank?
+    today = Date.current
+    today_months = today.year * 12 + today.month
+    rubyist_months = be_rubyist_at.year * 12 + be_rubyist_at.month
+    months = today_months - rubyist_months
+    return months / 12, months % 12
   end
 end
