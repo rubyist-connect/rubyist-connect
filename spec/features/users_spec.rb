@@ -50,7 +50,7 @@ feature 'Users spec' do
     expect(page).to_not have_content 'ありす'
 
     click_on 'Sign out'
-    expect(page).to have_content '神戸の Rubyist を繋げたいという想いから生まれました。'
+    expect(page).to have_content 'Rubyist は、すぐそこに'
   end
 
   scenario '退会ができること' do
@@ -62,7 +62,7 @@ feature 'Users spec' do
 
     expect{click_link '退会'}.to change{User.count}.by(-1)
 
-    expect(page).to have_content '神戸の Rubyist を繋げたいという想いから生まれました。'
+    expect(page).to have_content 'Rubyist は、すぐそこに'
   end
 
   scenario '存在しないユーザーを表示しようとした場合はNot foundとすること' do

@@ -1,19 +1,60 @@
-.site-wrapper
-  .site-wrapper-inner
-    .cover-container
-      .masthead.clearfix
-        .inner
-          h3.masthead-brand rubyist.co
-          ul.nav.masthead-nav
+header
+  .photo-bg.overlay
+  .noise.overlay
+  .header-innner.overlay
+    p.catch
+      | Rubyist は、すぐそこに
+    h2.avenir.bold
+      | Rubyist Connect
+    p.header-lead
+      | Rubyist Connect は、あなたの身近な Rubyist や趣味の近い Rubyist を探すことができます。
+      br
+      | 魅力的な Rubyist とつながって一緒に勉強してみませんか。
+    = link_to user_omniauth_authorize_path(:github), class: 'login-btn btn' do
+      i.fa.fa-github-square
+      |  Sign in with GitHub
 
-      .inner.cover
-        h1.cover-heading Kobe Rubyist Connect
-        p.lead 神戸の Rubyist を繋げたいという想いから生まれました。
-        p.lead
-          = link_to 'GitHub Login', user_omniauth_authorize_path(:github), class: 'btn btn-success btn-lg'
-      .mastfoot
-        .inner
-          p
-            | Author by
-            =< link_to '@yuji_shimoda', 'https://twitter.com/yuji_shimoda', target: '_blank'
-            | .
+article.about
+  h2.bold about
+  ul
+    li
+      i.fa.fa-search
+      h3 Search
+      p 近くの Rubyist と
+    li
+      i.fa.fa-share-alt
+      h3 Share
+      p 趣味の近い Rubyist を
+    li
+      i.fa.fa-pencil
+      h3 Study
+      p 勉強会をサポート
+
+article.new-members
+  h2.bold new members
+  ul
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+    li
+      = image_tag "//placehold.it/80x80", alt: 'user name'
+  a.btn
+    | more...
+
+footer
+  p
+    | Author by
+    =  link_to '@yuji_shimoda', 'https://twitter.com/yuji_shimoda', target: '_blank'
