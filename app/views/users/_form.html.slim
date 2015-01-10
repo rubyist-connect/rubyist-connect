@@ -9,6 +9,7 @@
           ul
             - @user.errors.full_messages.each do |message|
               li = message
+      p ※Markdown形式で入力してください
       .form-group.form-group-lg
         = f.label :introduction
         = f.text_area :introduction, rows: 10, class: 'form-control'

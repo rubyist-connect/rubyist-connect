@@ -185,6 +185,7 @@ GEM
     rake (10.4.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    redcarpet (3.2.2)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-core (3.1.7)
@@ -287,6 +288,7 @@ DEPENDENCIES
   rails (= 4.1.8)
   rails_12factor
   rails_config
+  redcarpet (~> 3.2.2)
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
