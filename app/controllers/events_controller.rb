@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i(show)
+  before_action :set_event, only: %i(show edit update)
+  before_action :set_users, only: %i(new edit create update)
 
   def index
     @events = Event.includes(participations: [:user])
@@ -8,10 +9,12 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @users = User.all
   end
 
   def show
+  end
+
+  def edit
   end
 
   def create
@@ -23,6 +26,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @event.update(event_params)
+        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   private
 
   def event_params
@@ -31,5 +44,9 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_users
+    @users = User.all
   end
 end

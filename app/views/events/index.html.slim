@@ -10,4 +10,4 @@ table.table.table-hover
         td= link_to event.name, event
         - # TODO: i18n化
         td #{event.users.count} 人
-        td= link_to 'Edit', '#'
+        td= link_to 'Edit', edit_event_path(event)
