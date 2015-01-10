@@ -27,11 +27,11 @@ html
                 = fa_icon 'gears'
             li
               = link_to 'Sign out', destroy_user_session_path, method: :delete
-          = form_tag users_path, method: :get, role: 'search', class: 'navbar-form navbar-right' do
+          = search_form_for @q, url: users_path , class: 'navbar-form navbar-right' do |f|
             .form-group
-              = text_field_tag :search, '', placeholder: 'User Search', id: 'search-form', class: 'form-control'
-            = button_tag class: 'btn btn-primary' do
-              = fa_icon 'search'
+              = f.search_field :name_or_twitter_name_or_facebook_name_or_qiita_name_or_nickname_cont, placeholder: 'User Search', class: 'form-control'
+              = button_tag class: 'btn btn-primary' do
+                = fa_icon 'search'
     .container.container-main
       = yield
     = yield :foot
