@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   end
 
   scope 'nnect' do
+    resources :events, only: %i(index)
+
     get '/edit', to: 'users#edit', as: :edit_user
     patch '/' => 'users#update'
     delete '/' => 'users#destroy'

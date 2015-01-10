@@ -1,0 +1,11 @@
+h1 Events
+
+table.table.table-hover
+  tbody
+    tr
+    - @events.each do |event|
+      tr
+        td= event.name
+        - # TODO: i18n化
+        td #{event.users.count} 人
+        td= link_to 'Edit', '#'
