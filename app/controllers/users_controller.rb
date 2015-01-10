@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = @q.result.page params[:page]
-
   end
 
   def show
