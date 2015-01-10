@@ -16,8 +16,8 @@
       .form-group.form-group-lg
         = f.label :users
         br
-        - # TODO: 見苦しい
-        = f.collection_check_boxes :user_ids, @users, :id, :name_or_nickname
+        = f.collection_check_boxes :user_ids, @users, :id, :name_or_nickname do |b|
+          = b.label(class: 'checkbox-inline') { b.check_box + b.text }
 
       .actions
         = f.submit(class: 'btn btn-success btn-lg')
