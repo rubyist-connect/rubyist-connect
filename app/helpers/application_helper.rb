@@ -20,6 +20,6 @@ module ApplicationHelper
                                         lax_html_blocks: true,
                                         strikethrough: true
 
-    markdown.render(text).html_safe unless text.nil?
+    markdown.render(text).html_safe unless text.blank?
   end
 end
