@@ -27,20 +27,16 @@ class EventsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @event.update(event_params)
+      redirect_to @event, notice: 'Event was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_path, notice: 'Event was successfully destroyed.' }
-    end
+    redirect_to events_path, notice: 'Event was successfully destroyed.'
   end
 
   private
