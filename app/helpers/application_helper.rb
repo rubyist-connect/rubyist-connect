@@ -8,7 +8,7 @@ module ApplicationHelper
     end
   end
 
-  def markdown(text)
+  def markdown_to_html(text)
     markdown = Redcarpet::Markdown.new Redcarpet::Render::HTML,
                                         autolink: true,
                                         space_after_headers: true,
