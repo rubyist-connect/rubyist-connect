@@ -10,4 +10,4 @@
         = render 'sns_links', user: user
         br
         pre
-          = user.introduction.to_s.lines.first
+          = markdown(user.introduction.to_s.lines.first)
