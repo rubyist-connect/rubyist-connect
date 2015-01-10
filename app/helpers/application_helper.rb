@@ -7,4 +7,9 @@ module ApplicationHelper
       capture(&block)
     end
   end
+
+  def display_age(user)
+    return if user.try(:age).blank?
+    "#{user.age}歳"
+  end
 end
