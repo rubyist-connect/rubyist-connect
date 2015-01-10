@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   devise :trackable, :omniauthable, omniauth_providers: [:github]
 
   has_many :interests
+  has_many :event_participations, dependent: :destroy
+  has_many :events, through: :event_participations
 
   validates :github_id, presence: true, uniqueness: true
   # ユーザ設定画面のpathと重複するのでeditさんのアカウント登録はNGとする
@@ -28,15 +30,6 @@ class User < ActiveRecord::Base
     user.save!
 
     return user
-  end
-
-  # TODO Ransackを使うと便利です
-  def self.search(query)
-    if query
-      User.where(['name like ?', "%#{query}%"])
-    else
-      User.all
-    end
   end
 
   def name_or_nickname
