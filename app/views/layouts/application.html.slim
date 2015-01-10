@@ -33,5 +33,7 @@ html
             = button_tag class: 'btn btn-primary' do
               = fa_icon 'search'
     .container.container-main
+      = simple_format(flash[:notice], style: "color: green;") if flash[:notice].present?
+      = simple_format(flash[:alert], style: "color: red;") if flash[:alert].present?
       = yield
     = yield :foot
