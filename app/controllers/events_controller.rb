@@ -3,8 +3,7 @@ class EventsController < ApplicationController
   before_action :set_users, only: %i(new edit create update)
 
   def index
-    @events = Event.includes(participations: [:user])
-      .all.order(created_at: :desc)
+    @events = Event.includes(:participations).all.order(created_at: :desc)
   end
 
   def new
