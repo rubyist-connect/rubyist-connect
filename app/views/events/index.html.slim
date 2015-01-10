@@ -7,7 +7,7 @@ table.table.table-hover
     tr
     - @events.each do |event|
       tr
-        td= event.name
+        td= link_to event.name, event
         - # TODO: i18n化
         td #{event.users.count} 人
         td= link_to 'Edit', '#'

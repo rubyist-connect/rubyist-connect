@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: %i(show)
+
   def index
     @events = Event.includes(participations: [:user])
       .all.order(created_at: :asc)
@@ -25,5 +27,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, user_ids: [])
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 end
