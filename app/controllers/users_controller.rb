@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i(edit update destroy)
 
   def index
-    @users = User.search(params[:search]).page params[:page]
+    @users = User.search(params[:search]).order(:id).reverse_order.page params[:page]
   end
 
   def show
