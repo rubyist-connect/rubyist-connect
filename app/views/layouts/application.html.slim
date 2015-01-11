@@ -20,19 +20,19 @@ html
         .collapse.navbar-collapse
           ul.nav.navbar-nav
             li.nav-link
-              = link_to events_path do
+              = link_to events_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Events' do
                 = fa_icon 'calendar', text: 'Event'
           ul.nav.navbar-nav.navbar-right
             li
-              = link_to users_path do
+              = link_to users_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Home' do
                 = fa_icon 'home 2x'
                 span.text-hide Home
             li
-              = link_to edit_user_path, class: 'settings-link' do
+              = link_to edit_user_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Settings', class: 'settings-link' do
                 = fa_icon 'gears 2x'
                 span.text-hide Settings
             li
-              = link_to destroy_user_session_path, method: :delete do
+              = link_to destroy_user_session_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Sign out', method: :delete do
                 = fa_icon 'sign-out 2x'
                 span.text-hide Sign out
           = search_form_for @q, url: users_path , class: 'navbar-form navbar-right' do |f|
