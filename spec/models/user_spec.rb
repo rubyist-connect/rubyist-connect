@@ -62,4 +62,22 @@ describe User do
       expect(user.age).to eq nil
     end
   end
+
+  describe '#active?' do
+    let(:user) { User.new }
+    it 'introductionが入っていればactiveであること' do
+      user.introduction = 'introduction'
+      expect(user.active?).to eq true
+    end
+
+    it 'introductionがnilならばactiveでないこと' do
+      user.introduction = nil
+      expect(user.active?).to eq false
+    end
+
+    it 'introductionが空文字ならばactiveでないこと' do
+      user.introduction = ''
+      expect(user.active?).to eq false
+    end
+  end
 end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i(edit update destroy)
 
   def index
-    @users = @q.result.page params[:page]
+    @users = @q.result.active.page params[:page]
     flash.now[:alert] = "該当するユーザーが見つかりません" if @users.empty?
   end
 
