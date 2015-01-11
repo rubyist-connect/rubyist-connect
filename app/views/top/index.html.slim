@@ -33,24 +33,9 @@ article.about
 article.new-members
   h2.bold new members
   ul
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
-    li
-      = image_tag "//placehold.it/80x80", alt: 'user name'
+    - @users.each do |user|
+      li
+        = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname
   a.btn
     | more...
 
