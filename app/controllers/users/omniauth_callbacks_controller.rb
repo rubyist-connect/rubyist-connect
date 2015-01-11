@@ -2,7 +2,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     user = User.find_or_create_from_auth_hash(auth_hash)
 
-    session[:user_return_to] = edit_user_path unless user.active?
+    unless user.active?
+      session[:user_return_to] = edit_user_path
+      flash[:alert] = '自己紹介を入力してください'
+    end
 
     sign_in_and_redirect user, event: :authentication #this will throw if @user is not activated
 
