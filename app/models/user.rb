@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+
+  scope :active, -> {
+    introduction = arel_table[:introduction]
+    where(introduction.not_eq(nil).and(introduction.not_eq('')))
+  }
+
   devise :trackable, :omniauthable, omniauth_providers: [:github]
 
   has_many :interests
