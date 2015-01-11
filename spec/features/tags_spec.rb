@@ -6,6 +6,15 @@ feature 'Tags spec' do
 
     find('.settings-link').click
 
+    fill_in '自己紹介文', with: 'よろしくお願いします。'
+    fill_in 'Twitter ユーザ名', with: 'alice-twitter'
+    fill_in 'Facebook ユーザ名', with: 'alice-facebook'
+    fill_in 'Qiita ユーザ名', with: 'alice-qiita'
+    fill_in '名前', with: 'ありす'
+    click_on '更新'
+
+    find('.settings-link').click
+
     click_on 'タグ作成'
 
     fill_in 'タグ（任意の文字列）', with: 'Qiita'
