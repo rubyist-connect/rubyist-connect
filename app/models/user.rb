@@ -48,4 +48,8 @@ class User < ActiveRecord::Base
     d2 = Date.current.strftime("%Y%m%d").to_i
     (d2 - d1) / 10000
   end
+
+  def active?
+    introduction.present?
+  end
 end
