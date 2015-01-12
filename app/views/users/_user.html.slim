@@ -6,6 +6,5 @@
     = user.name_or_nickname
   .col-md-10
     = render 'users/sns_links', user: user
-    br
     .well
       = markdown_to_html user.introduction.to_s.lines.first
