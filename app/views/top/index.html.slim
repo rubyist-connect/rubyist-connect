@@ -12,22 +12,22 @@ header
       br
       | 魅力的な Rubyist とつながって一緒に勉強してみませんか。
     = link_to user_omniauth_authorize_path(:github), class: 'login-btn btn' do
-      i.fa.fa-github-square
+      = fa_icon 'github-square'
       |  Sign in with GitHub
 
 article.about
   h2.bold about
   ul
     li
-      i.fa.fa-search
+      = fa_icon 'search'
       h3 Search
       p 近くの Rubyist と
     li
-      i.fa.fa-share-alt
+      = fa_icon 'share-alt'
       h3 Share
       p 趣味の近い Rubyist を
     li
-      i.fa.fa-pencil
+      = fa_icon 'pencil'
       h3 Study
       p 勉強会をサポート
 
