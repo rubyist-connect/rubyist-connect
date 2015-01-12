@@ -1,4 +1,15 @@
 module LoginMacros
+
+  def sign_in_as_new_user
+    sign_in
+  end
+
+  def sign_in_as_registed_user
+    user = User.create(github_id: '123', nickname: 'Alice', introduction: 'introduction')
+    sign_in
+  end
+
+  private
   def oauth_params
     params = {}
     params['provider'] = 'github'
@@ -16,7 +27,7 @@ module LoginMacros
     params
   end
 
-  def sign_in_as_new_user
+  def sign_in
     visit root_path
 
     OmniAuth.config.test_mode = true
