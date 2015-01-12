@@ -73,4 +73,13 @@ feature 'Users spec' do
     expect{visit user_path(user.nickname)}.to_not raise_error
     expect{visit user_path('Tom')}.to raise_error ActiveRecord::RecordNotFound
   end
+
+  scenario 'activeなユーザーが表示されること' do
+    inactive = create :inactive_user
+    active = create :user
+    sign_in_with_github(active)
+
+    expect(page).to have_content active.name_or_nickname
+    expect(page).to_not have_content inactive.name_or_nickname
+  end
 end
