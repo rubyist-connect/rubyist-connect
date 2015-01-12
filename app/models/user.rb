@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
   devise :trackable, :omniauthable, omniauth_providers: [:github]
 
-  has_many :interests
   has_many :event_participations, dependent: :destroy
   has_many :events, through: :event_participations
 
