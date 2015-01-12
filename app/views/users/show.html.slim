@@ -11,9 +11,8 @@
   - if @user.blog.present?
     h6
       i.fa.fa-bookmark-o = link_to @user.blog, @user.blog, target: '_blank'
-    br
-  .sns-icon
-    = render 'sns_links', user: @user
+    br  
+  = render 'sns_links', user: @user
 .col-sm-6.col-md-8
   .well
     = markdown_to_html(@user.introduction)
