@@ -7,7 +7,7 @@ html
     = stylesheet_link_tag 'starter-template'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body
+  body class="page-#{params[:controller]} page-#{params[:action]}"
     .navbar.navbar-fixed-top[role='navigation']
       .container
         .navbar-header
