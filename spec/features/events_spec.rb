@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature 'Event management' do
-  given!(:users) { 10.times.map{ create :user } }
   scenario 'イベントが管理できること' do
+    users = 10.times.map{ create :user }
+
     sign_in_as_active_user
 
     # イベントを作成する
@@ -42,5 +43,22 @@ feature 'Event management' do
     click_on '削除'
     expect(page).to have_content 'Event was successfully destroyed.'
     expect(page).to_not have_content 'KRC Hackathon'
+  end
+
+  scenario 'activeなユーザーだけが選択できること' do
+    active_users = 10.times.map{ create :user }
+    inactive_users = 10.times.map{ create :inactive_user }
+    sign_in_as_active_user
+
+    click_on 'Event'
+    click_on 'new event'
+
+    active_users.each do |user|
+      expect(page).to have_field user.name_or_nickname
+    end
+
+    inactive_users.each do |user|
+      expect(page).to_not have_field user.name_or_nickname
+    end
   end
 end
