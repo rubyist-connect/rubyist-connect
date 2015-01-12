@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Users spec' do
   scenario '自己紹介が登録されているユーザでログインした場合、ユーザの詳細ページへリダイレクトすること' do
-    sign_in_as_registed_user
+    user = create :user, name: 'Alice'
+    sign_in_as_registed_user(user)
     expect(page).to have_content 'Alice'
     expect(page).not_to have_content 'ユーザ情報の更新'
   end
@@ -69,9 +70,9 @@ feature 'Users spec' do
   end
 
   scenario '存在しないユーザーを表示しようとした場合はNot foundとすること' do
-    sign_in_as_new_user
+    user = sign_in_as_new_user
 
-    expect{visit user_path('alice')}.to_not raise_error
+    expect{visit user_path(user.nickname)}.to_not raise_error
     expect{visit user_path('Tom')}.to raise_error ActiveRecord::RecordNotFound
   end
 end
