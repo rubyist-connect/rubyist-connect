@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 feature 'Users spec' do
-  scenario '自己紹介が登録されているユーザでログインした場合、ユーザの詳細ページへリダイレクトすること' do
-    user = create :user, name: 'Alice'
-    sign_in_as_active_user(user)
-    expect(page).to have_content 'Alice'
-    expect(page).not_to have_content 'ユーザ情報の更新'
+  scenario '自己紹介が登録されているユーザでログインした場合、ユーザの一覧ページへリダイレクトすること' do
+    sign_in_as_active_user
+    expect(current_path).to eq users_path
   end
 
   scenario 'ログイン - 登録情報変更 - ユーザ検索 - ログアウトができること' do
