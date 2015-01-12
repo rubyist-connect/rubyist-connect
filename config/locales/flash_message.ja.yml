@@ -1,0 +1,5 @@
+ja:
+  flash_messages:
+    warning_for_nonactive_users: |
+      あなたの自己紹介を入力すると、ユーザー一覧にあなたが表示されます
+      この編集画面は画面右上のギアアイコン（<i class="fa fa-gears"></i>）からいつでも開くことができます

@@ -2,7 +2,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     user = User.find_or_create_from_auth_hash(auth_hash)
 
-    session[:user_return_to] = edit_user_path unless user.active?
+    unless user.active?
+      session[:user_return_to] = edit_user_path
+      flash[:alert] = t('flash_messages.warning_for_nonactive_users')
+    end
 
     sign_in_and_redirect user, event: :authentication #this will throw if @user is not activated
 
