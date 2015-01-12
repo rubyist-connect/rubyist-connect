@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20150112000949) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "qiita_name",         limit: 255
     t.date     "birthday"
+    t.string   "qiita_name",         limit: 255
   end
 
   add_index "users", ["github_id"], name: "index_users_on_github_id", unique: true, using: :btree

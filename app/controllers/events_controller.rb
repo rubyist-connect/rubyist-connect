@@ -49,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def set_users
-    @users = User.all
+    @users = User.active
   end
 end
