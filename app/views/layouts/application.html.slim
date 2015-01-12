@@ -18,15 +18,15 @@ html
             span.icon-bar
           = link_to 'Kobe Rubyist Connect', users_path, class: 'navbar-brand text-muted logo'
         .collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li.nav-link
-              = link_to events_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Events' do
-                = fa_icon 'calendar', text: 'Event'
           ul.nav.navbar-nav.navbar-right
             li
               = link_to users_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Home' do
                 = fa_icon 'home 2x'
                 span.text-hide Home
+            li
+              = link_to events_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Events' do
+                = fa_icon 'calendar 2x'
+                span.text-hide Event
             li
               = link_to edit_user_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Settings', class: 'settings-link' do
                 = fa_icon 'gears 2x'
