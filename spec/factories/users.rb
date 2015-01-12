@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    github_id { Faker::Address.zip_code } # idの代用
-    nickname { Faker::Internet.slug(nil, '_') }
+    sequence(:github_id) {|n| "#{Faker::Address.zip_code}#{n}" }
+    sequence(:nickname) {|n| "#{Faker::Internet.slug(nil, '_')}_#{n}" }
 
     name { Faker::Name.name }
     image { Faker::Avatar.image }
