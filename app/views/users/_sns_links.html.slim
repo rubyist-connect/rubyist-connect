@@ -19,6 +19,6 @@
 
   = link_to_if_with_block user.qiita_name.present?, "https://qiita.com/#{user.qiita_name}", target: '_blank' do
     - if user.qiita_name.present?
-      = fa_icon("search 3x fw", style:"color:#59BB0C")
+      i.rc-ico.rc-ico-qiita.ico-active
     - else
-      = fa_icon("search 3x fw")
+      i.rc-ico.rc-ico-qiita
