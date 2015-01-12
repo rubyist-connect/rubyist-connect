@@ -1,0 +1,10 @@
+- if flash[:notice].present?
+  .alert.alert-success.alert-dismissible[role='alert']
+    button.close[type="button" data-dismiss="alert" aria-label="Close"]
+      span[aria-hidden="true"] &times;
+    = simple_format(flash[:notice])
+- if flash[:alert].present?
+  .alert.alert-warning.alert-dismissible[role='alert']
+    button.close[type="button" data-dismiss="alert" aria-label="Close"]
+      span[aria-hidden="true"] &times;
+    = simple_format(flash[:alert])

@@ -41,7 +41,6 @@ html
               = button_tag class: 'btn btn-primary btn-navbar' do
                 = fa_icon 'search'
     .container.container-main
-      = simple_format(flash[:notice], class: "alert alert-success") if flash[:notice].present?
-      = simple_format(flash[:alert], class: "alert alert-warning") if flash[:alert].present?
+      = render 'layouts/flash_messages'
       = yield
     = yield :foot
