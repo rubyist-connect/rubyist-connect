@@ -2,13 +2,13 @@ module LoginMacros
 
   def sign_in_as_new_user(user = nil)
     user ||= create :inactive_user
-    sign_in_via_github(user)
+    sign_in_with_github(user)
     user
   end
 
-  def sign_in_as_registed_user(user = nil)
+  def sign_in_as_active_user(user = nil)
     user ||= create :user
-    sign_in_via_github(user)
+    sign_in_with_github(user)
     user
   end
 
@@ -29,7 +29,7 @@ module LoginMacros
     params
   end
 
-  def sign_in_via_github(user)
+  def sign_in_with_github(user)
     visit root_path
 
     OmniAuth.config.test_mode = true
