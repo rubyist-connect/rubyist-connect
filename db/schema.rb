@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110072024) do
+ActiveRecord::Schema.define(version: 20150112000949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "event_participations", force: true do |t|
+  create_table "event_participations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
@@ -26,41 +26,33 @@ ActiveRecord::Schema.define(version: 20150110072024) do
   add_index "event_participations", ["event_id"], name: "index_event_participations_on_event_id", using: :btree
   add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
 
-  create_table "events", force: true do |t|
-    t.string   "name"
+  create_table "events", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "interests", force: true do |t|
-    t.integer  "user_id"
-    t.string   "content"
-    t.string   "content_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "image"
-    t.string   "email"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "image",              limit: 255
+    t.string   "email",              limit: 255
     t.text     "introduction"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "github_id"
-    t.string   "twitter_name"
-    t.string   "github_url"
-    t.string   "facebook_name"
-    t.string   "nickname"
-    t.string   "location"
-    t.string   "blog"
-    t.integer  "sign_in_count",      default: 0, null: false
+    t.string   "github_id",          limit: 255
+    t.string   "twitter_name",       limit: 255
+    t.string   "github_url",         limit: 255
+    t.string   "facebook_name",      limit: 255
+    t.string   "nickname",           limit: 255
+    t.string   "location",           limit: 255
+    t.string   "blog",               limit: 255
+    t.integer  "sign_in_count",                  default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "qiita_name",         limit: 255
     t.date     "birthday"
-    t.string   "qiita_name"
   end
 
   add_index "users", ["github_id"], name: "index_users_on_github_id", unique: true, using: :btree

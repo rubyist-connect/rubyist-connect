@@ -14,11 +14,6 @@
     br
   .sns-icon
     = render 'sns_links', user: @user
-  h2 = link_to 'タグ一覧' , interests_path
-  table.interests
-    - @user.interests.each do |interest|
-      tr
-        td = link_to_if interest.content_url.present?, interest.content, interest.content_url, target: '_blank'
 .col-sm-6.col-md-8
   .well
     = markdown_to_html(@user.introduction)

@@ -1,22 +1,15 @@
 ja:
   activerecord:
     models:
-      interest: interest  #g
       user: user  #g
 
     attributes:
-      interest:
-        content: タグ（任意の文字列）
-        content_url: タグに対するURL（あれば）
-        user: :activerecord.models.user  #g
-
       user:
         blog: ブログ URL
         email: email  #g
         facebook_name: Facebook ユーザ名
         github_url: github_url  #g
         image: image  #g
-        interests: interests  #g
         introduction: 自己紹介文
         location: 場所
         name: 名前

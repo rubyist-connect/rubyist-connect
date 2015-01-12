@@ -14,7 +14,5 @@ Rails.application.routes.draw do
     resources :users, path: '', only: [:index, :show], param: :nickname
   end
 
-  resources :interests, path: "tags" , only: [:new, :create, :index, :edit, :update, :destroy]
-
   root 'top#index'
 end
