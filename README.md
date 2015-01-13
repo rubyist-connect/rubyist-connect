@@ -12,11 +12,6 @@ See also [Kobe Rubyist Connect](http://kobe.rubyist.co/).
 * [開発手順](https://github.com/yuji-shimoda/rubyist-connect/wiki/How-to-develop)
 * [デプロイ手順](https://github.com/yuji-shimoda/rubyist-connect/wiki/How-to-deploy)
 
-## Install dependencies
-* Ruby 2.2.0
-* Ruby on Rails 4.1.8
-* PostgreSQL 9.3 or later
-
 ## License
 MIT license (&copy; 2015 rubyist-connect developers)
 
