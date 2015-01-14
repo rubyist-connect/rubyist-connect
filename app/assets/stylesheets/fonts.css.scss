@@ -1,17 +1,17 @@
-// custom icon fonts for rubyist_co
+// custom icon fonts for qiita_icon
 @font-face {
-  font-family: 'rubyist_co';
-  src:url(font-path('rubyist_co.eot') + '?-3zppnw');
-  src:url(font-path('rubyist_co.eot') + '?#iefix-3zppnw') format('embedded-opentype'),
-    url(font-path('rubyist_co.woff') + '?-3zppnw') format('woff'),
-    url(font-path('rubyist_co.ttf') + '?-3zppnw') format('truetype'),
-    url(font-path('rubyist_co.svg') + '?-3zppnw#rubyist_co') format('svg');
+  font-family: 'qiita_icon';
+  src:url(font-path('qiita_icon.eot') + '?-3zppnw');
+  src:url(font-path('qiita_icon.eot') + '?#iefix-3zppnw') format('embedded-opentype'),
+    url(font-path('qiita_icon.woff') + '?-3zppnw') format('woff'),
+    url(font-path('qiita_icon.ttf') + '?-3zppnw') format('truetype'),
+    url(font-path('qiita_icon.svg') + '?-3zppnw#qiita_icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-.rc-ico {
-  font-family: 'rubyist_co';
+.qi-ico {
+  font-family: 'qiita_icon';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -25,6 +25,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.rc-ico-qiita:before {
+.qi-ico-qiita:before {
   content: "\e600";
 }
