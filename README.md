@@ -5,7 +5,7 @@
 
 rubyist-connect は、Rubyist と Rubyist を繋げるための Rails アプリケーションです。
 
-See also [Kobe Rubyist Connect](http://kobe.rubyist.co/).
+See also [Rubyist Connect](http://rubyist.co/).
 
 ## Contributing
 * [開発環境作成手順](https://github.com/rubyist-connect/rubyist-connect/wiki/How-to-create-local-environment)
@@ -28,11 +28,10 @@ MIT license (&copy; 2015 rubyist-connect developers)
 - 他のSNSサービスなどで代替出来る機能の提供
 
 ### ターゲット
-- Rubyist（これから Ruby を勉強する方も歓迎）
-- 地域は問わず（神戸に限定せず）
+- すべての Rubyist（これから Ruby を勉強する方も歓迎）
 
 ### 主な機能（予定を含む）
-- Rubyist のプロフィール情報（自己紹介文や興味、SNS アカウント）等の情報を集約
+- Rubyist のプロフィール情報（自己紹介文や興味、SNS アカウント）等を集約
 - 興味の対象が似た Rubyist の検索
 - 新着 Rubyist の通知
 - 勉強会情報の共有や管理、サポート（例えば、勉強会毎のリストを作成し、勉強会に参加する Rubyist を管理する）
