@@ -32,13 +32,15 @@ article.about
       p 勉強会をサポート
 
 article.new-members
-  h2.bold new members
+  h2.bold Part of Rubyist
   ul
     - @users.each do |user|
       li
         = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname
-  a.btn
-    | more...
+
+  a
+    = link_to user_omniauth_authorize_path(:github), class: 'login-btn btn' do
+      |  more...
 
 footer
   p
