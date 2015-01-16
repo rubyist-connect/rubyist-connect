@@ -14,6 +14,7 @@ See also [Rubyist Connect](http://rubyist.co/).
 
 ## License
 MIT license (&copy; 2015 rubyist-connect developers)
+Qiita、Qiita:Team等のロゴをご利用希望の際は [support@qiita.com](support@qiita.com) までお問い合わせください。
 
 ## rubyist-connect 概要
 
