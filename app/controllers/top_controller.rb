@@ -4,6 +4,6 @@ class TopController < ApplicationController
     if user_signed_in?
       redirect_to users_path
     end
-    @users = @q.result.active.page params[:page]
+    @users = @q.result.active.sample(Settings.top_page_users_count)
   end
 end

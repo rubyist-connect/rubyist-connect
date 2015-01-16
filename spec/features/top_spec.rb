@@ -19,4 +19,39 @@ feature 'Top spec' do
       expect(imgs.first['alt']).to eq active.name
     end
   end
+
+  scenario 'ランダムにユーザーが21名表示されること' do
+    40.times do
+      create :user
+    end
+
+    # 3回の表示結果の比較
+    name_1st = nil
+    name_2nd = nil
+    name_3rd = nil
+
+    visit root_path
+    within '.new-members' do
+      imgs = all('img')
+      name_1st = imgs.first['alt']
+      expect(imgs.size).to eq 21
+    end
+
+    visit root_path
+    within '.new-members' do
+      imgs = all('img')
+      name_2nd = imgs.first['alt']
+      expect(imgs.size).to eq 21
+    end
+
+    visit root_path
+    within '.new-members' do
+      imgs = all('img')
+      name_3rd = imgs.first['alt']
+      expect(imgs.size).to eq 21
+    end
+
+    is_same_name = (name_1st == name_2nd) && (name_2nd == name_3rd) && (name_3rd == name_1st)
+    expect(is_same_name).to eq false
+  end
 end
