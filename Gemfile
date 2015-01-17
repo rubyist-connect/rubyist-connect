@@ -48,6 +48,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '~> 1.0.2'
   gem 'faker'
   gem 'dummy_text_jp'
+  gem "rack-dev-mark"
 end
 
 group :test do
