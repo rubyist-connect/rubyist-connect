@@ -19,7 +19,7 @@ def event_name
   languages = ['C' ,'Java' ,'Objective-C' ,'C++' ,'C#' ,'PHP' ,'JavaScript' ,'Python' ,'Visual Basic .NET' ,'Perl' ,'Visual Basic' ,'R' ,'Transact-SQL' ,'PL/SQL' ,'Pascal' ,'Delphi/Object Pascal' ,'Swift' ,'Ruby' ,'F#' ,'MATLAB']
   event_types = %w(勉強会 ハッカソン セミナー プログラミング大会 もくもく会 忘年会 ハンズオン 懇親会)
   place = Faker::Address.city
-  "#{languages.sample}#{event_types.sample} #{place}"
+  "#{languages.sample}#{event_types.sample} in #{place}"
 end
 
 ActiveRecord::Base.transaction do
