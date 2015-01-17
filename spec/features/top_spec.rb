@@ -21,7 +21,7 @@ feature 'Top spec' do
   end
 
   scenario 'ランダムにユーザーが21名表示されること' do
-    40.times do
+    100.times do
       create :user
     end
 
