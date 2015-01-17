@@ -6,6 +6,14 @@ def introduction
   DummyTextJp.sentences(Random.rand(1..30)).split('。').join("。\n\n")
 end
 
+def puts_or_log(text)
+  if Rails.env.test?
+    Rails.logger.info text
+  else
+    puts text
+  end
+end
+
 def event_name
   Faker::Config.locale = :ja
   languages = ['C' ,'Java' ,'Objective-C' ,'C++' ,'C#' ,'PHP' ,'JavaScript' ,'Python' ,'Visual Basic .NET' ,'Perl' ,'Visual Basic' ,'R' ,'Transact-SQL' ,'PL/SQL' ,'Pascal' ,'Delphi/Object Pascal' ,'Swift' ,'Ruby' ,'F#' ,'MATLAB']
@@ -15,15 +23,15 @@ def event_name
 end
 
 ActiveRecord::Base.transaction do
-  puts "Destroying all users."
+  puts_or_log "Destroying all users."
   User.destroy_all
 
-  puts "Destroying all events."
+  puts_or_log "Destroying all events."
   Event.destroy_all
 
   user_max = Rails.env.test? ? 10 : 1000
   user_max.times do |n|
-    puts "Creating user (#{n + 1}/#{user_max})"
+    puts_or_log "Creating user (#{n + 1}/#{user_max})"
     user = User.new
 
     Faker::Config.locale = :en
@@ -52,7 +60,7 @@ ActiveRecord::Base.transaction do
   event_max = Rails.env.test? ? 5 : 200
   participation_min_max = 0..100
   event_max.times do |n|
-    puts "Creating event (#{n + 1}/#{event_max})"
+    puts_or_log "Creating event (#{n + 1}/#{event_max})"
     event = Event.new
     event.name = event_name
     event.save!
