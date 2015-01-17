@@ -2,6 +2,10 @@ def save?
   [true, false].sample
 end
 
+def introduction
+  DummyTextJp.sentences(Random.rand(1..30)).split('。').join("。\n\n")
+end
+
 ActiveRecord::Base.transaction do
   puts "Destroying all users."
   User.destroy_all
@@ -18,13 +22,14 @@ ActiveRecord::Base.transaction do
     user.github_id = "#{Faker::Address.zip_code}#{n}"
     user.nickname = "#{Faker::Internet.slug(nil, '_')}_#{n}"
 
+    # 任意の入力項目はランダムに設定する
     user.twitter_name = user.nickname if save?
     user.facebook_name = user.nickname if save?
     user.qiita_name = user.nickname if save?
 
     user.image = Faker::Avatar.image
     user.email = Faker::Internet.email if save?
-    user.introduction = Faker::Lorem.paragraph if save?
+    user.introduction = introduction if save?
     user.github_url = "https://github.com/#{user.nickname}"
     user.blog = "http://#{user.nickname}.example.com" if save?
     user.birthday = Faker::Date.between(60.years.ago, 10.years.ago) if save?
