@@ -21,7 +21,7 @@ ActiveRecord::Base.transaction do
   puts "Destroying all events."
   Event.destroy_all
 
-  user_max = 1000
+  user_max = Rails.env.test? ? 10 : 1000
   user_max.times do |n|
     puts "Creating user (#{n + 1}/#{user_max})"
     user = User.new
@@ -49,7 +49,7 @@ ActiveRecord::Base.transaction do
     user.save!
   end
 
-  event_max = 200
+  event_max = Rails.env.test? ? 5 : 200
   participation_min_max = 0..100
   event_max.times do |n|
     puts "Creating event (#{n + 1}/#{event_max})"
