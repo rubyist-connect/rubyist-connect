@@ -25,33 +25,31 @@ feature 'Top spec' do
       create :user
     end
 
-    # 3回の表示結果の比較
-    name_1st = nil
-    name_2nd = nil
-    name_3rd = nil
+    # 3回の表示結果の比較(先頭ユーザー名)
+    # ランダムなので偶然3回とも同じになる可能性あり
+    first_users = []
 
     visit root_path
     within '.new-members' do
       imgs = all('img')
-      name_1st = imgs.first['alt']
+      first_users << imgs.first['alt']
       expect(imgs.size).to eq 21
     end
 
     visit root_path
     within '.new-members' do
       imgs = all('img')
-      name_2nd = imgs.first['alt']
+      first_users << imgs.first['alt']
       expect(imgs.size).to eq 21
     end
 
     visit root_path
     within '.new-members' do
       imgs = all('img')
-      name_3rd = imgs.first['alt']
+      first_users << imgs.first['alt']
       expect(imgs.size).to eq 21
     end
 
-    is_same_name = (name_1st == name_2nd) && (name_2nd == name_3rd) && (name_3rd == name_1st)
-    expect(is_same_name).to eq false
+    expect(first_users.combination(2).all?{|a, b| a != b}).to be_truthy
   end
 end
