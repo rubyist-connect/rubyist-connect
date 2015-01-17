@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module RubyistConnect
   class Application < Rails::Application
     config.time_zone = 'Asia/Tokyo'
-
+    config.rack_dev_mark.enable = !Rails.env.production?
     config.i18n.default_locale = :ja
 
     config.generators do |g|
