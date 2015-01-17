@@ -5,6 +5,5 @@ class TopController < ApplicationController
       redirect_to users_path
     end
     @users = @q.result.active.reorder('RANDOM()').limit(Settings.top_page_users_count)
-    p @users.to_sql
   end
 end
