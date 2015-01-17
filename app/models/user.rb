@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :event_participations, dependent: :destroy
 
   scope :active, -> {
     introduction = arel_table[:introduction]

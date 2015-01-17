@@ -75,6 +75,7 @@ GEM
     diff-lcs (1.2.5)
     domain_name (0.5.22)
       unf (>= 0.0.5, < 1.0.0)
+    dummy_text_jp (0.0.2)
     erubis (2.7.0)
     excon (0.42.1)
     execjs (2.2.1)
@@ -303,6 +304,7 @@ DEPENDENCIES
   capybara (~> 2.4.4)
   coffee-rails (~> 4.0.0)
   devise
+  dummy_text_jp
   factory_girl_rails (~> 4.5.0)
   faker
   font-awesome-rails
