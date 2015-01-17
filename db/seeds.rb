@@ -40,4 +40,16 @@ ActiveRecord::Base.transaction do
 
     user.save!
   end
+
+  event_max = 200
+  participation_min_max = 0..100
+  event_max.times do |n|
+    puts "Creating event (#{n + 1}/#{event_max})"
+    event = Event.new
+    event.name = "テスト-#{n}"
+    event.save!
+
+    users = User.active.order('RANDOM()').limit(participation_min_max.to_a.sample)
+    event.users << users
+  end
 end
