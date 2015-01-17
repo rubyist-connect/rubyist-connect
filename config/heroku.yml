@@ -16,6 +16,7 @@ staging:
     TZ: Asia/Tokyo
     RACK_ENV: staging
     RAILS_ENV: staging
+    RACK_DEV_MARK_ENV: staging
     # SECRET_KEY_BASE: (secret)
     # GITHUB_CLIENT_ID: (secret)
     # GITHUB_SECRET: (secret)

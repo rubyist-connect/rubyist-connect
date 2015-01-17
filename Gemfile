@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'jc-validates_timeliness'
 gem 'ransack'
+gem 'rack-dev-mark'
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -48,7 +49,6 @@ group :development, :test do
   gem 'spring-commands-rspec', '~> 1.0.2'
   gem 'faker'
   gem 'dummy_text_jp'
-  gem "rack-dev-mark"
 end
 
 group :test do
