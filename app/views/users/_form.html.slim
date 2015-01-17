@@ -10,34 +10,34 @@
             - @user.errors.full_messages.each do |message|
               li = message
       p ※Markdown形式で入力してください
-      .form-group.form-group-lg
+      .form-group
         = f.label :introduction
         = f.text_area :introduction, rows: 10, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :twitter_name
         .input-group
           span.input-group-addon @
           = f.text_field :twitter_name, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :facebook_name
         .input-group
           span.input-group-addon https://www.facebook.com/
           = f.text_field :facebook_name, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :qiita_name
         .input-group
           span.input-group-addon https://qiita.com/
           = f.text_field :qiita_name, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :name
         = f.text_field :name, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :location
         = f.text_field :location, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :blog
         = f.text_field :blog, class: 'form-control'
-      .form-group.form-group-lg
+      .form-group
         = f.label :birthday
         = f.date_field :birthday, class: 'form-control', placeholder: '2015/01/01'
       .actions
