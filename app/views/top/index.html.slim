@@ -21,22 +21,22 @@ article.about
     li
       = fa_icon 'search'
       h3 Search
-      p Nearby Rubyist
+      p 近くの Rubyist を
     li
       = fa_icon 'share-alt'
       h3 Share
-      p Your Profile
+      p あなたのプロフィールを
     li
       = fa_icon 'pencil'
       h3 Support
-      p For Study Sessions
+      p みんなの勉強会を
 
 article.new-members
   h2.bold Rubyist Connect Users
   ul
     - @users.each do |user|
       li
-        = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname
+        = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname, data: {toggle: 'tooltip', placement: 'bottom'}, title: user.name_or_nickname
 
   = link_to 'more...', user_omniauth_authorize_path(:github), class: 'login-btn btn'
 
