@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
     where(introduction.not_eq(nil).and(introduction.not_eq('')))
   }
 
+  scope :without_login_user, -> (user) {
+    where.not(id: user.id)
+  }
+
   devise :trackable, :omniauthable, omniauth_providers: [:github]
 
   has_many :event_participations, dependent: :destroy
