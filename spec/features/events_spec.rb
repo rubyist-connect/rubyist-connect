@@ -10,6 +10,7 @@ feature 'Event management' do
     click_on 'Event'
     click_on 'new event'
     fill_in 'Name', with: 'KRCハッカソン'
+
     participants = users.take(3)
     participants.each do |user|
       check user.name_or_nickname
@@ -22,6 +23,7 @@ feature 'Event management' do
 
     click_on '登録する'
     expect(page).to have_content 'Event was successfully created.'
+    expect(page).not_to have_css('.event_url')
 
     # ユーザー一覧を表示する
     within 'h1' do
@@ -38,8 +40,11 @@ feature 'Event management' do
     click_on 'Event'
     click_on '編集'
     fill_in 'Name', with: 'KRC Hackathon'
+    fill_in 'Url', with: 'http://rubyist-connect.co'
     click_on '更新する'
     expect(page).to have_content 'Event was successfully updated.'
+    expect(page).to have_css '.event_url'
+    expect(page).to have_link 'http://rubyist-connect.co', href: 'http://rubyist-connect.co'
     within 'h1' do
       expect(page).to have_content 'KRC Hackathon'
     end

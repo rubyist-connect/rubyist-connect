@@ -19,6 +19,11 @@ feature 'Users spec' do
     fill_in '名前', with: 'ありす'
     click_on '更新'
 
+    click_on 'Sign out'
+
+    other_user = create :user
+    sign_in_with_github(other_user)
+
     expect(page).to have_content 'ありす'
     expect(page).to have_content 'よろしくお願いします'
     # TODO TwitterやFacebookのリンク存在チェックもしたい

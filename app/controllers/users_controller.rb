@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(edit update destroy)
+  before_action :current_user_profile
 
   def index
     @users = @q.result.active.page params[:page]
@@ -28,6 +29,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :root, notice: '退会しました。' }
     end
+  end
+
+  def current_user_profile
+    @current_user_profile = set_user
   end
 
   private

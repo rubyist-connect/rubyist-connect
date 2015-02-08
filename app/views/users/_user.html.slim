@@ -1,10 +1,10 @@
-.row
-  .col-md-2.user-image
+.user-profile
+  .user-image
     = link_to user_path(user.nickname) do
-      = image_tag user.image, class: 'img-circle', size: '100x100'
-    br
-    = user.name_or_nickname
-  .col-md-10
+      = image_tag user.image, size: '80x80'
+  .user-description
+    p.user-name
+      = user.name_or_nickname
     = render 'users/sns_links', user: user
-    .well
+    .user-text
       = markdown_to_html user.introduction.to_s.lines.first
