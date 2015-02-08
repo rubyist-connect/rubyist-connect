@@ -25,4 +25,11 @@ module ApplicationHelper
 
     markdown.render(text).html_safe unless text.blank?
   end
+
+  def display_title(page_title)
+      content_for(:title) do
+          page_title
+      end
+     content_tag :h1, page_title
+  end
 end
