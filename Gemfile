@@ -29,7 +29,7 @@ gem 'kaminari-bootstrap'
 gem 'jc-validates_timeliness'
 gem 'ransack'
 gem 'rack-dev-mark'
-
+gem 'validate_url'
 group :production, :staging do
   gem 'rails_12factor'
 end

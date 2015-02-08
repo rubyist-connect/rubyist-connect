@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :event do
-    name "MyString"
+    name 'MyString'
+    url 'http://rubyist-connect.co'
   end
 end
