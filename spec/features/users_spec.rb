@@ -69,6 +69,22 @@ feature 'Users spec' do
     click_on 'Sign out'
     expect(page).to have_content 'Rubyist は、すぐそこに'
   end
+  
+  scenario 'ログアウト後にアラートが出ないこと' do
+    sign_in_as_new_user
+
+    click_on 'Sign out'
+
+    expect(page).to_not have_content 'ログアウトしました。'
+  end
+
+  scenario '退会後にアラートが出ること' do
+    sign_in_as_new_user
+
+    click_link '退会'
+
+    expect(page).to have_content '退会しました'
+  end
 
   scenario '退会ができること' do
     sign_in_as_new_user
