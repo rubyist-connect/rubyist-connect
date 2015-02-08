@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:github_id) {|n| "#{Faker::Address.zip_code}#{n}" }
     sequence(:nickname) {|n| "#{Faker::Internet.slug(nil, '_')}_#{n}" }
 
-    name { Faker::Name.name }
+    name {|n| "#{Faker::Name.name}-#{n}" }
     image { Faker::Avatar.image }
     email { Faker::Internet.email }
     introduction { Faker::Lorem.paragraph }

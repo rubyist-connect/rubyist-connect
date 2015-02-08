@@ -18,12 +18,12 @@
       .form-group
         = f.label :users
         br
-        - @users.each do |user|
-          = check_box_tag "event[user_ids][]", user.id, @event.user_ids.index(user.id), id: user.id
-          = label_tag user.id, class: 'checkbox-inline' do
-            = image_tag user.image, class: "img-circle", size: '50x50', id: user.id
-            = user.name_or_nickname
+        = f.collection_check_boxes :user_ids, @users, :id, :name_or_nickname do |b|
+          = b.label(class: 'checkbox-inline') do
+            - user = b.object
+            = b.check_box
+            = image_tag user.image, class: "img-circle", size: "50x50"
+            = b.text 
           br
-
       .actions
         = f.submit(class: 'btn btn-success btn-lg')
