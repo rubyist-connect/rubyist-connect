@@ -169,6 +169,8 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    page_title_helper (2.1.0)
+      rails (>= 3.0.0)
     pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
@@ -324,6 +326,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth
   omniauth-github
+  page_title_helper
   pg
   quiet_assets
   rack-dev-mark
