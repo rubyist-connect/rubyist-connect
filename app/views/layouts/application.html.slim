@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Rubyist Connect
+    title= "Rubyist Connect | " + yield(:title)
     = favicon_link_tag 'favicon.ico'
     = favicon_link_tag 'touch-icon-iphone.png', :rel => 'apple-touch-icon', :type => 'image/png'
     = favicon_link_tag 'touch-icon-ipad.png', :sizes => '76x76', :rel => 'apple-touch-icon', :type => 'image/png'
