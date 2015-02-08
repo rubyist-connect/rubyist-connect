@@ -26,6 +26,8 @@ feature 'Users spec' do
 
     expect(page).to have_content 'ありす'
     expect(page).to have_content 'よろしくお願いします'
+    show_link = find('.current_user_link')
+    expect(show_link[:href]).to eq user_path(other_user.nickname)
     # TODO TwitterやFacebookのリンク存在チェックもしたい
 
     within '.navbar form' do
