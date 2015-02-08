@@ -5,13 +5,21 @@
   br
   = display_age(@user)
   br
+  .created_at
+    = "#{User.human_attribute_name(:joined_at)}:"
+    = l @user.created_at, format: :short
+  - if @user.profile_updated_at.present?
+    .profile_updated_at
+      = "#{User.human_attribute_name(:profile_updated_at)}:"
+      = l @user.profile_updated_at, format: :short
+  br
   - if @user.location.present?
     i.fa.fa-map-marker = @user.location
     br
   - if @user.blog.present?
     h6
       i.fa.fa-bookmark-o = link_to @user.blog, @user.blog, target: '_blank'
-    br  
+    br
   = render 'sns_links', user: @user
 .col-sm-6.col-md-8
   .well
