@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def prepare_search_users
-    @q = User.order(:id).reverse_order.ransack(params[:q])
+    @q = User.order(:id).reverse_order.without_login_user(current_user).ransack(params[:q])
   end
 end
