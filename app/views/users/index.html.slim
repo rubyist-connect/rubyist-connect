@@ -1,6 +1,7 @@
 .col-md-2
   .current_user_profile
-    = image_tag @current_user_profile.image, class: 'img-circle', size: '100x100'
+    = link_to user_path(@current_user_profile.nickname), class: 'current-user-link' do
+      = image_tag @current_user_profile.image, class: 'img-circle', size: '100x100'
     p.current_user_name = @current_user_profile.name
     = render 'users/sns_links', user: @current_user_profile
 
