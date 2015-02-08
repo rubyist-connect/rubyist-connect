@@ -8,6 +8,10 @@
   .created_at
     = "#{User.human_attribute_name(:joined_at)}:"
     = l @user.created_at, format: :short
+  - if @user.profile_updated_at.present?
+    .profile_updated_at
+      = "#{User.human_attribute_name(:profile_updated_at)}:"
+      = l @user.profile_updated_at, format: :short
   br
   - if @user.location.present?
     i.fa.fa-map-marker = @user.location

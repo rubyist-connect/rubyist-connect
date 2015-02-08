@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.profile_updated_at = Time.current
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(nickname: @user.nickname), notice: '更新しました。' }
