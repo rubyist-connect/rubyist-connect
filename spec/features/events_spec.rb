@@ -14,6 +14,12 @@ feature 'Event management' do
     participants.each do |user|
       check user.name_or_nickname
     end
+
+    within '.new_event' do
+      imgs = all('img')
+      expect(imgs.size).to eq(User.active.size)
+    end
+
     click_on '登録する'
     expect(page).to have_content 'Event was successfully created.'
 
