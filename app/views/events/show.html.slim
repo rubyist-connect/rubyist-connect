@@ -1,3 +1,4 @@
 h1= @event.name
-p = link_to @event.url
+- if @event.url.present?
+  p.event_url = link_to @event.url, @event.url
 = render partial: 'users/user', collection: @event.users, as: :user
