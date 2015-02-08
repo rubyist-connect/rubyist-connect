@@ -3,4 +3,6 @@ class Event < ActiveRecord::Base
   has_many :users, through: :participations
 
   validates :name, presence: true
+  validates :url, url: {allow_blank: true}
+
 end
