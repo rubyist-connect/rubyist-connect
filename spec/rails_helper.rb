@@ -21,6 +21,10 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
+  # Devise をテスト可能にする
+  # https://github.com/plataformatec/devise#test-helpers
+  config.include Devise::TestHelpers, type: :controller
+
   # open_on_error: trueのFeature specが落ちたらsave_and_open_pageをコールする
   # http://stackoverflow.com/a/16935806/1058763
   config.after do |example|
