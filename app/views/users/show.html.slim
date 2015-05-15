@@ -14,13 +14,32 @@
       = l @user.profile_updated_at, format: :short
   br
   - if @user.location.present?
-    i.fa.fa-map-marker = @user.location
+    i.fa.fa-map-marker
+    =< @user.location
     br
   - if @user.blog.present?
     h6
-      i.fa.fa-bookmark-o = link_to @user.blog, @user.blog, target: '_blank'
+      i.fa.fa-bookmark-o
+      =< link_to @user.blog, @user.blog, target: '_blank'
     br
   = render 'sns_links', user: @user
+  - if @event.present?
+    - participation = @event.participations.find_by(user_id: @user.id)
+    .event-user-links.well
+      .event-name
+        => fa_icon 'calendar'
+        = link_to @event.name, @event
+      - prev_user, next_user = participation.previous_user, participation.next_user
+      - if prev_user.present?
+        .prev-user
+          = link_to event_user_path(@event, prev_user.nickname) do
+            = "<< #{prev_user.name_or_nickname}"
+      - if [prev_user, next_user].all?(&:present?)
+        .link-divider = " | "
+      - if next_user.present?
+        .next-user
+          = link_to event_user_path(@event, next_user.nickname) do
+            = "#{next_user.name_or_nickname} >>"
 .col-sm-6.col-md-8
   .well
     = markdown_to_html(@user.introduction)

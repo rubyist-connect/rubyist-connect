@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_nickname!(params[:nickname])
+    if event_id = params[:event_id]
+      @event = Event.find event_id
+      @user = @event.users.find_by_nickname!(params[:nickname])
+    else
+      @user = User.find_by_nickname!(params[:nickname])
+    end
   end
 
   def edit

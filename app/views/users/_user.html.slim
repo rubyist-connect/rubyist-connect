@@ -1,6 +1,7 @@
 .user-profile
   .user-image
-    = link_to user_path(user.nickname) do
+    - link_url = @event.present? ? event_user_path(@event, user.nickname) : user_path(user.nickname)
+    = link_to link_url do
       = image_tag user.image, size: '80x80'
   .user-description
     p.user-name
@@ -8,3 +9,4 @@
     = render 'users/sns_links', user: user
     .user-text
       = markdown_to_html user.introduction.to_s.lines.first
+
