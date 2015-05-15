@@ -35,7 +35,7 @@
           = link_to event_user_path(@event, prev_user.nickname) do
             = "<< #{prev_user.name_or_nickname}"
       - if [prev_user, next_user].all?(&:present?)
-        .link-divider = " | "
+        .link-divider =<> "|"
       - if next_user.present?
         .next-user
           = link_to event_user_path(@event, next_user.nickname) do
