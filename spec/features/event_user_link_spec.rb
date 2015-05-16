@@ -2,12 +2,12 @@ require 'rails_helper'
 
 feature 'Event user link' do
   given!(:users) do
-    10.times.map do
-      create :user
-    end
+    create_list :user, 10
   end
+
   context '3人のとき' do
     given(:event) { create :event, name: 'テストコード相談会' }
+
     background do
       users.take(3).each do |user|
         event.users << user
