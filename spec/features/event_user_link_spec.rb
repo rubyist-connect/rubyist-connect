@@ -9,9 +9,7 @@ feature 'Event user link' do
     given(:event) { create :event, name: 'テストコード相談会' }
 
     background do
-      users.take(3).each do |user|
-        event.users << user
-      end
+      event.users += users.take(3)
       sign_in_as_active_user(users.first)
     end
 
