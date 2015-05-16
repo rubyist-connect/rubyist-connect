@@ -19,9 +19,8 @@ feature 'Event user link' do
       visit event_path(event)
       expect(page).to have_content 'テストコード相談会'
 
-      first_user = users[0]
-      click_link nil, href: event_user_path(event, first_user.nickname)
-      expect(page).to have_content first_user.introduction
+      click_link nil, href: event_user_path(event, users[0].nickname)
+      expect(page).to have_content users[0].introduction
 
       expect(page).to_not have_css '.prev-user'
 
