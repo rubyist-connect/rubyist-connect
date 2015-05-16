@@ -7,9 +7,10 @@ feature 'Event user link' do
 
   context '3人のとき' do
     given(:event) { create :event, name: 'テストコード相談会' }
+    given(:event_users) { users.sample(3).sort_by(&:id) }
 
     background do
-      event.users += users.take(3)
+      event.users += event_users
       sign_in_as_active_user(users.first)
     end
 
@@ -17,38 +18,44 @@ feature 'Event user link' do
       visit event_path(event)
       expect(page).to have_content 'テストコード相談会'
 
-      click_link nil, href: event_user_path(event, users[0].nickname)
-      expect(page).to have_content users[0].introduction
+      click_link nil, href: event_user_path(event, event_users[0].nickname)
+      expect(page).to have_content event_users[0].introduction
 
       expect(page).to_not have_css '.prev-user'
 
-      expect(page).to have_css '.next-user'
+      # 次へ進む
       within '.next-user' do
-        click_link "#{users[1].name_or_nickname} >>"
+        click_link "#{event_users[1].name_or_nickname} >>"
       end
-      expect(page).to have_content users[1].introduction
+      expect(page).to have_content event_users[1].introduction
 
       within '.next-user' do
-        click_link "#{users[2].name_or_nickname} >>"
+        click_link "#{event_users[2].name_or_nickname} >>"
       end
-      expect(page).to have_content users[2].introduction
+      expect(page).to have_content event_users[2].introduction
 
       expect(page).to_not have_css '.next-user'
 
+      # 前に戻る
       within '.prev-user' do
-        click_link "<< #{users[1].name_or_nickname}"
+        click_link "<< #{event_users[1].name_or_nickname}"
       end
-      expect(page).to have_content users[1].introduction
+      expect(page).to have_content event_users[1].introduction
+
       within '.prev-user' do
-        click_link "<< #{users[0].name_or_nickname}"
+        click_link "<< #{event_users[0].name_or_nickname}"
       end
-      expect(page).to have_content users[0].introduction
+      expect(page).to have_content event_users[0].introduction
+
+      expect(page).to_not have_css '.prev-user'
     end
   end
 
   context '1人のとき' do
+    # TODO 誰かお願い
   end
 
   context '2人のとき' do
+    # TODO 誰かお願い
   end
 end
