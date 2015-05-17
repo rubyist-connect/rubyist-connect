@@ -60,4 +60,6 @@ group :test do
   gem 'timecop'
   gem 'vcr', '~> 2.9.3', require: false
   gem 'webmock', '1.20.4', require: false
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end

@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'faker'
 require 'vcr'
+require 'capybara/poltergeist'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
 
@@ -38,5 +39,21 @@ RSpec.configure do |config|
     c.cassette_library_dir = 'spec/vcr'
     c.hook_into :webmock
     c.allow_http_connections_when_no_cassette = true
+  end
+
+  Capybara.javascript_driver = :poltergeist
+
+  require 'database_cleaner'
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
