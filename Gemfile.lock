@@ -332,6 +332,7 @@ DEPENDENCIES
   kaminari-bootstrap
   launchy
   newrelic_rpm
+  nokogiri
   omniauth
   omniauth-github
   page_title_helper
