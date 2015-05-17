@@ -2,6 +2,13 @@ require 'open-uri'
 require 'nokogiri'
 
 class DoorkeeperApi
+  def self.fetch_event_details(event_id)
+    url = "http://api.doorkeeper.jp/events/#{event_id}"
+    uri = URI.parse(url)
+    response = Net::HTTP.get_response(uri)
+    JSON.parse(response.body)
+  end
+
   def self.fetch_attendees(event_id)
     url = "https://nishiwaki-koberb.doorkeeper.jp/events/#{event_id}"
     doc = read_doc_from_url(url)
