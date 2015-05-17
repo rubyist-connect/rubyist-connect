@@ -3,24 +3,25 @@ require 'nokogiri'
 require 'hashie'
 
 class DoorkeeperApi
-  def self.fetch_event_details_as_mash(event_id)
-    Hashie::Mash.new(fetch_event_details(event_id))
+  def self.fetch_event_details_as_mash(event_url)
+    Hashie::Mash.new(fetch_event_details(event_url))
   end
 
-  def self.fetch_event_details(event_id)
+  def self.fetch_event_details(event_url)
+    event_id = event_url[/(?<=events\/)\d+/]
     url = "http://api.doorkeeper.jp/events/#{event_id}"
+    logger.info "[INFO] Reading #{url}"
     uri = URI.parse(url)
     # TODO 404エラー等のエラー処理を考慮する
     response = Net::HTTP.get_response(uri)
     JSON.parse(response.body).tap do |event_details|
-      event_details["event"].merge!("participant_profiles" => fetch_attendees(event_id))
+      event_details["event"].merge!("participant_profiles" => fetch_attendees(event_url))
     end
   end
 
-  def self.fetch_attendees(event_id)
-    url = "https://nishiwaki-koberb.doorkeeper.jp/events/#{event_id}"
+  def self.fetch_attendees(event_url)
     # TODO 404エラー等のエラー処理を考慮する
-    doc = read_doc_from_url(url)
+    doc = read_doc_from_url(event_url)
     doc.xpath('//div[@class="user-profile-details"]').map do |profile|
       name = profile.xpath('div[@class="user-name"]').text
       social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
