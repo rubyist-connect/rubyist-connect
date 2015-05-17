@@ -31,6 +31,7 @@ gem 'ransack'
 gem 'rack-dev-mark'
 gem 'validate_url'
 gem 'page_title_helper'
+gem 'hashie'
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -57,4 +58,6 @@ group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'launchy'
   gem 'timecop'
+  gem 'vcr', '~> 2.9.3', require: false
+  gem 'webmock', '1.20.4', require: false
 end
