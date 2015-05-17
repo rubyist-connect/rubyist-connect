@@ -22,12 +22,14 @@ $ ->
     syncDoorkeeper = ->
       path = $(@).data().path
       event_url = $('.field-doorkeeper-event-url').val()
+      $('.img-loading').show()
 
       $.ajax
         url: "#{path}?event_url=#{event_url}"
         dataType: "json"
         success: (results) ->
           setDoorkeeperInfo(results)
+          $('.img-loading').hide()
 
     $('.link-doorkeeper-sync').on
       'click' : syncDoorkeeper
