@@ -1,8 +1,15 @@
 class DoorkeepersController < ApplicationController
   def fetch
     result = DoorkeeperApi.fetch_event_details_as_mash(params[:event_url])
-    event = result.event
-    render json: { name: event.title, attendee_user_ids: attendee_user_ids(event.participant_profiles) }
+    case result.status
+      when 'success'
+        event = result.event
+        render json: { status: result.status, name: event.title, attendee_user_ids: attendee_user_ids(event.participant_profiles) }
+      when 'not_found'
+        render json: { status: result.status }, status: :not_found
+      else
+        render json: { status: result.status }, status: :internal_server_error
+    end
   end
 
   private

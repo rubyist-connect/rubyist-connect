@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-feature 'Doorkeeper sync' do
+feature 'Doorkeeper sync', js: true do
   given(:login_user) { create :user }
+  background do
+    sign_in_as_active_user(login_user)
+  end
   context '完全一致する場合' do
     given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'yuji-shimoda' }
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
@@ -9,8 +12,7 @@ feature 'Doorkeeper sync' do
     given!(:aki) { create :user, name: 'Aki ', nickname: 'springaki' }
     given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'otokunaga' }
 
-    scenario 'Doorkeeperの情報をフォームに反映させる', js: true do
-      sign_in_as_active_user(login_user)
+    scenario 'Doorkeeperの情報をフォームに反映させる' do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
@@ -36,8 +38,7 @@ feature 'Doorkeeper sync' do
     given!(:aki) { create :user, name: 'Aki', nickname: 'springaki' }
     given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'Otokunaga' }
 
-    scenario '微妙な違いは無視して選択する', js: true do
-      sign_in_as_active_user(login_user)
+    scenario '微妙な違いは無視して選択する' do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
@@ -54,10 +55,28 @@ feature 'Doorkeeper sync' do
     end
   end
 
-  feature 'ボタンの有効制御', js: true do
-    background do
-      sign_in_as_active_user(login_user)
+  context '存在しないイベントの場合' do
+    scenario 'エラーメッセージを表示する' do
+      VCR.use_cassette 'doorkeeper_events/1_not_found', match_requests_on: [:uri] do
+        visit new_event_path
+        fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/1'
+        click_on 'Doorkeeper Sync'
+        expect(page).to have_selector '.doorkeeper-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
+      end
     end
+  end
+
+  context '予期せぬエラーが発生した場合' do
+    scenario 'エラーメッセージを表示する' do
+      allow(DoorkeeperApi).to receive(:fetch_event_details).and_return({'status' => 'ERROR'})
+      visit new_event_path
+      fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
+      click_on 'Doorkeeper Sync'
+      expect(page).to have_selector '.doorkeeper-sync-status', text: 'エラーが発生しました。しばらく経ってから再度実行してください。'
+    end
+  end
+
+  feature 'ボタンの有効制御' do
     context '新規作成画面' do
       scenario '適切に制御される' do
         visit new_event_path

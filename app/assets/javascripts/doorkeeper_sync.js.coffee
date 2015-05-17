@@ -36,10 +36,14 @@ $ ->
           $statusMessage.text('情報を取得しました。')
           $imgLoading.hide()
         error: (XMLHttpRequest, textStatus, errorThrown) ->
-          console.error("Error occurred in replaceChildrenOptions")
-          console.log("XMLHttpRequest: #{XMLHttpRequest.status}")
-          console.log("textStatus: #{textStatus}")
-          console.log("errorThrown: #{errorThrown}")
+          switch XMLHttpRequest.status
+            when 404
+              $statusMessage.text('イベントが見つかりません。URLを確認してください。')
+            else
+              console.log("XMLHttpRequest: #{XMLHttpRequest.status}")
+              console.log("textStatus: #{textStatus}")
+              console.log("errorThrown: #{errorThrown}")
+              $statusMessage.text('エラーが発生しました。しばらく経ってから再度実行してください。')
           $imgLoading.hide()
 
     $('.link-doorkeeper-sync').on

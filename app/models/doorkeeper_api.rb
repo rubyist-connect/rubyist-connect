@@ -16,8 +16,21 @@ module DoorkeeperApi
       # TODO 404エラー等のエラー処理を考慮する
       response = Net::HTTP.get_response(uri)
       JSON.parse(response.body).tap do |event_details|
+        event_details["status"] = 'success'
         event_details["event"].merge!("participant_profiles" => _fetch_attendees(event_url))
       end
+    rescue OpenURI::HTTPError => e
+      _logger.warn "[WARN] HTTPError: #{e}"
+      case e.io.status.first
+        when /^4\d\d$/
+          { 'status' => 'not_found' }
+        else
+          raise
+      end
+    rescue => e
+      _logger.error "[ERROR] #{e.inspect}"
+      _logger.error e.backtrace.join("\n")
+      { 'status' => "ERROR: #{e.message}" }
     end
 
     def _fetch_attendees(event_url)

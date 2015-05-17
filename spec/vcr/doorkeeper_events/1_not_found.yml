@@ -1,0 +1,182 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.doorkeeper.jp/events/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 17 May 2015 22:46:04 GMT
+      Etag:
+      - W/"79881712c5d868f495f81e34807aa7bd"
+      Server:
+      - nginx/1.6.2
+      Status:
+      - 200 OK
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 07ce16e3-8795-402d-bae8-ed4a29cc7983
+      X-Runtime:
+      - '0.025796'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '2004'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"event":{"title":"MoMo Tokyo - July 24 - Wireless Japan","id":1,"starts_at":"2009-07-24T05:30:00.000Z","ends_at":"2009-07-24T09:00:00.000Z","venue_name":null,"address":null,"lat":null,"long":null,"ticket_limit":null,"published_at":"2009-07-23T06:25:12.000Z","updated_at":"2014-05-27T07:38:01.707Z","description":"<p>\u00a0</p>\n\n<p>Heads-Up,
+        our next MoMo Tokyo event is July 24 - Yep, it\u2019s a Friday - out at Tokyo
+        Big Sight during the <a href=\"http://www8.ric.co.jp/expo/wj/en/index.html\">Wireless
+        Japan</a> conference and trade show. We have lined-up some interesting and
+        energetic speakers, see company logos below, to present on topics ranging
+        from 3D Worlds and SNS platforms to video and next-generation UI\u2019s with
+        a couple of extra surprises in store.</p>\n\n<p>In typical MoMo style we\u2019ll
+        have a Happy Hour mixer after the presentations, with special thanks to the
+        good folks at Ikon-EuroPubs who will be there to make sure everyone gets some
+        <a href=\"http://www.ikon-europubs.com/tiger.html\"><strong>Tigers</strong></a>
+        in their tank for the weekend.</p>","public_url":"https://momoto.doorkeeper.jp/events/1","participants":74,"waitlisted":0,"group":{"id":1,"name":"Mobile
+        Monday Tokyo","country_code":"JP","logo":"https://dzpp79ucibp5a.cloudfront.net/groups_logos/1_normal_1371631621_mm_tokyo.jpg","description":"<p><a
+        href=\"http://www.mobilemonday.net\"><strong>Mobile Monday</strong></a> is
+        an open community platform fostering brand neutral cooperation and cross-border
+        business opportunities through live events to demo products, share ideas and
+        discuss trends from both local &amp; global markets. Originating in Helsinki
+        in 2000, chapters have held events in over 100 cities worldwide and continues
+        to launch new locations monthly. <a href=\"http://www.mobilemonday.jp\"><strong>MoMo
+        Tokyo</strong></a>, launched Sept. 2004, has become a key networking organization
+        supporting the local mobile industry in Japan.</p>\n","public_url":"https://momoto.doorkeeper.jp/"}}}'
+    http_version: 
+  recorded_at: Sun, 17 May 2015 22:46:04 GMT
+- request:
+    method: get
+    uri: https://nishiwaki-koberb.doorkeeper.jp/events/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 17 May 2015 22:46:05 GMT
+      Server:
+      - nginx/1.6.2
+      Set-Cookie:
+      - locale=ja; domain=.doorkeeper.jp; path=/; expires=Thu, 17 May 2035 22:46:05
+        -0000
+      - usdksc=bWFyWEhiVUN1UTZER0pHSk50ZC9UVXJMZDFGRVJXQ1l6bzl1aFVlcFM1MHpKcmF4ZU42Wm1qU21KZzdIUDcydmMyVkpuY2lBdkl6SHhkRXFkNUVCbk40TmRTVHR0WGhUZ21RajFzVGpOSXJFbytBTzdMVm1mTDdwYTN5cmFBSXd2R0hjaXJwd0FCM29RZkVGdUhLVW1BPT0tLUU1Qzc2ZHhiOVRIOU5IN1o3eUIyc3c9PQ%3D%3D--0153af382f254b9da83d89235691466ae3d04b30;
+        domain=.doorkeeper.jp; path=/; secure; HttpOnly
+      Status:
+      - 404 Not Found
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 67299d25-475b-418e-8f3c-72a474a0d6ad
+      X-Runtime:
+      - '0.024498'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '2647'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9J2phJz4KPGhlYWQ+CjxtZXRh
+        IGNvbnRlbnQ9J3RleHQvaHRtbDtjaGFyc2V0PVVURi04JyBodHRwLWVxdWl2
+        PSdjb250ZW50LXR5cGUnPgo8bWV0YSBjaGFyc2V0PSd1dGYtOCc+CjxtZXRh
+        IGNvbnRlbnQ9J0lFPUVkZ2UsY2hyb21lPTEnIGh0dHAtZXF1aXY9J1gtVUEt
+        Q29tcGF0aWJsZSc+CjxtZXRhIGNvbnRlbnQ9J3dpZHRoPWRldmljZS13aWR0
+        aCxpbml0aWFsLXNjYWxlPTEsbWF4aW11bS1zY2FsZT0xLHVzZXItc2NhbGFi
+        bGU9bm8nIG5hbWU9J3ZpZXdwb3J0Jz4KPHRpdGxlPuOBiuaOouOBl+OBruOD
+        muODvOOCuOOBr+imi+OBpOOBi+OCiuOBvuOBm+OCk+OBp+OBl+OBn++8iDQw
+        NO+8iTwvdGl0bGU+CjxsaW5rIGhyZWY9J2h0dHBzOi8vZHpwcDc5dWNpYnA1
+        YS5jbG91ZGZyb250Lm5ldC9hc3NldHMvZG9vcmtlZXBlcl9pY29uLTE2LTA1
+        YzQzN2VmYzBhNDcxNTIzOWIxMGFkNjA0MTY4ZTU4LmljbycgcmVsPSdpY29u
+        Jz4KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBtZWRpYT0ic2NyZWVuIiBocmVm
+        PSJodHRwczovL2R6cHA3OXVjaWJwNWEuY2xvdWRmcm9udC5uZXQvYXNzZXRz
+        L3d3dy1iOTk4NDA1ZmQ3ZTBjNzEyYTdjZWQzNWY4MzA2YzFhYS5jc3MiIC8+
+        CjxzY3JpcHQgc3JjPSJodHRwczovL2R6cHA3OXVjaWJwNWEuY2xvdWRmcm9u
+        dC5uZXQvYXNzZXRzL3d3dy05OWViMGI0ZDc3OTgwMzBmYWJiYThiMzU0ZDg1
+        NDA2Zi5qcyI+PC9zY3JpcHQ+CjxtZXRhIG5hbWU9ImNzcmYtcGFyYW0iIGNv
+        bnRlbnQ9ImF1dGhlbnRpY2l0eV90b2tlbiIgLz4KPG1ldGEgbmFtZT0iY3Ny
+        Zi10b2tlbiIgY29udGVudD0iNzdOYXhyYXdJQ0pramdpcFlQMURNMkNTdVlp
+        VVIvTytHbW1CNU9JaXJBVUpIUnpMaDRhakdQQVFTVk9jeVlTOUdNcWIxaHJZ
+        NkZMN3FNN2QvT0NuU3c9PSIgLz4KPHNjcmlwdCB0eXBlPSd0ZXh0L2phdmFz
+        Y3JpcHQnPgovLzwhW0NEQVRBWwogIHZhciBfZ2FxID0gX2dhcSB8fCBbXTsK
+        ICBfZ2FxLnB1c2goWydfc2V0QWNjb3VudCcsICdVQS0xNTgzNDI4NC0xJ10p
+        OwogIF9nYXEucHVzaChbJ19zZXREb21haW5OYW1lJywgJy5kb29ya2VlcGVy
+        LmpwJ10pOwogIF9nYXEucHVzaChbJ190cmFja1BhZ2V2aWV3J10pOwoKICAo
+        ZnVuY3Rpb24oKSB7CiAgICB2YXIgZ2EgPSBkb2N1bWVudC5jcmVhdGVFbGVt
+        ZW50KCdzY3JpcHQnKTsgZ2EudHlwZSA9ICd0ZXh0L2phdmFzY3JpcHQnOyBn
+        YS5hc3luYyA9IHRydWU7CiAgICBnYS5zcmMgPSAoJ2h0dHBzOicgPT0gZG9j
+        dW1lbnQubG9jYXRpb24ucHJvdG9jb2wgPyAnaHR0cHM6Ly9zc2wnIDogJ2h0
+        dHA6Ly93d3cnKSArICcuZ29vZ2xlLWFuYWx5dGljcy5jb20vZ2EuanMnOwog
+        ICAgdmFyIHMgPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgnc2Ny
+        aXB0JylbMF07IHMucGFyZW50Tm9kZS5pbnNlcnRCZWZvcmUoZ2EsIHMpOwog
+        IH0pKCk7Ci8vXV0+Cjwvc2NyaXB0PgoKPCEtLVtpZiBsdCBJRSA5XT4KPHNj
+        cmlwdCBzcmM9Imh0dHBzOi8vaWU3LWpzLmdvb2dsZWNvZGUuY29tL3N2bi92
+        ZXJzaW9uLzIuMShiZXRhNCkvSUU5LmpzIj48L3NjcmlwdD4KPCFbZW5kaWZd
+        LS0+CjwvaGVhZD4KPGJvZHk+CjxkaXYgY2xhc3M9J25hdmJhciBuYXZiYXIt
+        c3RhdGljLXRvcCBuYXZiYXItaW52ZXJzZSc+CjxkaXYgY2xhc3M9J25hdmJh
+        ci1pbm5lcic+CjxkaXYgY2xhc3M9J2NvbnRhaW5lcic+CjxhIGNsYXNzPSJi
+        cmFuZCIgaHJlZj0iLyI+PGltZyBoZWlnaHQ9IjI5IiB3aWR0aD0iMTk0IiBh
+        bHQ9IkRvb3JrZWVwZXIiIHNyYz0iaHR0cHM6Ly9kenBwNzl1Y2licDVhLmNs
+        b3VkZnJvbnQubmV0L2Fzc2V0cy9kb29ya2VlcGVyX3doaXRlLTM2MWFlYTE0
+        ZTEwZWRmMmExYTFjOWU1MmRlM2ZjNWJhLnBuZyIgLz48L2E+CjwvZGl2Pgo8
+        L2Rpdj4KPC9kaXY+CjxkaXYgY2xhc3M9J2NvbnRlbnQgY29udGVudC13aXRo
+        LWJhY2tncm91bmQtaW1hZ2UgY29udGVudC13aXRoLWVtcHR5LWJhY2tncm91
+        bmQtaW1hZ2UnPgo8ZGl2IGNsYXNzPSdjb250YWluZXInPgo8ZGl2IGNsYXNz
+        PSdtb2RhbCBtb2RhbC1yZXBsYWNlbWVudCc+CjxkaXYgY2xhc3M9J21vZGFs
+        LWhlYWRlcic+CjxoMj7jgYrmjqLjgZfjga7jg5rjg7zjgrjjga/opovjgaTj
+        gYvjgorjgb7jgZvjgpPjgafjgZfjgZ/vvIg0MDTvvIk8L2gyPgo8L2Rpdj4K
+        PGRpdiBjbGFzcz0nbW9kYWwtYm9keSc+CjxwPlVSTOOBruOCv+OCpOODl+OD
+        n+OCueOBvuOBn+OBr+ODmuODvOOCuOOBjOenu+WLleOBleOCjOOBn+WPr+iD
+        veaAp+OBjOOBguOCiuOBvuOBmeOAguS7iuS4gOW6plVSTOOBruOBlOeiuuiq
+        jeOBruOBhuOBiOOAgeOCouOCr+OCu+OCueOBiumhmOOBhOOBhOOBn+OBl+OB
+        vuOBmeOAgjwvcD4KPHA+44K344K544OG44Og5LiK44Gu5LiN5YW35ZCI562J
+        44Gr44Gk44GN44G+44GX44Gm44Gv44CBPGEgaHJlZj0iaHR0cHM6Ly9tYW5h
+        Z2UuZG9vcmtlZXBlci5qcC9jb250YWN0L25ldyI+44GK5ZWP44GE5ZCI44KP
+        44GbPC9hPuOBj+OBoOOBleOBhOOAgjwvcD4KCjwvZGl2Pgo8L2Rpdj4KPC9k
+        aXY+CjwvZGl2Pgo8Zm9vdGVyIHN0eWxlPSd0ZXh0LWFsaWduOiBjZW50ZXIn
+        Pgo8cD4KJmNvcHk7IDIwMTAtMjAxNQo8YnI+CkRvb3JrZWVwZXLmoKrlvI/k
+        vJrnpL4KPC9wPgo8L2Zvb3Rlcj4KPC9ib2R5Pgo8L2h0bWw+Cg==
+    http_version: 
+  recorded_at: Sun, 17 May 2015 22:46:05 GMT
+recorded_with: VCR 2.9.3
