@@ -57,4 +57,6 @@ group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'launchy'
   gem 'timecop'
+  gem 'vcr', '~> 2.9.3', require: false
+  gem 'webmock', '1.20.4', require: false
 end
