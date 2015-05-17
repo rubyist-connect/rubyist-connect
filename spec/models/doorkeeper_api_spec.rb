@@ -124,7 +124,7 @@ describe DoorkeeperApi do
 
     example 'as hash' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-      VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details', match_requests_on: [:uri] do
+      VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         result = DoorkeeperApi.fetch_event_details(event_url)
         expect(result).to match expected
       end
@@ -132,7 +132,7 @@ describe DoorkeeperApi do
 
     example 'as mash' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-      VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details', match_requests_on: [:uri] do
+      VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
         event = result.event
         expect(event.title).to eq "Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～"
