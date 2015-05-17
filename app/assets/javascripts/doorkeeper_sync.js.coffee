@@ -1,6 +1,8 @@
 $ ->
   setDoorkeeperInfo =  (results) ->
     $('.event-name').val results.name
+    $.each results.attendee_user_ids, ->
+      $("#event_user_ids_#{this}").prop('checked', true)
 
   syncDoorkeeper = ->
     path = $(@).data().path
