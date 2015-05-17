@@ -22,6 +22,9 @@ class DoorkeepersController < ApplicationController
       if user_id.nil?
         user_id = User.find_by_name(profile.name).try(:id)
       end
+      if user_id.nil?
+        user_id = User.find_by_nickname(profile.name).try(:id)
+      end
       user_id
     }.compact
   end
