@@ -4,6 +4,7 @@ feature 'Doorkeeper sync' do
   given(:login_user) { create :user }
   given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'yuji-shimoda' }
   given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
+  given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'takamichi.hara' }
 
   scenario 'Doorkeeperの情報をフォームに反映させる', js: true do
     sign_in_as_active_user(login_user)
@@ -15,6 +16,7 @@ feature 'Doorkeeper sync' do
 
       expect(find("#event_user_ids_#{yuji_shimoda.id}")).to be_checked
       expect(find("#event_user_ids_#{ito.id}")).to be_checked
+      expect(find("#event_user_ids_#{hara.id}")).to be_checked
     end
   end
 end
