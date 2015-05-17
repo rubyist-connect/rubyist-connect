@@ -6,7 +6,9 @@ class DoorkeeperApi
     url = "http://api.doorkeeper.jp/events/#{event_id}"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
-    JSON.parse(response.body)
+    event_details = JSON.parse(response.body)
+    event_details["event"].merge!("participant_profiles" => fetch_attendees(event_id))
+    event_details
   end
 
   def self.fetch_attendees(event_id)

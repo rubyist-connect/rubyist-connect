@@ -110,6 +110,7 @@ describe DoorkeeperApi do
               "address" => "神戸市東灘区深江本町3-9-1 深江駅前ビル201",
               "lat" => "34.7224488",
               "long" => "135.29165060000003",
+              "participant_profiles" => expected_profiles,
               "ticket_limit" => 15,
               "published_at" => "2015-05-01T03:23:25.541Z",
               "updated_at" => "2015-05-16T05:54:28.463Z",
@@ -129,10 +130,98 @@ describe DoorkeeperApi do
           }
       }
     end
+    let(:expected_profiles) do
+      [
+          {
+              :name => "Yuji Shimoda",
+              :facebook => nil,
+              :twitter => "yuji_shimoda",
+              :github => "yuji-shimoda"
+          },
+          {
+              :name => "Yuya",
+              :facebook => "yuyakato1984",
+              :twitter => "nayutaya",
+              :github => "nayutaya"
+          },
+          {
+              :name => "原孝道",
+              :facebook => "takamichi.hara",
+              :twitter => nil,
+              :github => nil
+          },
+          {
+              :name => "Takahiro YAOTA (YuZakuro)",
+              :facebook => "zakuro9715",
+              :twitter => "zakuro9715",
+              :github => "zakuro9715"
+          },
+          {
+              :name => "たかえす ゆうじ(yusabana)",
+              :facebook => "yu.takaesu",
+              :twitter => "yusabana",
+              :github => "yusabana"
+          },
+          {
+              :name => "村上 健太",
+              :facebook => "kntmrkm",
+              :twitter => "kntmrkm",
+              :github => "kntmrkm"
+          },
+          {
+              :name => "knmsyk (こうの)",
+              :facebook => nil,
+              :twitter => "knmsyk",
+              :github => "knmsyk"
+          },
+          {
+              :name => "寺田 大輔",
+              :facebook => "aq2bq",
+              :twitter => "aq2bq",
+              :github => "aq2bq"
+          },
+          {
+              :name => "荻 竜也",
+              :facebook => "tatsuya.ogi",
+              :twitter => "t_oginogin",
+              :github => "t-oginogin"
+          },
+          {
+              :name => "やましー",
+              :facebook => "100008277219454",
+              :twitter => nil,
+              :github => "yamasy1549"
+          },
+          {
+              :name => "Aki ",
+              :facebook => nil,
+              :twitter => "spring_aki",
+              :github => nil
+          },
+          {
+              :name => "otokunaga",
+              :facebook => "profile.php?id=100008140051101",
+              :twitter => "otokunaga2",
+              :github => nil
+          },
+          {
+              :name => "伊藤淳一",
+              :facebook => "junichi.ito.717",
+              :twitter => "jnchito",
+              :github => nil
+          },
+          {
+              :name => "たいら",
+              :facebook => "app_scoped_user_id",
+              :twitter => "macha3k",
+              :github => "m-taira"
+          }
+      ]
+    end
     example do
       event_id = '24544'
       result = DoorkeeperApi.fetch_event_details(event_id)
-      expect(result).to eq expected
+      expect(result).to match expected
     end
   end
 end
