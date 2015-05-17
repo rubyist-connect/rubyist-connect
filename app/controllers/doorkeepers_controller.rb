@@ -19,6 +19,9 @@ class DoorkeepersController < ApplicationController
       if user_id.nil? && (facebook = profile.facebook)
         user_id = User.find_by_facebook_name(facebook).try(:id)
       end
+      if user_id.nil?
+        user_id = User.find_by_name(profile.name).try(:id)
+      end
       user_id
     }.compact
   end
