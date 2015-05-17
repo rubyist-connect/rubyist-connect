@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   end
 
   scope 'nnect' do
-    get :doorkeeper_sync, to: 'doorkeepers#sync'
     resources :events do
       resources :users, only: %i(show), param: :nickname
     end
@@ -15,6 +14,10 @@ Rails.application.routes.draw do
     delete '/' => 'users#destroy'
     # editより必ずあとに持ってくる（editがnicknameとして扱われるため）
     resources :users, path: '', only: [:index, :show], param: :nickname
+
+    resource :doorkeepers, only: [] do
+      get :fetch, on: :collection
+    end
   end
 
   root 'top#index'

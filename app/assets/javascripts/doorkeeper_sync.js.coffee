@@ -1,3 +1,15 @@
 $ ->
-  $('.link-doorkeeper-sync').on 'click', ->
-    $('.event-name').val 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～'
+  setDoorkeeperInfo =  (results) ->
+    $('.event-name').val results.name
+
+  syncDoorkeeper = ->
+    path = $(@).data().path
+
+    $.ajax
+      url: path
+      dataType: "json"
+      success: (results) ->
+        setDoorkeeperInfo(results)
+
+  $('.link-doorkeeper-sync').on
+    'click' : syncDoorkeeper

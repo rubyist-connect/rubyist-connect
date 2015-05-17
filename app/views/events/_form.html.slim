@@ -17,7 +17,7 @@
           .form-group
             = f.label :url
             = f.text_field :url, class: 'form-control'
-            = link_to 'Doorkeeper Sync', 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning'
+            = link_to 'Doorkeeper Sync', 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_doorkeepers_path }
           .form-group
               = f.label :users
               br
