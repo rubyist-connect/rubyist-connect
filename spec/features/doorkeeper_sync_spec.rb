@@ -51,4 +51,49 @@ feature 'Doorkeeper sync' do
       end
     end
   end
+
+  feature 'ボタンの有効制御', js: true do
+    background do
+      sign_in_as_active_user(login_user)
+    end
+    context '新規作成画面' do
+      scenario '適切に制御される' do
+        visit new_event_path
+        expect(page).to have_css '.link-doorkeeper-sync.disabled'
+
+        fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
+        expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
+
+        fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events'
+        expect(page).to have_css '.link-doorkeeper-sync.disabled'
+
+        fill_in 'Url', with: 'https://koberb.doorkeeper.jp/events/24880'
+        expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
+      end
+    end
+    context '編集画面' do
+      given(:event) { create :event, url: url }
+      background do
+        visit edit_event_path(event)
+      end
+      context '未入力' do
+        given(:url) { '' }
+        scenario '無効になっている' do
+          expect(page).to have_css '.link-doorkeeper-sync.disabled'
+        end
+      end
+      context 'DoorkeeperのURL' do
+        given(:url) { 'https://nishiwaki-koberb.doorkeeper.jp/events/24544' }
+        scenario '有効になっている' do
+          expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
+        end
+      end
+      context '無効なURL' do
+        given(:url) { 'https://nishiwaki-koberb.doorkeeper.jp/events' }
+        scenario '無効になっている' do
+          expect(page).to have_css '.link-doorkeeper-sync.disabled'
+        end
+      end
+    end
+  end
 end
