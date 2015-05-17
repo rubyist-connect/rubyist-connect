@@ -10,6 +10,7 @@ class DoorkeeperApi
   def self.fetch_event_details(event_id)
     url = "http://api.doorkeeper.jp/events/#{event_id}"
     uri = URI.parse(url)
+    # TODO 404エラー等のエラー処理を考慮する
     response = Net::HTTP.get_response(uri)
     JSON.parse(response.body).tap do |event_details|
       event_details["event"].merge!("participant_profiles" => fetch_attendees(event_id))
@@ -18,6 +19,7 @@ class DoorkeeperApi
 
   def self.fetch_attendees(event_id)
     url = "https://nishiwaki-koberb.doorkeeper.jp/events/#{event_id}"
+    # TODO 404エラー等のエラー処理を考慮する
     doc = read_doc_from_url(url)
     doc.xpath('//div[@class="user-profile-details"]').map do |profile|
       name = profile.xpath('div[@class="user-name"]').text
