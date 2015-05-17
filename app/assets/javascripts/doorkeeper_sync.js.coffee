@@ -30,6 +30,12 @@ $ ->
         success: (results) ->
           setDoorkeeperInfo(results)
           $('.img-loading').hide()
+        error: (XMLHttpRequest, textStatus, errorThrown) ->
+          console.error("Error occurred in replaceChildrenOptions")
+          console.log("XMLHttpRequest: #{XMLHttpRequest.status}")
+          console.log("textStatus: #{textStatus}")
+          console.log("errorThrown: #{errorThrown}")
+          $('.img-loading').hide()
 
     $('.link-doorkeeper-sync').on
       'click' : syncDoorkeeper
