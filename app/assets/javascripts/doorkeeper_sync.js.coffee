@@ -4,9 +4,10 @@ $ ->
 
   syncDoorkeeper = ->
     path = $(@).data().path
+    event_url = $('.doorkeeper-event-url').val()
 
     $.ajax
-      url: path
+      url: "#{path}?event_url=#{event_url}"
       dataType: "json"
       success: (results) ->
         setDoorkeeperInfo(results)

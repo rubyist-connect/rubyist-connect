@@ -1,5 +1,7 @@
 class DoorkeepersController < ApplicationController
   def fetch
-    render json: { name: 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～' }
+    result = DoorkeeperApi.fetch_event_details_as_mash(params[:event_url])
+    event = result.event
+    render json: { name: event.title }
   end
 end
