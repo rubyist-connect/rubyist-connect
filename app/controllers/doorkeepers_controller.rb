@@ -9,23 +9,25 @@ class DoorkeepersController < ApplicationController
 
   def attendee_user_ids(participant_profiles)
     participant_profiles.map { |profile|
-      user_id = nil
-      if github = profile.github
-        user_id = User.find_by_nickname(github).try(:id)
-      end
-      if user_id.nil? && (twitter = profile.twitter)
-        user_id = User.find_by_twitter_name(twitter).try(:id)
-      end
-      if user_id.nil? && (facebook = profile.facebook)
-        user_id = User.find_by_facebook_name(facebook).try(:id)
-      end
-      if user_id.nil?
-        user_id = User.find_by_name(profile.name).try(:id)
-      end
-      if user_id.nil?
-        user_id = User.find_by_nickname(profile.name).try(:id)
-      end
-      user_id
+      find_user_by_profile(profile).try(:id)
     }.compact
+  end
+
+  def find_user_by_profile(profile)
+    condition = <<-SQL
+(LOWER(nickname) = :github)
+OR (LOWER(twitter_name) = :twitter)
+OR (LOWER(facebook_name) = :facebook)
+OR (REPLACE(LOWER(name), ' ', '') = :name)
+OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
+    SQL
+
+    User.where(condition,
+               github: profile.github.try(:downcase),
+               twitter: profile.twitter.try(:downcase),
+               facebook: profile.facebook.try(:downcase),
+               name: profile.name.gsub(' ', '').downcase,
+               nickname: profile.name.gsub(' ', '').downcase
+    ).first
   end
 end
