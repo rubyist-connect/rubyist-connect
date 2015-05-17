@@ -11,7 +11,7 @@ $ ->
   changeSyncButtonEnabled()
 
   $('.field-doorkeeper-event-url').on
-    'change' : changeSyncButtonEnabled
+    'input' : changeSyncButtonEnabled
 
   do ->
     setDoorkeeperInfo =  (results) ->
