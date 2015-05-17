@@ -18,7 +18,9 @@
             = f.label :url
             = f.text_field :url, class: 'form-control field-doorkeeper-event-url'
             .doorkeeper-sync-container
-              = link_to 'Doorkeeper Sync', 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_doorkeepers_path }
+              = link_to 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_doorkeepers_path } do
+                => fa_icon 'refresh'
+                | Doorkeeper Sync
               =<> image_tag 'loading.gif', class: 'img-loading', style: 'display:none;'
               span.doorkeeper-sync-status
           .form-group
