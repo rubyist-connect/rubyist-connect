@@ -23,6 +23,8 @@ feature 'Doorkeeper sync' do
         expect(find("#event_user_ids_#{aki.id}")).to be_checked
         expect(find("#event_user_ids_#{otokunaga.id}")).to be_checked
         expect(find("#event_user_ids_#{login_user.id}")).to_not be_checked
+
+        expect(page).to have_selector '.doorkeeper-sync-status', text: '情報を取得しました。'
       end
     end
   end
