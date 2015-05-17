@@ -123,17 +123,17 @@ describe DoorkeeperApi do
     end
 
     example 'as hash' do
-      event_id = '24544'
+      event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details', match_requests_on: [:uri] do
-        result = DoorkeeperApi.fetch_event_details(event_id)
+        result = DoorkeeperApi.fetch_event_details(event_url)
         expect(result).to match expected
       end
     end
 
     example 'as mash' do
-      event_id = '24544'
+      event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details', match_requests_on: [:uri] do
-        result = DoorkeeperApi.fetch_event_details_as_mash(event_id)
+        result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
         event = result.event
         expect(event.title).to eq "Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～"
         profiles = event.participant_profiles
