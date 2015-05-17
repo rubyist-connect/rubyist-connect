@@ -322,6 +322,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.5.0)
   faker
   font-awesome-rails
+  hashie
   heroku_san
   i18n_generators
   jbuilder (~> 2.0)

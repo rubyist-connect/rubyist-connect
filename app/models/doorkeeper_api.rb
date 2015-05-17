@@ -1,7 +1,12 @@
 require 'open-uri'
 require 'nokogiri'
+require 'hashie'
 
 class DoorkeeperApi
+  def self.fetch_event_details_as_mash(event_id)
+    Hashie::Mash.new(fetch_event_details(event_id))
+  end
+
   def self.fetch_event_details(event_id)
     url = "http://api.doorkeeper.jp/events/#{event_id}"
     uri = URI.parse(url)

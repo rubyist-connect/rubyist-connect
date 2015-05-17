@@ -122,11 +122,27 @@ describe DoorkeeperApi do
       ]
     end
 
-    example do
+    example 'as hash' do
       event_id = '24544'
-      VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details' do
+      VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details', match_requests_on: [:uri] do
         result = DoorkeeperApi.fetch_event_details(event_id)
         expect(result).to match expected
+      end
+    end
+
+    example 'as mash' do
+      event_id = '24544'
+      VCR.use_cassette 'models/doorkeeper_api_spec/fetch_event_details', match_requests_on: [:uri] do
+        result = DoorkeeperApi.fetch_event_details_as_mash(event_id)
+        event = result.event
+        expect(event.title).to eq "Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～"
+        profiles = event.participant_profiles
+        expect(profiles.size).to eq 14
+        profile = profiles.first
+        expect(profile.name).to eq "Yuji Shimoda"
+        expect(profile.facebook).to be_nil
+        expect(profile.twitter).to eq "yuji_shimoda"
+        expect(profile.github).to eq "yuji-shimoda"
       end
     end
   end
