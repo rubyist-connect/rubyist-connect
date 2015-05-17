@@ -22,6 +22,8 @@
                 => fa_icon 'refresh'
                 | Doorkeeper Sync
               =<> image_tag 'loading.gif', class: 'img-loading', style: 'display:none;'
+              => fa_icon 'check-circle', class: 'result-success result-icon-success', style: 'display:none;'
+              => fa_icon 'exclamation-circle', class: 'result-error result-icon-error', style: 'display:none;'
               span.doorkeeper-sync-status
           .form-group
               = f.label :users

@@ -28,6 +28,8 @@ feature 'Doorkeeper sync', js: true do
 
         expect(page).to have_selector '.doorkeeper-sync-status', text: '情報を取得しました。'
         expect(page).to have_css '.doorkeeper-sync-status.result-success'
+        expect(page).to have_css '.result-icon-success'
+        expect(page).to_not have_css '.img-loading'
       end
     end
   end
@@ -64,6 +66,8 @@ feature 'Doorkeeper sync', js: true do
         click_on 'Doorkeeper Sync'
         expect(page).to have_selector '.doorkeeper-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
         expect(page).to have_css '.doorkeeper-sync-status.result-error'
+        expect(page).to have_css '.result-icon-error'
+        expect(page).to_not have_css '.img-loading'
       end
     end
   end
@@ -76,6 +80,8 @@ feature 'Doorkeeper sync', js: true do
       click_on 'Doorkeeper Sync'
       expect(page).to have_selector '.doorkeeper-sync-status', text: 'エラーが発生しました。しばらく経ってから再度実行してください。'
       expect(page).to have_css '.doorkeeper-sync-status.result-error'
+      expect(page).to have_css '.result-icon-error'
+      expect(page).to_not have_css '.img-loading'
     end
   end
 

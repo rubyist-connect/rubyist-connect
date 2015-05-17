@@ -27,6 +27,7 @@ $ ->
 
       $statusMessage = $('.doorkeeper-sync-status')
       $statusMessage.text('情報を取得しています...').removeClass('result-success result-error')
+      $('.result-icon-success,.result-icon-error').hide()
 
       $.ajax
         url: "#{path}?event_url=#{event_url}"
@@ -34,6 +35,7 @@ $ ->
         success: (results) ->
           setDoorkeeperInfo(results)
           $statusMessage.text('情報を取得しました。').addClass('result-success')
+          $('.result-icon-success').show()
           $imgLoading.hide()
         error: (XMLHttpRequest, textStatus, errorThrown) ->
           switch XMLHttpRequest.status
@@ -45,6 +47,7 @@ $ ->
               console.log("errorThrown: #{errorThrown}")
               $statusMessage.text('エラーが発生しました。しばらく経ってから再度実行してください。')
           $statusMessage.addClass('result-error')
+          $('.result-icon-error').show()
           $imgLoading.hide()
 
     $('.link-doorkeeper-sync').on
