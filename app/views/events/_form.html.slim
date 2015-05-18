@@ -18,6 +18,8 @@
             = f.label :url
             = f.text_field :url, class: 'form-control field-doorkeeper-event-url'
             .doorkeeper-sync-container
+              .doorkeeper-sync-description
+                | DoorkeeperのイベントURLを入力して下のボタンをクリックすると、イベント名と参加者をフォームに反映します。
               = link_to 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_doorkeepers_path } do
                 => fa_icon 'refresh'
                 | Doorkeeper Sync
