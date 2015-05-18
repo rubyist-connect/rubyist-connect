@@ -8,8 +8,11 @@ module DoorkeeperApi
       result = fetch_event_details_as_mash(event_url)
       if result.status == 'success'
         event = result.event
-        { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }
+        { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }.tap do |info|
+          _logger.info "[INFO] Event details: #{info.inspect}, #{event_url}"
+        end
       else
+        _logger.info "[INFO] Event not found: #{event_url}"
         { status: result.status }
       end
     end
@@ -67,13 +70,19 @@ OR (REPLACE(LOWER(name), ' ', '') = :name)
 OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
       SQL
 
-      User.active.where(condition,
+      users = User.active.where(condition,
                         github: profile.github.try(:downcase),
                         twitter: profile.twitter.try(:downcase),
                         facebook: profile.facebook.try(:downcase),
                         name: profile.name.gsub(' ', '').downcase,
                         nickname: profile.name.gsub(' ', '').downcase
-      ).first
+      )
+      if users.count > 1
+        _logger.warn "[WARN] Found more than one users: #{users.inspect}"
+        nil
+      else
+        users.first
+      end
     end
 
     def _fetch_attendees(event_url)

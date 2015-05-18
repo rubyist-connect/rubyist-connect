@@ -34,6 +34,7 @@ describe DoorkeeperApi do
           }
       }
     end
+
     let(:expected_profiles) do
       [
           {
