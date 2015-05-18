@@ -9,10 +9,10 @@ module DoorkeeperApi
       if result.status == 'success'
         event = result.event
         { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }.tap do |info|
-          _logger.info "[INFO] Event details: #{info.inspect}, #{event_url}"
+          _logger.info "[INFO] Fetch event successfully: #{info.inspect}, #{event_url}"
         end
       else
-        _logger.info "[INFO] Event not found: #{event_url}"
+        _logger.info "[INFO] Fetch event unsuccessfully: #{result.status}, #{event_url}"
         { status: result.status }
       end
     end
