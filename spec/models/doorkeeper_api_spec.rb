@@ -148,7 +148,15 @@ describe DoorkeeperApi do
       end
     end
 
-    example 'not found' do
+    example 'event id not found' do
+      event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24'
+      VCR.use_cassette 'doorkeeper_events/24_not_found', match_requests_on: [:uri] do
+        result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
+        expect(result.status).to eq 'not_found'
+      end
+    end
+
+    example 'event page not found' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/1'
       VCR.use_cassette 'doorkeeper_events/1_not_found', match_requests_on: [:uri] do
         result = DoorkeeperApi.fetch_event_details_as_mash(event_url)

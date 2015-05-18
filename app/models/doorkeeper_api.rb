@@ -13,11 +13,18 @@ module DoorkeeperApi
       url = "http://api.doorkeeper.jp/events/#{event_id}"
       _logger.info "[INFO] Reading #{url}"
       uri = URI.parse(url)
-      # TODO 404エラー等のエラー処理を考慮する
       response = Net::HTTP.get_response(uri)
-      JSON.parse(response.body).tap do |event_details|
-        event_details["status"] = 'success'
-        event_details["event"].merge!("participant_profiles" => _fetch_attendees(event_url))
+      case response.code
+        when '200'
+          JSON.parse(response.body).tap do |event_details|
+            event_details["status"] = 'success'
+            event_details["event"].merge!("participant_profiles" => _fetch_attendees(event_url))
+          end
+        when '404'
+          _logger.warn "[WARN] Not found: #{url}"
+          { 'status' => 'not_found' }
+        else
+          raise "Could not get event details: #{response.inspect}"
       end
     rescue OpenURI::HTTPError => e
       _logger.warn "[WARN] HTTPError: #{e}"
@@ -34,7 +41,6 @@ module DoorkeeperApi
     end
 
     def _fetch_attendees(event_url)
-      # TODO 404エラー等のエラー処理を考慮する
       doc = _read_doc_from_url(event_url)
       doc.xpath('//div[@class="user-profile-details"]').map do |profile|
         name = profile.xpath('div[@class="user-name"]').text
