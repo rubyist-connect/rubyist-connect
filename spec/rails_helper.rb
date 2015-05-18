@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'faker'
 require 'vcr'
+require 'capybara/poltergeist'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
 
@@ -16,7 +17,7 @@ RSpec.configure do |config|
 
   config.include LoginMacros, type: :feature
 
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.infer_spec_type_from_file_location!
 
@@ -38,5 +39,33 @@ RSpec.configure do |config|
     c.cassette_library_dir = 'spec/vcr'
     c.hook_into :webmock
     c.allow_http_connections_when_no_cassette = true
+  end
+
+  # https://raw.githubusercontent.com/terriblelabs/kickoff/master/template.rb
+  Capybara.default_wait_time = 240
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, timeout: 240)
+  end
+  Capybara.javascript_driver = :poltergeist
+
+  require 'database_cleaner'
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
