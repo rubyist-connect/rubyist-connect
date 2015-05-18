@@ -2,9 +2,11 @@ require 'rails_helper'
 
 feature 'Doorkeeper sync', js: true do
   given(:login_user) { create :user }
+
   background do
     sign_in_as_active_user(login_user)
   end
+
   context '完全一致する場合' do
     given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'yuji-shimoda' }
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
@@ -54,6 +56,23 @@ feature 'Doorkeeper sync', js: true do
         expect(find("#event_user_ids_#{aki.id}")).to be_checked
         expect(find("#event_user_ids_#{otokunaga.id}")).to be_checked
         expect(find("#event_user_ids_#{login_user.id}")).to_not be_checked
+      end
+    end
+  end
+
+  context 'activeではないユーザーが含まれている場合' do
+    given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'Yuji-shimoda', introduction: '' }
+    given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'Jnchito' }
+
+    scenario 'activeなユーザーだけを選択する' do
+      VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
+        visit new_event_path
+        fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
+        click_on 'Doorkeeper Sync'
+        expect(page).to have_field 'Name', with: 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～'
+
+        expect(page).to_not have_css "#event_user_ids_#{yuji_shimoda.id}"
+        expect(find("#event_user_ids_#{ito.id}")).to be_checked
       end
     end
   end

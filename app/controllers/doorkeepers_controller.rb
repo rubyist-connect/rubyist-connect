@@ -29,7 +29,7 @@ OR (REPLACE(LOWER(name), ' ', '') = :name)
 OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
     SQL
 
-    User.where(condition,
+    User.active.where(condition,
                github: profile.github.try(:downcase),
                twitter: profile.twitter.try(:downcase),
                facebook: profile.facebook.try(:downcase),
