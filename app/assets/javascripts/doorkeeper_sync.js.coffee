@@ -1,18 +1,21 @@
 $ ->
-  isDoorkeeperUrl = (url) ->
-    regex = /https:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
-    regex.test(url)
+  # Buttonの有効無効制御に関する処理
+  do ->
+    isDoorkeeperUrl = (url) ->
+      regex = /https:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
+      regex.test(url)
 
-  changeSyncButtonEnabled = ->
-    link = $('.link-doorkeeper-sync')
-    urlField = $('.field-doorkeeper-event-url')
-    link.toggleClass('disabled', !isDoorkeeperUrl(urlField.val()))
+    changeSyncButtonEnabled = ->
+      link = $('.link-doorkeeper-sync')
+      urlField = $('.field-doorkeeper-event-url')
+      link.toggleClass('disabled', !isDoorkeeperUrl(urlField.val()))
 
-  changeSyncButtonEnabled()
+    $('.field-doorkeeper-event-url').on
+      'input' : changeSyncButtonEnabled
 
-  $('.field-doorkeeper-event-url').on
-    'input' : changeSyncButtonEnabled
+    changeSyncButtonEnabled()
 
+  # Doorkeeperの情報取得に関する処理
   do ->
     setDoorkeeperInfo =  (results) ->
       $('.event-name').val results.name
