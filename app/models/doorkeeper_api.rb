@@ -6,14 +6,11 @@ module DoorkeeperApi
   class << self
     def fetch_event_details_with_attendee_user_ids(event_url)
       result = fetch_event_details_as_mash(event_url)
-      case result.status
-        when 'success'
-          event = result.event
-          { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }
-        when 'not_found'
-          { status: result.status }
-        else
-          { status: result.status }
+      if result.status == 'success'
+        event = result.event
+        { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }
+      else
+        { status: result.status }
       end
     end
 
