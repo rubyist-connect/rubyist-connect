@@ -21,32 +21,15 @@ module DoorkeeperApi
       Hashie::Mash.new(fetch_event_details(event_url))
     end
 
-    # FIXME エラー処理が美しくない・・・。
     def fetch_event_details(event_url)
-      event_id = event_url[/(?<=events\/)\d+/]
-      url = "http://api.doorkeeper.jp/events/#{event_id}"
-      _logger.info "[INFO] Reading #{url}"
-      uri = URI.parse(url)
-      response = Net::HTTP.get_response(uri)
-      case response.code
-        when '200'
-          JSON.parse(response.body).tap do |event_details|
-            event_details["status"] = 'success'
-            event_details["event"].merge!("participant_profiles" => _fetch_attendees(event_url))
-          end
-        when '404'
-          _logger.warn "[WARN] Not found: #{url}"
-          { 'status' => 'not_found' }
-        else
-          raise "Could not get event details: #{response.inspect}"
-      end
-    rescue OpenURI::HTTPError => e
-      _logger.warn "[WARN] HTTPError: #{e}"
-      case e.io.status.first
-        when /^4\d\d$/
-          { 'status' => 'not_found' }
-        else
-          raise
+      event_info = _fetch_event_info(event_url)
+      attendees = _fetch_attendees(event_url) if event_info.present?
+      if [event_info, attendees].all?(&:present?)
+        event_info["status"] = 'success'
+        event_info["event"]["participant_profiles"] = attendees
+        event_info
+      else
+        { 'status' => 'not_found' }
       end
     rescue => e
       _logger.error "[ERROR] #{e.inspect}"
@@ -55,6 +38,22 @@ module DoorkeeperApi
     end
 
     # 以下はprivateなクラスメソッド（メソッド名はアンダースコアで始める）
+
+    def _fetch_event_info(event_url)
+      event_id = event_url[/(?<=events\/)\d+/]
+      url = "http://api.doorkeeper.jp/events/#{event_id}"
+      _logger.info "[INFO] Reading #{url}"
+      uri = URI.parse(url)
+      response = Net::HTTP.get_response(uri)
+      case response.code
+        when '200'
+          JSON.parse(response.body)
+        when '404'
+          nil
+        else
+          raise "Could not get event details: #{response.inspect}"
+      end
+    end
 
     def _attendee_user_ids(participant_profiles)
       participant_profiles.map { |profile|
@@ -81,11 +80,12 @@ OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
     end
 
     def _fetch_attendees(event_url)
-      doc = _read_doc_from_url(event_url)
-      doc.xpath('//div[@class="user-profile-details"]').map do |profile|
-        name = profile.xpath('div[@class="user-name"]').text
-        social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
-        { "name" => name }.merge(_extract_accounts(social_links))
+      if doc = _read_doc_from_url(event_url)
+        doc.xpath('//div[@class="user-profile-details"]').map do |profile|
+          name = profile.xpath('div[@class="user-name"]').text
+          social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
+          { "name" => name }.merge(_extract_accounts(social_links))
+        end
       end
     end
 
@@ -109,6 +109,8 @@ OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
       _logger.info "[INFO] Reading #{url}"
       html = open(url)
       Nokogiri::HTML.parse(html, nil)
+    rescue OpenURI::HTTPError => e
+      e.io.status.first =~ /^4\d\d$/ ? nil : raise
     end
 
     def _logger
