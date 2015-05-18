@@ -8,6 +8,7 @@ module DoorkeeperApi
       Hashie::Mash.new(fetch_event_details(event_url))
     end
 
+    # FIXME エラー処理が美しくない・・・。
     def fetch_event_details(event_url)
       event_id = event_url[/(?<=events\/)\d+/]
       url = "http://api.doorkeeper.jp/events/#{event_id}"
