@@ -42,18 +42,23 @@ RSpec.configure do |config|
   end
 
   # https://raw.githubusercontent.com/terriblelabs/kickoff/master/template.rb
-  if ENV["TRAVIS"].present?
-    Capybara.default_wait_time = 240
-    Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, timeout: 240)
-    end
+  Capybara.default_wait_time = 240
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, timeout: 240)
   end
   Capybara.javascript_driver = :poltergeist
 
   require 'database_cleaner'
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
