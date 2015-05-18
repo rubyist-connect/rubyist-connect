@@ -4,6 +4,19 @@ require 'hashie'
 
 module DoorkeeperApi
   class << self
+    def fetch_event_details_with_attendee_user_ids(event_url)
+      result = fetch_event_details_as_mash(event_url)
+      case result.status
+        when 'success'
+          event = result.event
+          { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }
+        when 'not_found'
+          { status: result.status }
+        else
+          { status: result.status }
+      end
+    end
+
     def fetch_event_details_as_mash(event_url)
       Hashie::Mash.new(fetch_event_details(event_url))
     end
@@ -39,6 +52,32 @@ module DoorkeeperApi
       _logger.error "[ERROR] #{e.inspect}"
       _logger.error e.backtrace.join("\n")
       { 'status' => "ERROR: #{e.message}" }
+    end
+
+    # 以下はprivateなクラスメソッド（メソッド名はアンダースコアで始める）
+
+    def _attendee_user_ids(participant_profiles)
+      participant_profiles.map { |profile|
+        _find_user_by_profile(profile).try(:id)
+      }.compact
+    end
+
+    def _find_user_by_profile(profile)
+      condition = <<-SQL
+(LOWER(nickname) = :github)
+OR (LOWER(twitter_name) = :twitter)
+OR (LOWER(facebook_name) = :facebook)
+OR (REPLACE(LOWER(name), ' ', '') = :name)
+OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
+      SQL
+
+      User.active.where(condition,
+                        github: profile.github.try(:downcase),
+                        twitter: profile.twitter.try(:downcase),
+                        facebook: profile.facebook.try(:downcase),
+                        name: profile.name.gsub(' ', '').downcase,
+                        nickname: profile.name.gsub(' ', '').downcase
+      ).first
     end
 
     def _fetch_attendees(event_url)
