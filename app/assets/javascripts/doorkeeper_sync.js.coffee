@@ -2,7 +2,7 @@ $ ->
   # Buttonの有効無効制御に関する処理
   do ->
     isDoorkeeperUrl = (url) ->
-      regex = /https:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
+      regex = /https?:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
       regex.test(url)
 
     changeSyncButtonEnabled = ->

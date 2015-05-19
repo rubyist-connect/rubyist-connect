@@ -142,7 +142,7 @@ feature 'Doorkeeper sync', js: true do
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events'
         expect(page).to have_css '.link-doorkeeper-sync.disabled'
 
-        fill_in 'Url', with: 'https://koberb.doorkeeper.jp/events/24880'
+        fill_in 'Url', with: 'http://koberb.doorkeeper.jp/events/24880'
         expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
       end
     end
