@@ -113,7 +113,7 @@ describe DoorkeeperApi do
               "name" => "伊藤淳一",
               "facebook" => "junichi.ito.717",
               "twitter" => "jnchito",
-              "github" => nil
+              "github" => "JunichiIto"
           },
           {
               "name" => "たいら",

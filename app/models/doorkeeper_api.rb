@@ -86,7 +86,7 @@ OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
     end
 
     def _fetch_attendees(event_url)
-      if doc = _read_doc_from_url(event_url)
+      if doc = _read_doc_from_url(event_url.gsub(/^http:/, 'https:'))
         doc.xpath('//div[@class="user-profile-details"]').map do |profile|
           name = profile.xpath('div[@class="user-name"]').text
           social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
