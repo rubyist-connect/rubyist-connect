@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -60,4 +61,6 @@ group :test do
   gem 'timecop'
   gem 'vcr', '~> 2.9.3', require: false
   gem 'webmock', '1.20.4', require: false
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end

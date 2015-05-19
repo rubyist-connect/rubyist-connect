@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     delete '/' => 'users#destroy'
     # editより必ずあとに持ってくる（editがnicknameとして扱われるため）
     resources :users, path: '', only: [:index, :show], param: :nickname
+
+    resource :doorkeepers, only: [] do
+      get :fetch, on: :collection
+    end
   end
 
   root 'top#index'
