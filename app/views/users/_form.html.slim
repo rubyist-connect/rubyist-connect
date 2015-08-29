@@ -40,6 +40,13 @@
       .form-group
         = f.label :birthday
         = f.date_field :birthday, class: 'form-control', placeholder: '2015/01/01'
+      .form-group
+        = f.label :email
+        = f.text_field :email, class: 'form-control', placeholder: 'alice@example.com'
+      .form-group
+        label
+          = f.check_box :new_user_notification_enabled
+          | 新しいRubyistが参加したらメール通知する
       .actions
         = f.submit(class: 'btn btn-success btn-lg', value: '更新' )
   .col-md-2
