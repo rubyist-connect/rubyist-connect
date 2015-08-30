@@ -32,6 +32,7 @@ feature 'New user notification' do
       expect(page).to have_content '更新しました。'
 
       last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.subject).to eq '[Rubyist Connect-test] 新しいRubyistが登録されました！'
       expect(last_email.from).to eq ['noreply@rubyist.co']
       expect(last_email.to).to be_empty
       expect(last_email.bcc).to contain_exactly(*[bob ,chris].map(&:email))
