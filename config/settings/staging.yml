@@ -4,3 +4,5 @@ github:
 
 analytics:
   tracking_id: 'UA-58130400-2'
+
+host_name: rubyist-connect-staging.herokuapp.com
