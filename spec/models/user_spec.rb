@@ -106,4 +106,24 @@ describe User do
       expect(user.active?).to eq false
     end
   end
+
+  describe '::update_first_active_at_for_existing_users!' do
+    it 'updates active users only' do
+      active_user_1 = create :user
+      active_user_2 = create :user
+      inactive_user = create :user, :with_inactive_fields
+      User.update_all(first_active_at: nil)
+
+      updated_at_before = User.order(:id).map(&:updated_at)
+
+      User.update_first_active_at_for_existing_users!
+
+      expect([active_user_1, active_user_2].map(&:reload).map(&:first_active_at)).to all(be_present)
+      expect(inactive_user.reload.first_active_at).to be_blank
+
+      # Not change updated_at
+      updated_at_after = User.order(:id).map(&:updated_at)
+      expect(updated_at_after).to eq updated_at_before
+    end
+  end
 end

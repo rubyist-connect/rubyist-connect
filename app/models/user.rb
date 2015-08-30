@@ -47,6 +47,11 @@ class User < ActiveRecord::Base
     return user
   end
 
+  # 既存データ更新用のメソッド。画面からは呼ばれない。
+  def self.update_first_active_at_for_existing_users!
+    User.active.update_all(first_active_at: Time.current)
+  end
+
   def name_or_nickname
     name.presence || nickname
   end
