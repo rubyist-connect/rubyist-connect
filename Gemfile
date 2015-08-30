@@ -33,6 +33,7 @@ gem 'rack-dev-mark'
 gem 'validate_url'
 gem 'page_title_helper'
 gem 'hashie'
+gem 'email_validator'
 
 group :production, :staging do
   gem 'rails_12factor'

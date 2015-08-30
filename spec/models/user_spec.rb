@@ -46,6 +46,32 @@ describe User do
       user.nickname = 'Edit'
       expect(user).to be_invalid
     end
+
+    describe 'email' do
+      context 'when new user notificatin disabled' do
+        it 'allow blank email' do
+          user = build :user
+          user.new_user_notification_enabled = false
+          user.email = ''
+          expect(user).to be_valid
+        end
+      end
+      context 'when new user notificatin enabled' do
+        it 'does not allow blank email' do
+          user = build :user
+          user.new_user_notification_enabled = true
+          user.email = ''
+          expect(user).to be_invalid
+          user.email = 'alice@wxample.com'
+          expect(user).to be_valid
+        end
+      end
+      it 'must be valid format' do
+        user = build :user
+        user.email = 'alice@example..com'
+        expect(user).to be_invalid
+      end
+    end
   end
 
   describe '#age' do

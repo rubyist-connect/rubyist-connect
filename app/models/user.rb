@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
   # ユーザ設定画面のpathと重複するのでeditさんのアカウント登録はNGとする
   validates :nickname, presence: true, uniqueness: true, format: { without: /\Aedit\z/i }
 
+  validates :email, email: true, allow_blank: true
+  validates :email, presence: true, if: :new_user_notification_enabled?
+
   validates_date :birthday, allow_blank: true
 
   before_save :set_first_active_at, if: -> { !was_active? && active? }

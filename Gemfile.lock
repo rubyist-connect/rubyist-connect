@@ -80,6 +80,8 @@ GEM
     domain_name (0.5.22)
       unf (>= 0.0.5, < 1.0.0)
     dummy_text_jp (0.0.2)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     excon (0.42.1)
     execjs (2.2.1)
@@ -336,6 +338,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dummy_text_jp
+  email_validator
   factory_girl_rails (~> 4.5.0)
   faker
   font-awesome-rails

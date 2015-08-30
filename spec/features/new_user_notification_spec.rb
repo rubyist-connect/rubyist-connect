@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'New user notification' do
-  given!(:alice) { create :user, :with_inactive_fields }
+  given!(:alice) { create :user, :with_inactive_fields, email: 'alice@example.com' }
   given!(:bob) { create :user, :with_notification_enabled }
   given!(:chris) { create :user, :with_notification_enabled }
   given!(:davis) { create :user }
