@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
+  devise :trackable, :omniauthable, omniauth_providers: [:github]
+
   has_many :event_participations, dependent: :destroy
+  has_many :events, through: :event_participations
 
   scope :active, -> {
     introduction = arel_table[:introduction]
@@ -9,11 +12,6 @@ class User < ActiveRecord::Base
   scope :without_login_user, -> (user) {
     where.not(id: user.id) if user.present?
   }
-
-  devise :trackable, :omniauthable, omniauth_providers: [:github]
-
-  has_many :event_participations, dependent: :destroy
-  has_many :events, through: :event_participations
 
   validates :github_id, presence: true, uniqueness: true
   # ユーザ設定画面のpathと重複するのでeditさんのアカウント登録はNGとする
