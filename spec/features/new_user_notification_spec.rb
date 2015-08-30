@@ -23,7 +23,6 @@ feature 'New user notification' do
 
   context 'when introduction present' do
     scenario 'notify as bcc without the new active user only for the first time' do
-      expect(Faker::Config.locale).to eq :en
       fill_in '自己紹介文', with: 'Hello!'
       check '新しいRubyistが参加したら通知メールを受け取る'
       expect(alice.first_active_at).to be_blank
