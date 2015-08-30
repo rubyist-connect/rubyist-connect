@@ -10,7 +10,7 @@ feature 'Top spec' do
   end
 
   scenario 'activeなユーザーが表示されること' do
-    create :inactive_user
+    create :user, :with_inactive_fields
     active = create :user
     visit root_path
     within '.new-members' do

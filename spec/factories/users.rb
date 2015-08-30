@@ -32,19 +32,5 @@ FactoryGirl.define do
       birthday nil
       qiita_name nil
     end
-
-    factory :inactive_user do
-      name nil
-      image nil
-      email nil
-      introduction nil
-      twitter_name nil
-      github_url nil
-      facebook_name nil
-      location nil
-      blog nil
-      birthday nil
-      qiita_name nil
-    end
   end
 end

@@ -106,7 +106,7 @@ feature 'Users spec' do
   end
 
   scenario 'activeなユーザーが表示されること' do
-    inactive = create :inactive_user
+    inactive = create :user, :with_inactive_fields
     active = create :user
     sign_in_with_github(active)
 

@@ -28,7 +28,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
 
     context '既存ユーザの場合' do
       it 'プロフィールが未入力の場合、ユーザ編集画面にリダイレクトする' do
-        create(:inactive_user, github_id: @auth_hash['uid'])
+        create(:user, :with_inactive_fields, github_id: @auth_hash['uid'])
         expect(subject).to redirect_to(edit_user_path(@auth_hash['info']['nickname'], format: ''))
       end
 
