@@ -2,9 +2,9 @@
   .col-md-10
     = form_for @user, url: users_path do |f|
       - if @user.errors.any?
-        #error_explanation
-          h2
-            = pluralize(@user.errors.count, 'error')
+        #error_explanation.alert.alert-danger(role='alert')
+          b
+            => pluralize(@user.errors.count, 'error')
             | prohibited this user from being saved:
           ul
             - @user.errors.full_messages.each do |message|
