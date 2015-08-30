@@ -45,6 +45,7 @@ group :development do
   gem 'heroku_san'
   gem 'i18n_generators'
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 group :development, :test do

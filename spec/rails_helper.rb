@@ -10,8 +10,6 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Faker::Config.locale = :en
-
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -49,6 +47,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    Faker::Config.locale = :en
     DatabaseCleaner.strategy = :transaction
   end
 

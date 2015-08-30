@@ -15,6 +15,24 @@ FactoryGirl.define do
     birthday { Faker::Date.between(60.years.ago, 10.years.ago) }
     qiita_name { Faker::Internet.slug }
 
+    trait :with_notification_enabled do
+      new_user_notification_enabled true
+    end
+
+    trait :with_inactive_fields do
+      name nil
+      image nil
+      email nil
+      introduction nil
+      twitter_name nil
+      github_url nil
+      facebook_name nil
+      location nil
+      blog nil
+      birthday nil
+      qiita_name nil
+    end
+
     factory :inactive_user do
       name nil
       image nil

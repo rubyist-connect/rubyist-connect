@@ -56,4 +56,9 @@ class User < ActiveRecord::Base
   def active?
     introduction.present?
   end
+
+  def first_active?
+    # TODO check if first or not
+    introduction_was.blank? && introduction.present?
+  end
 end

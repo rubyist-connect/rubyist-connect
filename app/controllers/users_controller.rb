@@ -21,9 +21,14 @@ class UsersController < ApplicationController
 
   def update
     @user.profile_updated_at = Time.current
-
+    @user.attributes = user_params
+    first_active = @user.first_active?
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.save
+        if first_active
+          target_users = User.where(new_user_notification_enabled: true).where.not(id: @user.id)
+          NotificationMailer.new_user_notification(target_users, @user).deliver_now
+        end
         format.html { redirect_to user_url(nickname: @user.nickname), notice: '更新しました。' }
       else
         format.html { render :edit }

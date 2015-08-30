@@ -133,6 +133,8 @@ GEM
     kgio (2.9.2)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -346,6 +348,7 @@ DEPENDENCIES
   kaminari
   kaminari-bootstrap
   launchy
+  letter_opener
   newrelic_rpm
   omniauth
   omniauth-github
@@ -372,3 +375,6 @@ DEPENDENCIES
   validate_url
   vcr (~> 2.9.3)
   webmock (= 1.20.4)
+
+BUNDLED WITH
+   1.10.6
