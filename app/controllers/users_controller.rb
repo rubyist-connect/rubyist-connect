@@ -25,10 +25,7 @@ class UsersController < ApplicationController
     first_active = @user.first_active?
     respond_to do |format|
       if @user.save
-        if first_active
-          target_users = User.where(new_user_notification_enabled: true).where.not(id: @user.id)
-          NotificationMailer.new_user_notification(target_users, @user).deliver_now
-        end
+        send_new_user_notification if first_active
         format.html { redirect_to user_url(nickname: @user.nickname), notice: '更新しました。' }
       else
         format.html { render :edit }
@@ -56,5 +53,10 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:introduction, :twitter_name, :facebook_name, :qiita_name, :location, :name, :blog, :birthday, :new_user_notification_enabled, :email)
+  end
+
+  def send_new_user_notification
+    target_users = User.where(new_user_notification_enabled: true).where.not(id: @user.id)
+    NotificationMailer.new_user_notification(target_users, @user).deliver_now
   end
 end
