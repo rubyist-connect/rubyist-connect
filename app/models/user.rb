@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 
   validates_date :birthday, allow_blank: true
 
+  before_save :set_first_active_at, if: -> { !was_active? && active? }
+
   def self.find_or_create_from_auth_hash(auth_hash)
     find_by_github_id(auth_hash['uid']) || create_with_omniauth(auth_hash)
   end
@@ -58,7 +60,16 @@ class User < ActiveRecord::Base
   end
 
   def first_active?
-    # TODO check if first or not
-    introduction_was.blank? && introduction.present?
+    !was_active? && active? && first_active_at.blank?
+  end
+
+  private
+
+  def was_active?
+    introduction_was.present?
+  end
+
+  def set_first_active_at
+    self.first_active_at = Time.current
   end
 end

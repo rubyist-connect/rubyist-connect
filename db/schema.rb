@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829071509) do
+ActiveRecord::Schema.define(version: 20150830002734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150829071509) do
     t.date     "birthday"
     t.datetime "profile_updated_at"
     t.boolean  "new_user_notification_enabled",             default: false, null: false
+    t.datetime "first_active_at"
   end
 
   add_index "users", ["github_id"], name: "index_users_on_github_id", unique: true, using: :btree

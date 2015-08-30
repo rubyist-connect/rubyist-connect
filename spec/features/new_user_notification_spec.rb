@@ -16,22 +16,34 @@ feature 'New user notification' do
     scenario 'not notified' do
       check '新しいRubyistが参加したらメール通知する'
       expect { click_on '更新' }.to_not change { ActionMailer::Base.deliveries.count }
+      expect(alice.reload.first_active_at).to be_blank
       expect(page).to have_content '更新しました。'
     end
   end
 
   context 'when introduction present' do
-    scenario 'notify as bcc without the new active user' do
+    scenario 'notify as bcc without the new active user only for the first time' do
       expect(Faker::Config.locale).to eq :en
       fill_in '自己紹介文', with: 'Hello!'
       check '新しいRubyistが参加したらメール通知する'
+      expect(alice.first_active_at).to be_blank
       expect { click_on '更新' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(alice.reload.first_active_at).to be <= Time.current
       expect(page).to have_content '更新しました。'
 
       last_email = ActionMailer::Base.deliveries.last
       expect(last_email.from).to eq ['noreply@rubyist.co']
       expect(last_email.to).to be_empty
       expect(last_email.bcc).to contain_exactly(*[bob ,chris].map(&:email))
+
+      # Not send twice
+      visit edit_user_path
+      fill_in '自己紹介文', with: ''
+      expect { click_on '更新' }.to_not change { ActionMailer::Base.deliveries.count }
+
+      visit edit_user_path
+      fill_in '自己紹介文', with: 'Bye.'
+      expect { click_on '更新' }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
 
