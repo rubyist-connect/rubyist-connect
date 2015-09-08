@@ -58,7 +58,7 @@ feature 'Event management' do
 
   scenario 'activeなユーザーだけが選択できること' do
     active_users = 10.times.map{ create :user }
-    inactive_users = 10.times.map{ create :inactive_user }
+    inactive_users = 10.times.map{ create :user, :with_inactive_fields }
     sign_in_as_active_user
 
     click_on 'Event'

@@ -33,6 +33,7 @@ gem 'rack-dev-mark'
 gem 'validate_url'
 gem 'page_title_helper'
 gem 'hashie'
+gem 'email_validator'
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -45,10 +46,11 @@ group :development do
   gem 'heroku_san'
   gem 'i18n_generators'
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.3.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'spring-commands-rspec', '~> 1.0.2'
   gem 'faker'

@@ -1,0 +1,18 @@
+h1 新しいRubyistが登録されました！
+
+p
+  | New Rubyist:
+  b =<> @new_user.name
+  | さん
+
+p
+  | Rubyist Connectでプロフィールを確認してみましょう。
+  br
+  - url = user_url(@new_user.nickname)
+  = link_to url, url
+
+p
+  | メール通知の設定を変更する場合は下記ページにアクセスしてください。
+  br
+  - url = edit_user_url
+  = link_to url, url

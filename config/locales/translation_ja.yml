@@ -6,7 +6,7 @@ ja:
     attributes:
       user:
         blog: ブログ URL
-        email: email  #g
+        email: 通知用メールアドレス
         facebook_name: Facebook ユーザ名
         github_url: github_url  #g
         image: image  #g

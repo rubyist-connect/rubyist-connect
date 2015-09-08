@@ -25,5 +25,6 @@ module RubyistConnect
       g.stylesheets false
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+    config.action_mailer.default_url_options = { host: Settings.host_name }
   end
 end

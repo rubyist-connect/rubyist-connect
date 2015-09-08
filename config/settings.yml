@@ -6,3 +6,6 @@ analytics:
   tracking_id: 'UA-xxxxx-x'
 
 top_page_users_count: 21
+
+# localhost:3000を使う場合は、settings.local.ymlでオーバーライドしてください。
+host_name: rubyist-connect.dev

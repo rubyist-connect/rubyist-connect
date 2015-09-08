@@ -46,6 +46,32 @@ describe User do
       user.nickname = 'Edit'
       expect(user).to be_invalid
     end
+
+    describe 'email' do
+      context 'when new user notificatin disabled' do
+        it 'allow blank email' do
+          user = build :user
+          user.new_user_notification_enabled = false
+          user.email = ''
+          expect(user).to be_valid
+        end
+      end
+      context 'when new user notificatin enabled' do
+        it 'does not allow blank email' do
+          user = build :user
+          user.new_user_notification_enabled = true
+          user.email = ''
+          expect(user).to be_invalid
+          user.email = 'alice@wxample.com'
+          expect(user).to be_valid
+        end
+      end
+      it 'must be valid format' do
+        user = build :user
+        user.email = 'alice@example..com'
+        expect(user).to be_invalid
+      end
+    end
   end
 
   describe '#age' do
@@ -78,6 +104,26 @@ describe User do
     it 'introductionが空文字ならばactiveでないこと' do
       user.introduction = ''
       expect(user.active?).to eq false
+    end
+  end
+
+  describe '::update_first_active_at_for_existing_users!' do
+    it 'updates active users only' do
+      active_user_1 = create :user
+      active_user_2 = create :user
+      inactive_user = create :user, :with_inactive_fields
+      User.update_all(first_active_at: nil)
+
+      updated_at_before = User.order(:id).map(&:updated_at)
+
+      User.update_first_active_at_for_existing_users!
+
+      expect([active_user_1, active_user_2].map(&:reload).map(&:first_active_at)).to all(be_present)
+      expect(inactive_user.reload.first_active_at).to be_blank
+
+      # Not change updated_at
+      updated_at_after = User.order(:id).map(&:updated_at)
+      expect(updated_at_after).to eq updated_at_before
     end
   end
 end

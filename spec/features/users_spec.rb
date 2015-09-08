@@ -106,11 +106,35 @@ feature 'Users spec' do
   end
 
   scenario 'activeなユーザーが表示されること' do
-    inactive = create :inactive_user
+    inactive = create :user, :with_inactive_fields
     active = create :user
     sign_in_with_github(active)
 
     expect(page).to have_content active.name_or_nickname
     expect(page).to_not have_content inactive.name_or_nickname
+  end
+
+  scenario 'Show/hide email field on notification enabled change', js: true do
+    sign_in_as_new_user
+    visit edit_user_path
+    expect(page).to_not have_field '通知用メールアドレス'
+    check '新しいRubyistが参加したら通知メールを受け取る'
+    expect(page).to have_field '通知用メールアドレス'
+    uncheck '新しいRubyistが参加したら通知メールを受け取る'
+    expect(page).to_not have_field '通知用メールアドレス'
+
+    # Keeps showing email field after validation error
+    check '新しいRubyistが参加したら通知メールを受け取る'
+    fill_in '通知用メールアドレス', with: ''
+    click_on '更新'
+    expect(page).to have_content '通知用メールアドレスを入力してください。'
+    expect(page).to have_field '通知用メールアドレス'
+    fill_in '通知用メールアドレス', with: 'alice@example.com'
+    click_on '更新'
+    expect(page).to have_content '更新しました。'
+
+    # Shows email field on first visit
+    visit edit_user_path
+    expect(page).to have_field '通知用メールアドレス'
   end
 end

@@ -37,4 +37,6 @@ Rails.application.configure do
 
   config.rack_dev_mark.enable = true
   config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(fixed: true)]
+
+  config.action_mailer.delivery_method = :letter_opener
 end

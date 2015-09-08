@@ -2,9 +2,9 @@
   .col-md-10
     = form_for @user, url: users_path do |f|
       - if @user.errors.any?
-        #error_explanation
-          h2
-            = pluralize(@user.errors.count, 'error')
+        #error_explanation.alert.alert-danger(role='alert')
+          b
+            => pluralize(@user.errors.count, 'error')
             | prohibited this user from being saved:
           ul
             - @user.errors.full_messages.each do |message|
@@ -40,6 +40,14 @@
       .form-group
         = f.label :birthday
         = f.date_field :birthday, class: 'form-control', placeholder: '2015/01/01'
+      .form-group
+        label
+          => f.check_box :new_user_notification_enabled, class: 'control-new-user-notification-enabled'
+          | 新しいRubyistが参加したら通知メールを受け取る
+      - email_style = @user.new_user_notification_enabled? ? '' : 'display: none;'
+      .form-group.form-group-email(style = email_style)
+        = f.label :email
+        = f.text_field :email, class: 'form-control', placeholder: 'alice@example.com'
       .actions
         = f.submit(class: 'btn btn-success btn-lg', value: '更新' )
   .col-md-2

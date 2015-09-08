@@ -1,7 +1,7 @@
 module LoginMacros
 
   def sign_in_as_new_user(user = nil)
-    user ||= create :inactive_user
+    user ||= create :user, :with_inactive_fields
     sign_in_with_github(user)
     user
   end

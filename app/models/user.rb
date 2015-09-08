@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
+  devise :trackable, :omniauthable, omniauth_providers: [:github]
+
   has_many :event_participations, dependent: :destroy
+  has_many :events, through: :event_participations
 
   scope :active, -> {
     introduction = arel_table[:introduction]
@@ -10,16 +13,16 @@ class User < ActiveRecord::Base
     where.not(id: user.id) if user.present?
   }
 
-  devise :trackable, :omniauthable, omniauth_providers: [:github]
-
-  has_many :event_participations, dependent: :destroy
-  has_many :events, through: :event_participations
-
   validates :github_id, presence: true, uniqueness: true
   # ユーザ設定画面のpathと重複するのでeditさんのアカウント登録はNGとする
   validates :nickname, presence: true, uniqueness: true, format: { without: /\Aedit\z/i }
 
+  validates :email, email: true, allow_blank: true
+  validates :email, presence: true, if: :new_user_notification_enabled?
+
   validates_date :birthday, allow_blank: true
+
+  before_save :set_first_active_at, if: -> { !was_active? && active? }
 
   def self.find_or_create_from_auth_hash(auth_hash)
     find_by_github_id(auth_hash['uid']) || create_with_omniauth(auth_hash)
@@ -42,6 +45,11 @@ class User < ActiveRecord::Base
     return user
   end
 
+  # 既存データ更新用のメソッド。画面からは呼ばれない。
+  def self.update_first_active_at_for_existing_users!
+    User.active.update_all(first_active_at: Time.current)
+  end
+
   def name_or_nickname
     name.presence || nickname
   end
@@ -55,5 +63,19 @@ class User < ActiveRecord::Base
 
   def active?
     introduction.present?
+  end
+
+  def first_active?
+    !was_active? && active? && first_active_at.blank?
+  end
+
+  private
+
+  def was_active?
+    introduction_was.present?
+  end
+
+  def set_first_active_at
+    self.first_active_at = Time.current
   end
 end
