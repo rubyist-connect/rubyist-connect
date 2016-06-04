@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     delete '/users/sign_out', to: 'sessions#destroy', as: :destroy_user_session
   end
 
-  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
+  get '/.well-known/acme-challenge/:id' => 'top#letsencrypt'
   scope 'nnect' do
     resources :events do
       resources :users, only: %i(show), param: :nickname
