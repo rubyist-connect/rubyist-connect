@@ -71,7 +71,7 @@ feature 'Users spec' do
     click_on 'Sign out'
     expect(page).to have_content 'Rubyist は、すぐそこに'
   end
-  
+
   scenario 'ログアウト後にアラートが出ないこと' do
     sign_in_as_new_user
 
