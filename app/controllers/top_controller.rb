@@ -6,9 +6,4 @@ class TopController < ApplicationController
     end
     @users = @q.result.active.reorder('RANDOM()').limit(Settings.top_page_users_count)
   end
-  def letsencrypt
-    if params[:id] == ENV["LETSENCRYPT_REQUEST"]
-      render text: ENV["LETSENCRYPT_RESPONSE"]
-    end
-  end
 end
