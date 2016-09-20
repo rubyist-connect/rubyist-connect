@@ -36,7 +36,8 @@ article.new-members
   ul
     - @users.each do |user|
       li
-        = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname, data: {toggle: 'tooltip', placement: 'bottom'}, title: user.name_or_nickname
+        = link_to user_omniauth_authorize_path(:github, nickname: user.nickname) do
+          = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname, data: {toggle: 'tooltip', placement: 'bottom'}, title: user.name_or_nickname
 
   = link_to 'more...', user_omniauth_authorize_path(:github), class: 'login-btn btn'
 
