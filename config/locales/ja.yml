@@ -211,3 +211,6 @@ ja:
       title: 'ユーザー'
     show:
       title: 'ユーザー表示'
+  views:
+    pagination:
+      truncate: "..."
