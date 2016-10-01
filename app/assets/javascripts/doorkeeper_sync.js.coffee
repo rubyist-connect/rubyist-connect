@@ -2,8 +2,9 @@ $ ->
   # Buttonの有効無効制御に関する処理
   do ->
     isDoorkeeperUrl = (url) ->
-      regex = /https?:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
-      regex.test(url)
+      dk_regex = /https?:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
+      cp_regex = /https?:\/\/connpass\.com\/event\/\d+/
+      dk_regex.test(url) || cp_regex.test(url)
 
     changeSyncButtonEnabled = ->
       link = $('.link-doorkeeper-sync')
