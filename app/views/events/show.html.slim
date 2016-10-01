@@ -1,4 +1,7 @@
 h1= @event.name
+p= link_to fa_icon('edit', text: '編集'), edit_event_path(@event)
+
 - if @event.url.present?
   p.event_url = link_to @event.url, @event.url
 = render partial: 'users/user', collection: @event.users, as: :user
+
