@@ -50,19 +50,19 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.3.0'
-  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'rspec-rails', '~> 3.5.0'
+  gem 'factory_girl_rails', '~> 4.7.0'
   gem 'spring-commands-rspec', '~> 1.0.2'
-  gem 'faker'
+  gem 'faker', '~> 1.6.6'
   gem 'dummy_text_jp'
 end
 
 group :test do
-  gem 'capybara', '~> 2.4.4'
-  gem 'launchy'
-  gem 'timecop'
-  gem 'vcr', '~> 2.9.3', require: false
-  gem 'webmock', '1.20.4', require: false
-  gem 'poltergeist'
-  gem 'database_cleaner'
+  gem 'capybara', '~> 2.9.2'
+  gem 'launchy', '~> 2.4.3'
+  gem 'timecop', '~> 0.8.1'
+  gem 'vcr', '~> 3.0.3', require: false
+  gem 'webmock', '2.1.0', require: false
+  gem 'poltergeist', '~> 1.10.0'
+  gem 'database_cleaner', '~> 1.5.3'
 end
