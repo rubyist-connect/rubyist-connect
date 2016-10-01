@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :current_user_profile
 
   def index
-    @users = @q.result.active.page params[:page]
+    @users = @q.result.active.page(params[:page]).per(Settings.index_page_users_count)
     flash.now[:alert] = "該当するユーザーが見つかりません" if @users.empty?
   end
 
@@ -38,16 +38,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :root, notice: '退会しました。' }
     end
-  end
-
-  def current_user_profile
-    @current_user_profile = set_user
-  end
-
-  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = current_user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

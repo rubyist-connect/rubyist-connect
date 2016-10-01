@@ -32,9 +32,9 @@ html
                 = fa_icon 'calendar 2x'
                 span.text-hide Event
             li
-              = link_to edit_user_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Settings', class: 'settings-link' do
-                = fa_icon 'gears 2x'
-                span.text-hide Settings
+              = link_to user_path(@user.nickname), data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Profile & Settings', class: 'current-user-link' do
+                = image_tag @user.image, class: 'img-circle', size: '30x30'
+                span.text-hide Profile & Settings
             li
               = link_to destroy_user_session_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Sign out', method: :delete do
                 = fa_icon 'sign-out 2x'
