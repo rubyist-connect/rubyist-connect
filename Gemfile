@@ -33,8 +33,8 @@ gem 'validate_url'
 gem 'email_validator'
 
 # Middleware
-gem 'pg'
-gem 'puma'
+gem 'pg', '~> 0.19.0'
+gem 'puma', '~> 3.6.0'
 
 # Common
 gem 'config', '~> 1.3.0'
