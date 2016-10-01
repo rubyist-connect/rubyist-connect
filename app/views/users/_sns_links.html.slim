@@ -1,7 +1,7 @@
 .sns-icons
   = link_to_if_with_block user.github_url.present?, user.github_url, target: '_blank' do
     - if user.github_url.present?
-      = fa_icon("github 3x fw", style:"color:#2f73c7")
+      = fa_icon("github 3x fw", class: "gh-blue")
     - else
       = fa_icon("github 3x fw")
 
