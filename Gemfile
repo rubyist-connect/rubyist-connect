@@ -38,7 +38,7 @@ gem 'puma'
 
 # Common
 gem 'config', '~> 1.3.0'
-gem 'hashie'
+gem 'hashie', '~> 3.4.6'
 
 # Operation
 gem 'newrelic_rpm', '~> 3.16.3'
