@@ -43,10 +43,6 @@ gem 'hashie', '~> 3.4.6'
 gem 'newrelic_rpm', '~> 3.16.3'
 gem 'rack-dev-mark', '~> 0.7.5'
 
-group :production, :staging do
-  gem 'rails_12factor'
-end
-
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
