@@ -21,7 +21,6 @@ FactoryGirl.define do
 
     trait :with_inactive_fields do
       name nil
-      image nil
       email nil
       introduction nil
       twitter_name nil

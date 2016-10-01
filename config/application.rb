@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -8,23 +8,8 @@ Bundler.require(*Rails.groups)
 
 module RubyistConnect
   class Application < Rails::Application
-    config.time_zone = 'Asia/Tokyo'
-    config.i18n.default_locale = :ja
-
-    config.generators do |g|
-      g.test_framework :rspec,
-                       fixtures: false,
-                       view_specs: false,
-                       controller_specs: false,
-                       helper_specs: false,
-                       routing_specs: false,
-                       request_specs: false
-      g.assets false
-      g.helper false
-      g.javascripts false
-      g.stylesheets false
-      g.fixture_replacement :factory_girl, dir: 'spec/factories'
-    end
-    config.action_mailer.default_url_options = { host: Settings.host_name }
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration should go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded.
   end
 end
