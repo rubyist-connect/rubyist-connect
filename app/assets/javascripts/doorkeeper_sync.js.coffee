@@ -10,8 +10,7 @@ $ ->
       urlField = $('.field-doorkeeper-event-url')
       link.toggleClass('disabled', !isDoorkeeperUrl(urlField.val()))
 
-    $('.field-doorkeeper-event-url').on
-      'input' : changeSyncButtonEnabled
+    $('.field-doorkeeper-event-url').on 'input', changeSyncButtonEnabled
 
     changeSyncButtonEnabled()
 
@@ -50,5 +49,4 @@ $ ->
           $('.result-icon-error').show()
           $imgLoading.hide()
 
-    $('.link-doorkeeper-sync').on
-      'click' : syncDoorkeeper
+    $('.link-doorkeeper-sync').on 'click', syncDoorkeeper
