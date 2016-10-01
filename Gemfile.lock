@@ -176,7 +176,7 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    polyamorous (1.1.0)
+    polyamorous (1.3.1)
       activerecord (>= 3.0)
     puma (3.6.0)
     quiet_assets (1.1.0)
@@ -216,12 +216,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.3.0)
-    ransack (1.5.1)
+    ransack (1.6.6)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
-      polyamorous (~> 1.1)
+      polyamorous (~> 1.2)
     redcarpet (3.2.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -283,7 +283,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    validate_url (1.0.0)
+    validate_url (1.0.2)
       activemodel (>= 3.0.0)
       addressable
     vcr (3.0.3)
@@ -313,7 +313,7 @@ DEPENDENCIES
   database_cleaner (~> 1.5.3)
   devise (~> 4.2.0)
   dummy_text_jp
-  email_validator
+  email_validator (~> 1.6.0)
   factory_girl_rails (~> 4.7.0)
   faker (~> 1.6.6)
   font-awesome-rails
@@ -321,7 +321,7 @@ DEPENDENCIES
   heroku_san
   i18n_generators
   jbuilder (~> 2.0)
-  jc-validates_timeliness
+  jc-validates_timeliness (~> 3.1.1)
   jquery-rails
   jquery-turbolinks
   kaminari
@@ -339,7 +339,7 @@ DEPENDENCIES
   rack-dev-mark (~> 0.7.5)
   rails (= 4.2.4)
   rails_12factor
-  ransack
+  ransack (~> 1.6.0)
   redcarpet (~> 3.2.2)
   rspec-rails (~> 3.5.0)
   sass-rails (~> 4.0.3)
@@ -349,7 +349,7 @@ DEPENDENCIES
   timecop (~> 0.8.1)
   turbolinks
   uglifier (>= 1.3.0)
-  validate_url
+  validate_url (~> 1.0.2)
   vcr (~> 3.0.3)
   webmock (= 2.1.0)
 

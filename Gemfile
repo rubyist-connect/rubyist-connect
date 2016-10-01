@@ -27,10 +27,10 @@ gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-github', '~> 1.1.2'
 
 # Models
-gem 'ransack'
-gem 'jc-validates_timeliness'
-gem 'validate_url'
-gem 'email_validator'
+gem 'ransack', '~> 1.6.0'
+gem 'jc-validates_timeliness', '~> 3.1.1'
+gem 'validate_url', '~> 1.0.2'
+gem 'email_validator', '~> 1.6.0'
 
 # Middleware
 gem 'pg', '~> 0.19.0'
