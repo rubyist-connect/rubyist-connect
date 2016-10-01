@@ -7,8 +7,11 @@ gem 'rails', '5.0.0.1'
 # UI/assets
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.2.1'
-gem 'turbolinks', '~> 5.0.1'
+
+# https://github.com/kossnocorp/jquery.turbolinks/issues/61
+gem 'turbolinks', '< 5.0'
 gem 'jquery-turbolinks', '~> 2.1.0'
+
 gem 'coffee-rails', '~> 4.2.1'
 gem 'sass-rails', '~> 5.0.6'
 gem 'bootstrap-sass', '~> 3.3.7'
