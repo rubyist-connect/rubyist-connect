@@ -16,9 +16,9 @@ gem 'font-awesome-rails', '~> 4.6.3'
 gem 'autoprefixer-rails', '~> 6.5.0'
 gem 'slim-rails', '~> 3.1.1'
 gem 'redcarpet', '~> 3.3.4'
-gem 'kaminari'
-gem 'kaminari-bootstrap'
-gem 'page_title_helper'
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'page_title_helper', '~> 2.1.0'
 
 # Authorization
 gem 'devise', '~> 4.2.0'

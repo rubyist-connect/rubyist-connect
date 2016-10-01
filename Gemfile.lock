@@ -125,7 +125,7 @@ GEM
       turbolinks
     json (1.8.3)
     jwt (1.5.6)
-    kaminari (0.16.1)
+    kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kaminari-bootstrap (3.0.1)
@@ -319,14 +319,14 @@ DEPENDENCIES
   jc-validates_timeliness (~> 3.1.1)
   jquery-rails (~> 4.2.1)
   jquery-turbolinks (~> 2.1.0)
-  kaminari
-  kaminari-bootstrap
+  kaminari (~> 0.17.0)
+  kaminari-bootstrap (~> 3.0.1)
   launchy (~> 2.4.3)
   letter_opener
   newrelic_rpm (~> 3.16.3)
   omniauth (~> 1.3.1)
   omniauth-github (~> 1.1.2)
-  page_title_helper
+  page_title_helper (~> 2.1.0)
   pg (~> 0.19.0)
   poltergeist (~> 1.10.0)
   puma (~> 3.6.0)
