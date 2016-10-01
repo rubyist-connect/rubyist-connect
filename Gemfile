@@ -22,7 +22,7 @@ gem 'kaminari-bootstrap'
 gem 'page_title_helper'
 
 # Authorization
-gem 'devise', '~> 4.0.0'
+gem 'devise', '~> 4.1.0'
 gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-github', '~> 1.1.2'
 
