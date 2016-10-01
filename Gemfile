@@ -37,7 +37,7 @@ gem 'pg'
 gem 'puma'
 
 # Common
-gem 'rails_config'
+gem 'config', '~> 1.3.0'
 gem 'hashie'
 
 # Operation
