@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :trackable, :omniauthable, omniauth_providers: [:github]
 
   has_many :event_participations, dependent: :destroy

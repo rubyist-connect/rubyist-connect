@@ -22,7 +22,7 @@ def event_name
   "#{languages.sample}#{event_types.sample} in #{place}"
 end
 
-ActiveRecord::Base.transaction do
+ApplicationRecord.transaction do
   puts_or_log "Destroying all users."
   User.destroy_all
 

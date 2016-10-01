@@ -1,4 +1,4 @@
-class EventParticipation < ActiveRecord::Base
+class EventParticipation < ApplicationRecord
   belongs_to :event
   belongs_to :user
 
