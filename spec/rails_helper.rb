@@ -23,7 +23,7 @@ RSpec.configure do |config|
 
   # Devise をテスト可能にする
   # https://github.com/plataformatec/devise#test-helpers
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   # open_on_error: trueのFeature specが落ちたらsave_and_open_pageをコールする
   # http://stackoverflow.com/a/16935806/1058763

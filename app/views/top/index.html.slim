@@ -11,7 +11,7 @@ header
       | Rubyist Connect は、あなたの身近な Rubyist や趣味の近い Rubyist を探すことができます。
       br
       | 魅力的な Rubyist とつながって一緒に勉強してみませんか。
-    = link_to user_omniauth_authorize_path(:github), class: 'login-btn btn' do
+    = link_to user_github_omniauth_authorize_path, class: 'login-btn btn' do
       = fa_icon 'github-square'
       |  Sign in with GitHub
 
@@ -38,7 +38,7 @@ article.new-members
       li
         = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname, data: {toggle: 'tooltip', placement: 'bottom'}, title: user.name_or_nickname
 
-  = link_to 'more...', user_omniauth_authorize_path(:github), class: 'login-btn btn'
+  = link_to 'more...', user_github_omniauth_authorize_path, class: 'login-btn btn'
 
 footer
   p
