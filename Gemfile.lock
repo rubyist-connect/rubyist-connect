@@ -145,7 +145,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    newrelic_rpm (3.9.8.273)
+    newrelic_rpm (3.16.3.323)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -181,7 +181,7 @@ GEM
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
-    rack-dev-mark (0.7.3)
+    rack-dev-mark (0.7.5)
       rack (>= 1.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -223,8 +223,6 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
-    rdoc (4.1.2)
-      json (~> 1.4)
     redcarpet (3.2.2)
     responders (2.0.2)
       railties (>= 4.2.0.alpha, < 5)
@@ -252,9 +250,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sdoc (0.4.1)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
     slim (3.0.1)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -333,7 +328,7 @@ DEPENDENCIES
   kaminari-bootstrap
   launchy (~> 2.4.3)
   letter_opener
-  newrelic_rpm
+  newrelic_rpm (~> 3.16.3)
   omniauth
   omniauth-github
   page_title_helper
@@ -341,7 +336,7 @@ DEPENDENCIES
   poltergeist (~> 1.10.0)
   puma
   quiet_assets
-  rack-dev-mark
+  rack-dev-mark (~> 0.7.5)
   rails (= 4.2.4)
   rails_12factor
   rails_config
@@ -349,7 +344,6 @@ DEPENDENCIES
   redcarpet (~> 3.2.2)
   rspec-rails (~> 3.5.0)
   sass-rails (~> 4.0.3)
-  sdoc (~> 0.4.0)
   slim-rails
   spring
   spring-commands-rspec (~> 1.0.2)

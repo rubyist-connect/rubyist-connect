@@ -3,37 +3,46 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '4.2.4'
-gem 'pg'
+
+# UI/assets
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-github'
 gem 'font-awesome-rails'
-gem 'puma'
-gem 'newrelic_rpm'
-gem 'rails_config'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 gem 'redcarpet', '~> 3.2.2'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
-gem 'jc-validates_timeliness'
-gem 'ransack'
-gem 'rack-dev-mark'
-gem 'validate_url'
 gem 'page_title_helper'
-gem 'hashie'
+
+# Authorization
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
+
+# Models
+gem 'ransack'
+gem 'jc-validates_timeliness'
+gem 'validate_url'
 gem 'email_validator'
+
+# Middleware
+gem 'pg'
+gem 'puma'
+
+# Common
+gem 'rails_config'
+gem 'hashie'
+
+# Operation
+gem 'newrelic_rpm', '~> 3.16.3'
+gem 'rack-dev-mark', '~> 0.7.5'
 
 group :production, :staging do
   gem 'rails_12factor'
