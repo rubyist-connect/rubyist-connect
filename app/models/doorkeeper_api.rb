@@ -1,8 +1,8 @@
 class DoorkeeperApi < EventApi
   # Override
   def fetch_event_details(event_url)
-    event_info = _fetch_event_info(event_url)
-    attendees = _fetch_attendees(event_url) if event_info.present?
+    event_info = fetch_event_info(event_url)
+    attendees = fetch_attendees(event_url) if event_info.present?
     if [event_info, attendees].all?(&:present?)
       event_info["status"] = 'success'
       event_info["event"]["participant_profiles"] = attendees
@@ -14,10 +14,10 @@ class DoorkeeperApi < EventApi
 
   private
 
-  def _fetch_event_info(event_url)
+  def fetch_event_info(event_url)
     event_id = event_url[/(?<=events\/)\d+/]
     url = "http://api.doorkeeper.jp/events/#{event_id}"
-    _logger.info "[INFO] Reading #{url}"
+    logger.info "[INFO] Reading #{url}"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     case response.code
@@ -30,17 +30,17 @@ class DoorkeeperApi < EventApi
     end
   end
 
-  def _fetch_attendees(event_url)
-    if doc = _read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
+  def fetch_attendees(event_url)
+    if doc = read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
       doc.xpath('//div[@class="user-profile-details"]').map do |profile|
         name = profile.xpath('div[@class="user-name"]').text
         social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
-        { "name" => name }.merge(_extract_accounts(social_links))
+        { "name" => name }.merge(extract_accounts(social_links))
       end
     end
   end
 
-  def _extract_accounts(social_links)
+  def extract_accounts(social_links)
     array = social_links.map do |link|
       case link
         when /facebook/
@@ -56,8 +56,8 @@ class DoorkeeperApi < EventApi
     { "facebook" => nil, "twitter" => nil, "github" => nil}.merge(array.compact.to_h)
   end
 
-  def _read_doc_from_url(url)
-    _logger.info "[INFO] Reading #{url}"
+  def read_doc_from_url(url)
+    logger.info "[INFO] Reading #{url}"
     html = open(url)
     Nokogiri::HTML.parse(html, nil)
   rescue OpenURI::HTTPError => e

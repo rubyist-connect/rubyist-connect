@@ -1,9 +1,9 @@
 class ConnpassApi < EventApi
   # Override
   def fetch_event_details(event_url)
-    event_info = _fetch_event_info(event_url)
+    event_info = fetch_event_info(event_url)
     if event_info.present?
-      _doc_to_hash(event_info)
+      doc_to_hash(event_info)
     else
       { 'status' => 'not_found' }
     end
@@ -11,10 +11,10 @@ class ConnpassApi < EventApi
 
   private
 
-  def _fetch_event_info(event_url)
+  def fetch_event_info(event_url)
     event_id = event_url[/(?<=event\/)\d+/]
     url = "http://connpass.com/event/#{event_id}/participation/"
-    _logger.info "[INFO] Reading #{url}"
+    logger.info "[INFO] Reading #{url}"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     case response.code
@@ -27,7 +27,7 @@ class ConnpassApi < EventApi
     end
   end
 
-  def _doc_to_hash(doc)
+  def doc_to_hash(doc)
     info = {
         'status' => 'success',
         'event' => {

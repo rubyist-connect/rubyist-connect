@@ -23,11 +23,11 @@ class EventApi
     result = fetch_event_details_as_mash(event_url)
     if result.status == 'success'
       event = result.event
-      { status: result.status, name: event.title, attendee_user_ids: _attendee_user_ids(event.participant_profiles) }.tap do |info|
-        _logger.info "[INFO] Fetch event successfully: #{info.inspect}, #{event_url}"
+      { status: result.status, name: event.title, attendee_user_ids: attendee_user_ids(event.participant_profiles) }.tap do |info|
+        logger.info "[INFO] Fetch event successfully: #{info.inspect}, #{event_url}"
       end
     else
-      _logger.info "[INFO] Fetch event unsuccessfully: #{result.status}, #{event_url}"
+      logger.info "[INFO] Fetch event unsuccessfully: #{result.status}, #{event_url}"
       { status: result.status }
     end
   end
@@ -36,8 +36,8 @@ class EventApi
     begin
       hash = fetch_event_details(event_url)
     rescue => e
-      _logger.error "[ERROR] #{e.inspect}"
-      _logger.error e.backtrace.join("\n")
+      logger.error "[ERROR] #{e.inspect}"
+      logger.error e.backtrace.join("\n")
       hash = { 'status' => "ERROR: #{e.message}" }
     end
     Hashie::Mash.new(hash)
@@ -47,20 +47,20 @@ class EventApi
   def fetch_event_details(event_url)
     raise 'should implement this.'
   rescue => e
-    _logger.error "[ERROR] #{e.inspect}"
-    _logger.error e.backtrace.join("\n")
+    logger.error "[ERROR] #{e.inspect}"
+    logger.error e.backtrace.join("\n")
     { 'status' => "ERROR: #{e.message}" }
   end
 
   private
 
-  def _attendee_user_ids(participant_profiles)
+  def attendee_user_ids(participant_profiles)
     participant_profiles.map { |profile|
-      _find_user_by_profile(profile).try(:id)
+      find_user_by_profile(profile).try(:id)
     }.compact
   end
 
-  def _find_user_by_profile(profile)
+  def find_user_by_profile(profile)
     condition = <<-SQL
 (LOWER(nickname) = :github)
 OR (LOWER(twitter_name) = :twitter)
@@ -77,14 +77,14 @@ OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
                               nickname: profile.name.gsub(' ', '').downcase
     )
     if users.count > 1
-      _logger.warn "[WARN] Found more than one users: #{users.inspect}"
+      logger.warn "[WARN] Found more than one users: #{users.inspect}"
       nil
     else
       users.first
     end
   end
 
-  def _logger
+  def logger
     Rails.logger
   end
 end
