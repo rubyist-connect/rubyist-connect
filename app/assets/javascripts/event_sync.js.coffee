@@ -3,7 +3,7 @@ $ ->
   do ->
     isEventUrl = (url) ->
       dk_regex = /https?:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
-      cp_regex = /https?:\/\/connpass\.com\/event\/\d+/
+      cp_regex = /https?:\/\/(?:[^.]+\.)?connpass\.com\/event\/\d+/
       dk_regex.test(url) || cp_regex.test(url)
 
     changeSyncButtonEnabled = ->
