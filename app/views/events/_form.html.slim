@@ -16,17 +16,17 @@
             = f.text_field :name, class: 'form-control event-name'
           .form-group
             = f.label :url
-            = f.text_field :url, class: 'form-control field-doorkeeper-event-url'
-            .doorkeeper-sync-container
-              .doorkeeper-sync-description
-                | DoorkeeperのイベントURLを入力して下のボタンをクリックすると、イベント名と参加者をフォームに反映します。
-              = link_to 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_doorkeepers_path } do
+            = f.text_field :url, class: 'form-control field-event-url'
+            .event-sync-container
+              .event-sync-description
+                | DoorkeeperまたはConnpassのイベントURLを入力して下のボタンをクリックすると、イベント名と参加者をフォームに反映します。
+              = link_to 'javascript:void(0)', class: 'link-event-sync btn btn-warning', data: { path: fetch_details_events_path } do
                 => fa_icon 'refresh'
-                | Doorkeeper Sync
+                | Event Sync
               =<> image_tag 'loading.gif', class: 'img-loading', style: 'display:none;'
               => fa_icon 'check-circle', class: 'result-success result-icon-success', style: 'display:none;'
               => fa_icon 'exclamation-circle', class: 'result-error result-icon-error', style: 'display:none;'
-              span.doorkeeper-sync-status
+              span.event-sync-status
           .form-group
               = f.label :users
               br

@@ -38,6 +38,12 @@ class EventsController < ApplicationController
     redirect_to events_path, notice: 'Event was successfully destroyed.'
   end
 
+  def fetch_details
+    result = EventApi.fetch_event_details_with_attendee_user_ids(params[:event_url])
+    status_table = { 'success' => :ok, 'not_found' => :not_found }
+    render json: result, status: status_table.fetch(result[:status], :internal_server_error)
+  end
+
   private
 
   def event_params

@@ -120,7 +120,7 @@ describe DoorkeeperApi do
     example 'as hash' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
-        result = DoorkeeperApi.fetch_event_details(event_url)
+        result = DoorkeeperApi.new.fetch_event_details(event_url)
         expect(result).to match expected
       end
     end
@@ -128,7 +128,7 @@ describe DoorkeeperApi do
     example 'as mash' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
-        result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
+        result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
         expect(result.status).to eq 'success'
         event = result.event
         expect(event.title).to eq "Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～"
@@ -145,7 +145,7 @@ describe DoorkeeperApi do
     example 'event id not found' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24'
       VCR.use_cassette 'doorkeeper_events/24_not_found', match_requests_on: [:uri] do
-        result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
+        result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
         expect(result.status).to eq 'not_found'
       end
     end
@@ -153,14 +153,14 @@ describe DoorkeeperApi do
     example 'event page not found' do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/1'
       VCR.use_cassette 'doorkeeper_events/1_not_found', match_requests_on: [:uri] do
-        result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
+        result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
         expect(result.status).to eq 'not_found'
       end
     end
 
     example 'unexpected error' do
       event_url = nil
-      result = DoorkeeperApi.fetch_event_details_as_mash(event_url)
+      result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
       expect(result.status).to match /ERROR/
     end
   end
