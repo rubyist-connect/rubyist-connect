@@ -20,7 +20,7 @@ feature 'Top spec' do
     end
   end
 
-  scenario 'ランダムにユーザーが21名表示されること' do
+  scenario 'ランダムにユーザーが21名表示されること', retry: 3 do
     100.times do
       create :user
     end

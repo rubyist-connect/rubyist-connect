@@ -72,4 +72,5 @@ group :test do
   gem 'webmock', '2.1.0', require: false
   gem 'poltergeist', '~> 1.10.0'
   gem 'database_cleaner', '~> 1.5.3'
+  gem 'rspec-retry', '0.5.1'
 end

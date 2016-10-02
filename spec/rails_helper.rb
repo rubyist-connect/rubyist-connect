@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'faker'
 require 'vcr'
 require 'capybara/poltergeist'
+require 'rspec/retry'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
 
@@ -62,4 +63,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # rspec-retry
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
 end
