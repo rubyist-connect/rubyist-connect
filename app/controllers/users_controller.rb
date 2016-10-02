@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :current_user_profile
 
   def index
-    @users = @q.result.active.page params[:page]
+    @users = @q.result.active.page(params[:page]).per(Settings.index_page_users_count)
     flash.now[:alert] = "該当するユーザーが見つかりません" if @users.empty?
   end
 
