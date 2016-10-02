@@ -37,6 +37,7 @@ gem 'email_validator', '~> 1.6.0'
 # Middleware
 gem 'pg', '~> 0.19.0'
 gem 'puma', '~> 3.6.0'
+gem 'httpclient', '~> 2.8.2'
 
 # Common
 gem 'config', '~> 1.3.0'
