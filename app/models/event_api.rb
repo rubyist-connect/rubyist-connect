@@ -46,10 +46,6 @@ class EventApi
   # abstract
   def fetch_event_details(event_url)
     raise 'should implement this.'
-  rescue => e
-    logger.error "[ERROR] #{e.inspect}"
-    logger.error e.backtrace.join("\n")
-    { 'status' => "ERROR: #{e.message}" }
   end
 
   private
