@@ -1,55 +1,52 @@
 .container
-  .col-md-10
-    = form_for @user, url: users_path do |f|
-      - if @user.errors.any?
-        #error_explanation.alert.alert-danger(role='alert')
-          b
-            => pluralize(@user.errors.count, 'error')
-            | prohibited this user from being saved:
-          ul
-            - @user.errors.full_messages.each do |message|
-              li = message
-      p ※Markdown形式で入力してください
-      .form-group
-        = f.label :introduction
-        = f.text_area :introduction, rows: 10, class: 'form-control'
-      .form-group
-        = f.label :twitter_name
-        .input-group
-          span.input-group-addon @
-          = f.text_field :twitter_name, class: 'form-control'
-      .form-group
-        = f.label :facebook_name
-        .input-group
-          span.input-group-addon https://www.facebook.com/
-          = f.text_field :facebook_name, class: 'form-control'
-      .form-group
-        = f.label :qiita_name
-        .input-group
-          span.input-group-addon https://qiita.com/
-          = f.text_field :qiita_name, class: 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :location
-        = f.text_field :location, class: 'form-control'
-      .form-group
-        = f.label :blog
-        = f.text_field :blog, class: 'form-control'
-      .form-group
-        = f.label :birthday
-        = f.date_field :birthday, class: 'form-control', placeholder: '2015/01/01'
-      .form-group
-        label
-          => f.check_box :new_user_notification_enabled, class: 'control-new-user-notification-enabled'
-          | 新しいRubyistが参加したら通知メールを受け取る
-      - email_style = @user.new_user_notification_enabled? ? '' : 'display: none;'
-      .form-group.form-group-email(style = email_style)
-        = f.label :email
-        = f.text_field :email, class: 'form-control', placeholder: 'alice@example.com'
-      .actions
-        = f.submit(class: 'btn btn-success btn-lg', value: '更新' )
-  .col-md-2
-    h2 退会する
-    = link_to '退会', users_path, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: 'btn btn-danger btn-lg'
+  = form_for @user, url: users_path do |f|
+    - if @user.errors.any?
+      #error_explanation.alert.alert-danger(role='alert')
+        b
+          => pluralize(@user.errors.count, 'error')
+          | prohibited this user from being saved:
+        ul
+          - @user.errors.full_messages.each do |message|
+            li = message
+    p ※Markdown形式で入力してください
+    .form-group
+      = f.label :introduction
+      = f.text_area :introduction, rows: 10, class: 'form-control'
+    .form-group
+      = f.label :twitter_name
+      .input-group
+        span.input-group-addon @
+        = f.text_field :twitter_name, class: 'form-control'
+    .form-group
+      = f.label :facebook_name
+      .input-group
+        span.input-group-addon https://www.facebook.com/
+        = f.text_field :facebook_name, class: 'form-control'
+    .form-group
+      = f.label :qiita_name
+      .input-group
+        span.input-group-addon https://qiita.com/
+        = f.text_field :qiita_name, class: 'form-control'
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :location
+      = f.text_field :location, class: 'form-control'
+    .form-group
+      = f.label :blog
+      = f.text_field :blog, class: 'form-control'
+    .form-group
+      = f.label :birthday
+      = f.date_field :birthday, class: 'form-control', placeholder: '2015/01/01'
+    .form-group
+      label
+        => f.check_box :new_user_notification_enabled, class: 'control-new-user-notification-enabled'
+        | 新しいRubyistが参加したら通知メールを受け取る
+    - email_style = @user.new_user_notification_enabled? ? '' : 'display: none;'
+    .form-group.form-group-email(style = email_style)
+      = f.label :email
+      = f.text_field :email, class: 'form-control', placeholder: 'alice@example.com'
+    .actions.user-edit-actions
+      = f.submit(class: 'btn btn-success btn-lg', value: '更新' )
+      = link_to '退会', users_path, method: :delete, data: { confirm: '退会してもよろしいですか？' }, class: 'btn btn-small cancel-account-link'
