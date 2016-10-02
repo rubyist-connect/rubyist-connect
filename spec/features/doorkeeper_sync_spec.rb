@@ -28,8 +28,8 @@ feature 'Doorkeeper sync', js: true do
         expect(find("#event_user_ids_#{otokunaga.id}")).to be_checked
         expect(find("#event_user_ids_#{login_user.id}")).to_not be_checked
 
-        expect(page).to have_selector '.doorkeeper-sync-status', text: '情報を取得しました。'
-        expect(page).to have_css '.doorkeeper-sync-status.result-success'
+        expect(page).to have_selector '.event-sync-status', text: '情報を取得しました。'
+        expect(page).to have_css '.event-sync-status.result-success'
         expect(page).to have_css '.result-icon-success'
         expect(page).to_not have_css '.img-loading'
 
@@ -37,7 +37,7 @@ feature 'Doorkeeper sync', js: true do
         visit new_event_path
         fill_in 'Url', with: 'http://nishiwaki-koberb.doorkeeper.jp/events/24544'
         click_on 'Event Sync'
-        expect(page).to have_selector '.doorkeeper-sync-status', text: '情報を取得しました。'
+        expect(page).to have_selector '.event-sync-status', text: '情報を取得しました。'
       end
     end
   end
@@ -115,8 +115,8 @@ feature 'Doorkeeper sync', js: true do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/1'
         click_on 'Event Sync'
-        expect(page).to have_selector '.doorkeeper-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
-        expect(page).to have_css '.doorkeeper-sync-status.result-error'
+        expect(page).to have_selector '.event-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
+        expect(page).to have_css '.event-sync-status.result-error'
         expect(page).to have_css '.result-icon-error'
         expect(page).to_not have_css '.img-loading'
       end
@@ -129,8 +129,8 @@ feature 'Doorkeeper sync', js: true do
       visit new_event_path
       fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       click_on 'Event Sync'
-      expect(page).to have_selector '.doorkeeper-sync-status', text: 'エラーが発生しました。しばらく経ってから再度実行してください。'
-      expect(page).to have_css '.doorkeeper-sync-status.result-error'
+      expect(page).to have_selector '.event-sync-status', text: 'エラーが発生しました。しばらく経ってから再度実行してください。'
+      expect(page).to have_css '.event-sync-status.result-error'
       expect(page).to have_css '.result-icon-error'
       expect(page).to_not have_css '.img-loading'
     end
@@ -140,16 +140,16 @@ feature 'Doorkeeper sync', js: true do
     context '新規作成画面' do
       scenario '適切に制御される' do
         visit new_event_path
-        expect(page).to have_css '.link-doorkeeper-sync.disabled'
+        expect(page).to have_css '.link-event-sync.disabled'
 
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-        expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
+        expect(page).to_not have_css '.link-event-sync.disabled'
 
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events'
-        expect(page).to have_css '.link-doorkeeper-sync.disabled'
+        expect(page).to have_css '.link-event-sync.disabled'
 
         fill_in 'Url', with: 'http://koberb.doorkeeper.jp/events/24880'
-        expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
+        expect(page).to_not have_css '.link-event-sync.disabled'
       end
     end
     context '編集画面' do
@@ -160,19 +160,19 @@ feature 'Doorkeeper sync', js: true do
       context '未入力' do
         given(:url) { '' }
         scenario '無効になっている' do
-          expect(page).to have_css '.link-doorkeeper-sync.disabled'
+          expect(page).to have_css '.link-event-sync.disabled'
         end
       end
       context 'DoorkeeperのURL' do
         given(:url) { 'https://nishiwaki-koberb.doorkeeper.jp/events/24544' }
         scenario '有効になっている' do
-          expect(page).to_not have_css '.link-doorkeeper-sync.disabled'
+          expect(page).to_not have_css '.link-event-sync.disabled'
         end
       end
       context '無効なURL' do
         given(:url) { 'https://nishiwaki-koberb.doorkeeper.jp/events' }
         scenario '無効になっている' do
-          expect(page).to have_css '.link-doorkeeper-sync.disabled'
+          expect(page).to have_css '.link-event-sync.disabled'
         end
       end
     end

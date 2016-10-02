@@ -1,34 +1,34 @@
 $ ->
   # Buttonの有効無効制御に関する処理
   do ->
-    isDoorkeeperUrl = (url) ->
+    isEventUrl = (url) ->
       dk_regex = /https?:\/\/[^.]+\.doorkeeper\.jp\/events\/\d+/
       cp_regex = /https?:\/\/connpass\.com\/event\/\d+/
       dk_regex.test(url) || cp_regex.test(url)
 
     changeSyncButtonEnabled = ->
-      link = $('.link-doorkeeper-sync')
-      urlField = $('.field-doorkeeper-event-url')
-      link.toggleClass('disabled', !isDoorkeeperUrl(urlField.val()))
+      link = $('.link-event-sync')
+      urlField = $('.field-event-url')
+      link.toggleClass('disabled', !isEventUrl(urlField.val()))
 
-    $('.field-doorkeeper-event-url').on 'input', changeSyncButtonEnabled
+    $('.field-event-url').on 'input', changeSyncButtonEnabled
 
     changeSyncButtonEnabled()
 
-  # Doorkeeperの情報取得に関する処理
+  # Eventの情報取得に関する処理
   do ->
-    setDoorkeeperInfo =  (results) ->
+    setEventInfo =  (results) ->
       $('.event-name').val results.name
       $.each results.attendee_user_ids, ->
         $("#event_user_ids_#{this}").prop('checked', true)
 
-    syncDoorkeeper = ->
+    syncEvent = ->
       path = $(@).data().path
-      eventUrl = $('.field-doorkeeper-event-url').val()
+      eventUrl = $('.field-event-url').val()
       $imgLoading = $('.img-loading')
       $imgLoading.show()
 
-      $statusMessage = $('.doorkeeper-sync-status')
+      $statusMessage = $('.event-sync-status')
       $statusMessage.text('情報を取得しています...').removeClass('result-success result-error')
       $('.result-icon-success,.result-icon-error').hide()
 
@@ -36,7 +36,7 @@ $ ->
         url: "#{path}?event_url=#{eventUrl}"
         dataType: "json"
         success: (results) ->
-          setDoorkeeperInfo(results)
+          setEventInfo(results)
           $statusMessage.text('情報を取得しました。').addClass('result-success')
           $('.result-icon-success').show()
           $imgLoading.hide()
@@ -50,4 +50,4 @@ $ ->
           $('.result-icon-error').show()
           $imgLoading.hide()
 
-    $('.link-doorkeeper-sync').on 'click', syncDoorkeeper
+    $('.link-event-sync').on 'click', syncEvent

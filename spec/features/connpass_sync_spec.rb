@@ -33,8 +33,8 @@ feature 'Connpass sync', js: true do
         expect(find("#event_user_ids_#{otokunaga.id}")).to_not be_checked
         expect(find("#event_user_ids_#{login_user.id}")).to_not be_checked
 
-        expect(page).to have_selector '.doorkeeper-sync-status', text: '情報を取得しました。'
-        expect(page).to have_css '.doorkeeper-sync-status.result-success'
+        expect(page).to have_selector '.event-sync-status', text: '情報を取得しました。'
+        expect(page).to have_css '.event-sync-status.result-success'
         expect(page).to have_css '.result-icon-success'
         expect(page).to_not have_css '.img-loading'
       end
