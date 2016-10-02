@@ -23,6 +23,8 @@
       =< link_to @user.blog, @user.blog, target: '_blank'
     br
   = render 'sns_links', user: @user
+  - if @current_user_profile == @user
+    = link_to 'プロフィールの編集', edit_user_path, class: 'btn btn-success'
   - if @event.present?
     - participation = @event.participations.find_by(user_id: @user.id)
     .event-user-links.well

@@ -108,7 +108,8 @@ feature 'Users spec' do
   scenario 'activeなユーザーが表示されること' do
     inactive = create :user, :with_inactive_fields
     active = create :user
-    sign_in_with_github(active)
+    other = create :user
+    sign_in_with_github(other)
 
     expect(page).to have_content active.name_or_nickname
     expect(page).to_not have_content inactive.name_or_nickname
