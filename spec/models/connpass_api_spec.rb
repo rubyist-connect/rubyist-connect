@@ -56,7 +56,7 @@ describe ConnpassApi do
     example 'as hash' do
       event_url = 'http://connpass.com/event/39406/'
       VCR.use_cassette 'connpass_events/39406', match_requests_on: [:uri] do
-        result = ConnpassApi.fetch_event_details(event_url)
+        result = ConnpassApi.new.fetch_event_details(event_url)
         expect(result).to match expected
       end
     end

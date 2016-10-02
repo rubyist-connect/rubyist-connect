@@ -125,7 +125,7 @@ feature 'Doorkeeper sync', js: true do
 
   context '予期せぬエラーが発生した場合' do
     scenario 'エラーメッセージを表示する' do
-      allow(DoorkeeperApi).to receive(:fetch_event_details).and_return({'status' => 'ERROR'})
+      allow_any_instance_of(DoorkeeperApi).to receive(:fetch_event_details).and_return({'status' => 'ERROR'})
       visit new_event_path
       fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       click_on 'Event Sync'
