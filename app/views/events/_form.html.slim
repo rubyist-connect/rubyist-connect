@@ -20,7 +20,7 @@
             .doorkeeper-sync-container
               .doorkeeper-sync-description
                 | DoorkeeperまたはConnpassのイベントURLを入力して下のボタンをクリックすると、イベント名と参加者をフォームに反映します。
-              = link_to 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_doorkeepers_path } do
+              = link_to 'javascript:void(0)', class: 'link-doorkeeper-sync btn btn-warning', data: { path: fetch_details_events_path } do
                 => fa_icon 'refresh'
                 | Event Sync
               =<> image_tag 'loading.gif', class: 'img-loading', style: 'display:none;'
