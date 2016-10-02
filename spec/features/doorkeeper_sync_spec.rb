@@ -18,7 +18,7 @@ feature 'Doorkeeper sync', js: true do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_field 'Name', with: 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～'
 
         expect(find("#event_user_ids_#{yuji_shimoda.id}")).to be_checked
@@ -36,7 +36,7 @@ feature 'Doorkeeper sync', js: true do
         # httpでSyncする
         visit new_event_path
         fill_in 'Url', with: 'http://nishiwaki-koberb.doorkeeper.jp/events/24544'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_selector '.doorkeeper-sync-status', text: '情報を取得しました。'
       end
     end
@@ -53,7 +53,7 @@ feature 'Doorkeeper sync', js: true do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_field 'Name', with: 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～'
 
         expect(find("#event_user_ids_#{yuji_shimoda.id}")).to be_checked
@@ -78,7 +78,7 @@ feature 'Doorkeeper sync', js: true do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_field 'Name', with: 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～'
 
         expect(find("#event_user_ids_#{yuji_shimoda.id}")).to_not be_checked
@@ -100,7 +100,7 @@ feature 'Doorkeeper sync', js: true do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_field 'Name', with: 'Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～'
 
         expect(page).to_not have_css "#event_user_ids_#{yuji_shimoda.id}"
@@ -114,7 +114,7 @@ feature 'Doorkeeper sync', js: true do
       VCR.use_cassette 'doorkeeper_events/1_not_found', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/1'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_selector '.doorkeeper-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
         expect(page).to have_css '.doorkeeper-sync-status.result-error'
         expect(page).to have_css '.result-icon-error'
@@ -128,7 +128,7 @@ feature 'Doorkeeper sync', js: true do
       allow(DoorkeeperApi).to receive(:fetch_event_details).and_return({'status' => 'ERROR'})
       visit new_event_path
       fill_in 'Url', with: 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
-      click_on 'Doorkeeper Sync'
+      click_on 'Event Sync'
       expect(page).to have_selector '.doorkeeper-sync-status', text: 'エラーが発生しました。しばらく経ってから再度実行してください。'
       expect(page).to have_css '.doorkeeper-sync-status.result-error'
       expect(page).to have_css '.result-icon-error'

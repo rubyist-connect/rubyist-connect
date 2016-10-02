@@ -23,7 +23,7 @@ feature 'Connpass sync', js: true do
       VCR.use_cassette 'connpass_events/39406', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'http://connpass.com/event/39406/'
-        click_on 'Doorkeeper Sync'
+        click_on 'Event Sync'
         expect(page).to have_field 'Name', with: 'もくもく会＃８'
 
         expect(find("#event_user_ids_#{akira_noguchi.id}")).to be_checked
