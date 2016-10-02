@@ -1,3 +1,5 @@
+require 'httpclient'
+
 class ConnpassApi < EventApi
   # Override
   def fetch_event_details(event_url)
@@ -15,12 +17,12 @@ class ConnpassApi < EventApi
     base_url = event_url[/https?:\/\/(?:[^.]+\.)?connpass\.com\/event\/\d+/]
     url = "#{base_url}/participation/"
     logger.info "[INFO] Reading #{url}"
-    uri = URI.parse(url)
-    response = Net::HTTP.get_response(uri)
+    cliennt = HTTPClient.new
+    response = cliennt.get(url, follow_redirect: true)
     case response.code
-      when '200'
+      when 200
         Nokogiri::HTML.parse(response.body)
-      when '404'
+      when 404
         nil
       else
         raise "Could not get event details: #{response.inspect}"
