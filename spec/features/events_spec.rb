@@ -7,8 +7,7 @@ feature 'Event management' do
     sign_in_as_active_user
 
     # イベントを作成する
-    click_on 'Event'
-    click_on 'new event'
+    click_on 'Create Event'
     fill_in 'Name', with: 'KRCハッカソン'
 
     participants = users.take(3)
@@ -61,8 +60,7 @@ feature 'Event management' do
     inactive_users = 10.times.map{ create :user, :with_inactive_fields }
     sign_in_as_active_user
 
-    click_on 'Event'
-    click_on 'new event'
+    click_on 'Create Event'
 
     active_users.each do |user|
       expect(page).to have_field user.name_or_nickname
