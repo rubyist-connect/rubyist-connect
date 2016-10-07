@@ -24,9 +24,9 @@ html
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li
-              = link_to users_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Home' do
-                = fa_icon 'home 2x'
-                span.text-hide Home
+              = link_to new_event_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Create Event' do
+                = fa_icon 'plus 2x'
+                span.text-hide Create Event
             li
               = link_to events_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Events' do
                 = fa_icon 'calendar 2x'
