@@ -1,7 +1,7 @@
 # rubyist-connect
 
 [![Build Status](https://travis-ci.org/rubyist-connect/rubyist-connect.svg?branch=master)](https://travis-ci.org/rubyist-connect/rubyist-connect)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/rubyist-connect/rubyist-connect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/rubyist-connect/rubyist-connect.svg)](https://gitter.im/rubyist-connect/rubyist-connect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 rubyist-connect は、Rubyist と Rubyist を繋げるための Rails アプリケーションです。
 
