@@ -15,4 +15,4 @@ Rails.application.config.generators do |g|
   g.stylesheets false
   g.fixture_replacement :factory_girl, dir: 'spec/factories'
 end
-Rails.application.config.action_mailer.default_url_options = { host: Settings.host_name }
+Rails.application.config.action_mailer.default_url_options = Rails.application.default_url_options = { protocol: 'https', host: Settings.host_name }
