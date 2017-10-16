@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '5.0.6'
+gem 'rails', '5.1.4'
 
 # UI/assets
 gem 'uglifier'
@@ -37,6 +37,7 @@ gem 'email_validator'
 gem 'pg'
 gem 'puma'
 gem 'httpclient'
+gem 'listen'
 
 # Common
 gem 'config'

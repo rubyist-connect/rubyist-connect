@@ -18,7 +18,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => 'public, max-age=172800'
+      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -50,10 +50,5 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  config.rack_dev_mark.enable = true
-  config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(fixed: true)]
-
-  config.action_mailer.delivery_method = :letter_opener
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
