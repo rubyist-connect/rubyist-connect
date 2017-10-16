@@ -24,9 +24,12 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'page_title_helper', '~> 2.1.0'
 
 # Authorization
-gem 'devise', '~> 4.2.0'
-gem 'omniauth', '~> 1.3.1'
-gem 'omniauth-github', '~> 1.1.2'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
+# TODO: Rails 5.1で解消される？
+# https://github.com/hassox/warden/issues/147
+gem 'warden', github: 'hassox/warden'
 
 # Models
 gem 'ransack', '~> 1.8.2'
@@ -51,26 +54,24 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
-  gem 'heroku_san'
-  gem 'i18n_generators'
   gem 'letter_opener'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5.0'
-  gem 'factory_girl_rails', '~> 4.7.0'
-  gem 'spring-commands-rspec', '~> 1.0.2'
-  gem 'faker', '~> 1.6.6'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'spring-commands-rspec'
+  gem 'faker'
   gem 'dummy_text_jp'
 end
 
 group :test do
-  gem 'capybara', '~> 2.9.2'
-  gem 'launchy', '~> 2.4.3'
-  gem 'timecop', '~> 0.8.1'
-  gem 'vcr', '~> 3.0.3', require: false
-  gem 'webmock', '2.1.0', require: false
-  gem 'poltergeist', '~> 1.10.0'
-  gem 'database_cleaner', '~> 1.5.3'
-  gem 'rspec-retry', '0.5.1'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'timecop'
+  gem 'vcr', require: false
+  gem 'webmock', require: false
+  gem 'poltergeist'
+  gem 'database_cleaner'
+  gem 'rspec-retry'
 end
