@@ -1,7 +1,13 @@
 github:
   # Powを使う場合
-  client_id: '34ce07179a5538130a52'
-  secret: '028fafc572b1d3d790acb4d20171d5a3eb200af8'
+  # client_id: '34ce07179a5538130a52'
+  # secret: '028fafc572b1d3d790acb4d20171d5a3eb200af8'
   # localhost:3000を使う場合
-  # client_id: 'f11237c6b02251033dea'
-  # secret: '48f3a84d6c5a89c4a017a550ac8aa880618bb26d'
+  client_id: 'f11237c6b02251033dea'
+  secret: '48f3a84d6c5a89c4a017a550ac8aa880618bb26d'
+
+analytics:
+  tracking_id: 'UA-xxxxx-x'
+
+top_page_users_count: 21
+index_page_users_count: 20
