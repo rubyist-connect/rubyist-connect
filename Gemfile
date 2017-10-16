@@ -23,9 +23,6 @@ gem 'page_title_helper'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-# TODO: Rails 5.1で解消される？
-# https://github.com/hassox/warden/issues/147
-gem 'warden', github: 'hassox/warden'
 
 # Models
 gem 'ransack'
@@ -37,7 +34,6 @@ gem 'email_validator'
 gem 'pg'
 gem 'puma'
 gem 'httpclient'
-gem 'listen'
 
 # Common
 gem 'config'
@@ -60,6 +56,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'dummy_text_jp'
+  gem 'listen'
 end
 
 group :test do
