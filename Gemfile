@@ -32,23 +32,23 @@ gem 'omniauth-github'
 gem 'warden', github: 'hassox/warden'
 
 # Models
-gem 'ransack', '~> 1.8.2'
-gem 'jc-validates_timeliness', '~> 3.1.1'
-gem 'validate_url', '~> 1.0.2'
-gem 'email_validator', '~> 1.6.0'
+gem 'ransack'
+gem 'jc-validates_timeliness'
+gem 'validate_url'
+gem 'email_validator'
 
 # Middleware
-gem 'pg', '~> 0.19.0'
-gem 'puma', '~> 3.6.0'
-gem 'httpclient', '~> 2.8.2'
+gem 'pg'
+gem 'puma'
+gem 'httpclient'
 
 # Common
-gem 'config', '~> 1.3.0'
-gem 'hashie', '~> 3.4.6'
+gem 'config'
+gem 'hashie'
 
 # Operation
-gem 'newrelic_rpm', '~> 3.16.3'
-gem 'rack-dev-mark', '~> 0.7.5'
+gem 'newrelic_rpm'
+gem 'rack-dev-mark'
 
 group :development do
   gem 'better_errors'
