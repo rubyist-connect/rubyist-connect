@@ -31,7 +31,7 @@ gem 'validate_url'
 gem 'email_validator'
 
 # Middleware
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'httpclient'
 
@@ -52,7 +52,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'dummy_text_jp'
