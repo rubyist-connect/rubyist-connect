@@ -1,5 +1,5 @@
 # Omniauth から返ってきた request.env['omniauth.auth'] を Hash で返す
-FactoryGirl.define do
+FactoryBot.define do
   factory :omniauth_hash, class: Hash do
     provider 'github'
     uid { Random.rand(1 .. 100000).to_s }

@@ -349,7 +349,7 @@ DEPENDENCIES
   devise
   dummy_text_jp
   email_validator
-  factory_girl_rails
+  factory_bot_rails
   faker
   font-awesome-rails
   hashie

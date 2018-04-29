@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     sequence(:github_id) {|n| "#{Faker::Address.zip_code}#{n}" }
     sequence(:nickname) {|n| "#{Faker::Internet.slug(nil, '_')}_#{n}" }
