@@ -365,7 +365,7 @@ DEPENDENCIES
   omniauth
   omniauth-github
   page_title_helper
-  pg
+  pg (~> 0.21)
   poltergeist
   puma
   rack-dev-mark
