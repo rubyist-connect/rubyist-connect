@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
-gem 'rails', '5.1.6'
+gem 'rails', '5.2.0'
 
 # UI/assets
 gem 'uglifier'
@@ -44,6 +44,7 @@ gem 'newrelic_rpm'
 gem 'rack-dev-mark'
 
 group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
@@ -57,7 +58,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'dummy_text_jp'
-  gem 'listen'
 end
 
 group :test do
