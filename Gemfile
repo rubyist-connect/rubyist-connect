@@ -66,7 +66,8 @@ group :test do
   gem 'timecop'
   gem 'vcr', require: false
   gem 'webmock', require: false
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'rspec-retry'
 end
