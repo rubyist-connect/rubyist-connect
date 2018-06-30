@@ -5,7 +5,7 @@
 
 rubyist-connect は、Rubyist と Rubyist を繋げるための Rails アプリケーションです。
 
-See also [Rubyist Connect](http://rubyist.co/).
+See also [Rubyist Connect](https://rubyist.co/).
 
 ## Contributing
 * [開発環境作成手順](https://github.com/rubyist-connect/rubyist-connect/wiki/How-to-create-local-environment)
