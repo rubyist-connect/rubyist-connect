@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.4.2'
+ruby '2.5.1'
 
-gem 'rails', '5.1.4'
+gem 'rails', '5.2.0'
 
 # UI/assets
 gem 'uglifier'
@@ -31,7 +31,7 @@ gem 'validate_url'
 gem 'email_validator'
 
 # Middleware
-gem 'pg', '~> 0.21'
+gem 'pg'
 gem 'puma'
 gem 'httpclient'
 
@@ -44,10 +44,12 @@ gem 'newrelic_rpm'
 gem 'rack-dev-mark'
 
 group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
   gem 'letter_opener'
+  gem 'bundle_outdated_formatter'
 end
 
 group :development, :test do
@@ -56,7 +58,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'dummy_text_jp'
-  gem 'listen'
 end
 
 group :test do
@@ -65,7 +66,8 @@ group :test do
   gem 'timecop'
   gem 'vcr', require: false
   gem 'webmock', require: false
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'rspec-retry'
 end

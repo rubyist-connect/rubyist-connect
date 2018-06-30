@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'faker'
 require 'vcr'
-require 'capybara/poltergeist'
+require 'selenium-webdriver'
 require 'rspec/retry'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
@@ -35,12 +35,22 @@ RSpec.configure do |config|
   end
 
   VCR.configure do |c|
+    c.ignore_localhost = true
     c.cassette_library_dir = 'spec/vcr'
     c.hook_into :webmock
     c.allow_http_connections_when_no_cassette = true
   end
 
-  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :selenium_chrome_headless do |app|
+    options = Selenium::WebDriver::Chrome::Options.new
+    [
+      'headless',
+      'window-size=1400x1400',
+      'disable-gpu'
+    ].each { |arg| options.add_argument(arg) }
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
+  Capybara.javascript_driver = :selenium_chrome_headless
 
   require 'database_cleaner'
   config.before(:suite) do

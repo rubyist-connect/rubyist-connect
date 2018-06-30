@@ -1,4 +1,4 @@
-class DropInterests < ActiveRecord::Migration
+class DropInterests < ActiveRecord::Migration[4.2]
   def up
     drop_table :interests
   end
