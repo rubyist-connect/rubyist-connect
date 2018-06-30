@@ -31,7 +31,7 @@ gem 'validate_url'
 gem 'email_validator'
 
 # Middleware
-gem 'pg', '~> 0.21'
+gem 'pg'
 gem 'puma'
 gem 'httpclient'
 
@@ -48,6 +48,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'letter_opener'
+  gem 'bundle_outdated_formatter'
 end
 
 group :development, :test do
