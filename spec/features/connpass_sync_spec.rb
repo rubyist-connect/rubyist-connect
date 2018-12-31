@@ -22,7 +22,7 @@ feature 'Connpass sync', js: true do
     scenario 'Doorkeeperの情報をフォームに反映させる' do
       VCR.use_cassette 'connpass_events/39406', match_requests_on: [:uri] do
         visit new_event_path
-        fill_in 'Url', with: 'http://connpass.com/event/39406/'
+        fill_in 'Url', with: 'https://connpass.com/event/39406/'
         click_on 'Event Sync'
         expect(page).to have_field 'Name', with: 'もくもく会＃８'
 
