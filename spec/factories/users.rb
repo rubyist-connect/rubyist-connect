@@ -16,20 +16,20 @@ FactoryBot.define do
     qiita_name { Faker::Internet.slug }
 
     trait :with_notification_enabled do
-      new_user_notification_enabled true
+      new_user_notification_enabled { true }
     end
 
     trait :with_inactive_fields do
-      name nil
-      email nil
-      introduction nil
-      twitter_name nil
-      github_url nil
-      facebook_name nil
-      location nil
-      blog nil
-      birthday nil
-      qiita_name nil
+      name { nil }
+      email { nil }
+      introduction { nil }
+      twitter_name { nil }
+      github_url { nil }
+      facebook_name { nil }
+      location { nil }
+      blog { nil }
+      birthday { nil }
+      qiita_name { nil }
     end
   end
 end
