@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.5.1'
+ruby '2.6.0'
 
 gem 'rails', '5.2.2'
 
@@ -41,7 +41,8 @@ gem 'hashie'
 
 # Operation
 gem 'newrelic_rpm'
-gem 'rack-dev-mark'
+# TODO: Waiting for Ruby 2.6 support
+# gem 'rack-dev-mark'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

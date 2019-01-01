@@ -232,8 +232,6 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
-    rack-dev-mark (0.7.7)
-      rack (>= 1.1, < 2.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2)
@@ -407,7 +405,6 @@ DEPENDENCIES
   page_title_helper
   pg
   puma
-  rack-dev-mark
   rails (= 5.2.2)
   ransack
   redcarpet
@@ -425,7 +422,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.0p0
 
 BUNDLED WITH
-   1.16.2
+   1.17.2
