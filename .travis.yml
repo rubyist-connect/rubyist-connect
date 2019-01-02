@@ -4,7 +4,7 @@ rvm:
 cache: bundler
 bundler_args: --without production --deployment
 addons:
-  postgresql: "9.3"
+  postgresql: "9.6"
   chrome: stable
 before_install:
   - gem update --system

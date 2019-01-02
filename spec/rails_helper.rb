@@ -11,6 +11,11 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
+# https://github.com/puma/puma/issues/1582
+# https://gist.github.com/2rba/74d57775ac83ffcb0ff1da5eb5371212
+require 'puma/reactor'
+Puma::Reactor.prepend CoreExtensions::Puma::Reactor
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

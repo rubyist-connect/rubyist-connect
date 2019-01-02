@@ -1,7 +1,7 @@
 # Omniauth から返ってきた request.env['omniauth.auth'] を Hash で返す
 FactoryBot.define do
   factory :omniauth_hash, class: Hash do
-    provider 'github'
+    provider { 'github' }
     uid { Random.rand(1 .. 100000).to_s }
     info { {
       'nickname' => Faker::Internet.user_name,
