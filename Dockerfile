@@ -2,7 +2,10 @@ FROM ruby:2.5.1
 ENV LANG C.UTF-8
 LABEL maintainer 'Yuji Shimoda <yuji.shimoda@gmail.com>'
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs chromedriver
+# https://github.com/nodesource/distributions#installation-instructions
+RUN apt-get update -qq && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y build-essential libpq-dev nodejs chromedriver
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
