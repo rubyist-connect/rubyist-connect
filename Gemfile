@@ -10,7 +10,7 @@ gem 'jquery-rails'
 
 gem 'coffee-rails'
 gem 'sass-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', ">= 3.4.1"
 gem 'font-awesome-rails'
 gem 'autoprefixer-rails'
 gem 'slim-rails'
@@ -20,7 +20,7 @@ gem 'kaminari-bootstrap'
 gem 'page_title_helper'
 
 # Authorization
-gem 'devise'
+gem 'devise', ">= 4.6.0"
 gem 'omniauth'
 gem 'omniauth-github'
 
