@@ -48,7 +48,7 @@ ApplicationRecord.transaction do
     user.introduction = introduction if save?
     user.github_url = "https://github.com/#{user.nickname}"
     user.blog = "http://#{user.nickname}.example.com" if save?
-    user.birthday = Faker::Date.between(60.years.ago, 10.years.ago) if save?
+    user.birthday = Faker::Date.between(from: 60.years.ago, to: 10.years.ago) if save?
 
     Faker::Config.locale = :ja
     user.name = Faker::Name.name if save?
