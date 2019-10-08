@@ -67,7 +67,7 @@ group :test do
   gem 'vcr', require: false
   gem 'webmock', require: false
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'database_cleaner'
   gem 'rspec-retry'
 end
