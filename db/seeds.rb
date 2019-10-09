@@ -36,7 +36,7 @@ ApplicationRecord.transaction do
 
     Faker::Config.locale = :en
     user.github_id = "#{Faker::Address.zip_code}#{n}"
-    user.nickname = "#{Faker::Internet.slug(nil, '_')}_#{n}"
+    user.nickname = "#{Faker::Internet.slug(words: nil, glue: '_')}_#{n}"
 
     # 任意の入力項目はランダムに設定する
     user.twitter_name = user.nickname if save?
