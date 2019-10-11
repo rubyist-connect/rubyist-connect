@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.5.1
+  - 2.6.5
 cache: bundler
 bundler_args: --without production --deployment
 addons:
