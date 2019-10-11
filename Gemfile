@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.5'
 
-gem 'rails', '5.2.2.1'
+gem 'rails', '5.2.3'
 
 # UI/assets
 gem 'uglifier'
