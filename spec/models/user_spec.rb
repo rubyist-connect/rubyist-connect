@@ -68,7 +68,10 @@ describe User do
       end
       it 'must be valid format' do
         user = build :user
-        user.email = 'alice@example..com'
+        # Updated a test case
+        # Reference : https://github.com/balexand/email_validator/compare/v1.6.0...master#diff-8dab87ee50d82e8b34254c5cfa51ec94L11
+        # user.email = 'alice@example..com'
+        user.email = 'alice'
         expect(user).to be_invalid
       end
     end
