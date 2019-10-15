@@ -10,9 +10,10 @@ before_install:
   - gem update --system
   - gem install bundler --pre
 before_script:
-  - export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start && sleep 3
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+services:
+  - xvfb
 script: bundle exec rspec
 notifications:
   webhooks:
