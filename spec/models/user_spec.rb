@@ -68,7 +68,7 @@ describe User do
       end
       it 'must be valid format' do
         user = build :user
-        user.email = 'alice@example..com'
+        user.email = 'alice'
         expect(user).to be_invalid
       end
     end

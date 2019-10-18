@@ -36,7 +36,7 @@ ApplicationRecord.transaction do
 
     Faker::Config.locale = :en
     user.github_id = "#{Faker::Address.zip_code}#{n}"
-    user.nickname = "#{Faker::Internet.slug(nil, '_')}_#{n}"
+    user.nickname = "#{Faker::Internet.slug(words: nil, glue: '_')}_#{n}"
 
     # 任意の入力項目はランダムに設定する
     user.twitter_name = user.nickname if save?
@@ -48,7 +48,7 @@ ApplicationRecord.transaction do
     user.introduction = introduction if save?
     user.github_url = "https://github.com/#{user.nickname}"
     user.blog = "http://#{user.nickname}.example.com" if save?
-    user.birthday = Faker::Date.between(60.years.ago, 10.years.ago) if save?
+    user.birthday = Faker::Date.between(from: 60.years.ago, to: 10.years.ago) if save?
 
     Faker::Config.locale = :ja
     user.name = Faker::Name.name if save?

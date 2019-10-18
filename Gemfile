@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.5.1'
+ruby '2.6.5'
 
-gem 'rails', '5.2.2.1'
+gem 'rails', '6.0.0'
 
 # UI/assets
 gem 'uglifier'
@@ -67,7 +67,7 @@ group :test do
   gem 'vcr', require: false
   gem 'webmock', require: false
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'database_cleaner'
   gem 'rspec-retry'
 end
