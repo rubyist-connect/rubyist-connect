@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Event management' do
+feature 'Event management', js: true do
   scenario 'イベントが管理できること' do
     users = 10.times.map{ create :user }
 
@@ -70,6 +70,23 @@ feature 'Event management' do
 
     inactive_users.each do |user|
       expect(page).to_not have_field user.name_or_nickname
+    end
+  end
+
+  scenario 'Userがフィルタリングされること' do
+    other_users = create_list :user, 10
+    target_user = create :user, name: '山田 太郎'
+
+    sign_in_as_active_user
+    visit new_event_path
+
+    click_on 'Event'
+    click_on 'new event'
+    fill_in 'Users', with: '太'
+
+    expect(find('.users')).to have_field target_user.name_or_nickname
+    other_users.each do |user|
+      expect(find('.users')).to_not have_field user.name_or_nickname
     end
   end
 end
