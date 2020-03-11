@@ -2,11 +2,15 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
     command: bundle exec puma -C config/puma.rb -e development -p 3000
+    environment:
+      - DATABASE_PASSWORD=password
     volumes:
       - .:/app
     ports:
