@@ -52,6 +52,7 @@ feature 'Event management', js: true do
     # イベントを削除する
     click_on 'Event'
     click_on '削除'
+    page.driver.browser.switch_to.alert.accept
     expect(page).to have_content 'Event was successfully destroyed.'
     expect(page).to_not have_content 'KRC Hackathon'
   end
