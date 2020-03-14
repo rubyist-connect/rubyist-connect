@@ -66,7 +66,8 @@ describe ConnpassApi do
         event_url = 'https://67ws.connpass.com/event/141508/'
         VCR.use_cassette 'connpass_events/141508', match_requests_on: [:uri] do
           expect {
-            ConnpassApi.new.fetch_event_details(event_url)
+            result = ConnpassApi.new.fetch_event_details(event_url)
+            expect(result["event"]["participant_profiles"].size).to eq(0)
           }.to_not raise_error
         end
       end
@@ -77,7 +78,8 @@ describe ConnpassApi do
         event_url = 'https://hikalab-kansai.connpass.com/event/41353/'
         VCR.use_cassette 'connpass_events/41353', match_requests_on: [:uri] do
           expect {
-            ConnpassApi.new.fetch_event_details(event_url)
+            result = ConnpassApi.new.fetch_event_details(event_url)
+            expect(result["event"]["participant_profiles"].size).to eq(19)
           }.to_not raise_error
         end
       end
