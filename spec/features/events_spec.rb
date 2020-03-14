@@ -74,20 +74,35 @@ feature 'Event management', js: true do
     end
   end
 
-  scenario 'Userがフィルタリングされること' do
+  scenario 'Userをフィルタリングして登録できること' do
     other_users = create_list :user, 10
-    target_user = create :user, name: '山田 太郎'
+    yamada = create :user, name: '山田 太郎'
+    katoh = create :user, name: '加藤 人志'
 
     sign_in_as_active_user
     visit new_event_path
 
     click_on 'Event'
     click_on 'new event'
-    fill_in 'Users', with: '太'
+    fill_in 'Name', with: 'KRCハッカソン'
 
-    expect(find('.users')).to have_field target_user.name_or_nickname
+    fill_in 'Users', with: '太'
+    check yamada.name_or_nickname
+    fill_in 'Users', with: '加藤'
+    check katoh.name_or_nickname
+
+    expect(page).to have_content katoh.name_or_nickname
+    ([yamada] | other_users).each do |user|
+      expect(page).to_not have_content user.name_or_nickname
+    end
+
+    click_on '登録する'
+
+    [yamada, katoh].each do |user|
+      expect(page).to have_content user.name_or_nickname
+    end
     other_users.each do |user|
-      expect(find('.users')).to_not have_field user.name_or_nickname
+      expect(page).to_not have_content user.name_or_nickname
     end
   end
 end
