@@ -6,7 +6,8 @@ LABEL maintainer 'Yuji Shimoda <yuji.shimoda@gmail.com>'
 RUN apt-get update -qq && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    apt-get install -y build-essential libpq-dev nodejs ./google-chrome-stable_current_amd64.deb
+    apt-get install -y build-essential libpq-dev nodejs ./google-chrome-stable_current_amd64.deb && \
+    gem install bundler -v 2.1.4
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
