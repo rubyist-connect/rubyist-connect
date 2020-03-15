@@ -39,8 +39,10 @@ class ConnpassApi < EventApi
     }
     rows = doc.css('.applicant_area .participation_table_area .participants_table tbody tr')
     rows.each do |row|
+      name = row.css('.user .display_name a')[0]&.text
+      next if name.blank?
+
       profile = { 'name' => nil, 'facebook' => nil, 'twitter' => nil, 'github' => nil }
-      name = row.css('.user .display_name a')[0].text
       profile['name'] = name
       row.css('.social a').each do |link|
         href = link['href']
