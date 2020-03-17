@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Event management', js: true do
+feature 'Event management' do
   scenario 'イベントが管理できること' do
     users = 10.times.map{ create :user }
 
@@ -52,7 +52,6 @@ feature 'Event management', js: true do
     # イベントを削除する
     click_on 'Event'
     click_on '削除'
-    page.driver.browser.switch_to.alert.accept
     expect(page).to have_content 'Event was successfully destroyed.'
     expect(page).to_not have_content 'KRC Hackathon'
   end
@@ -74,7 +73,7 @@ feature 'Event management', js: true do
     end
   end
 
-  scenario 'Userをフィルタリングして登録できること' do
+  scenario 'Userをフィルタリングして登録できること', js: true do
     yamada = create :user, name: '山田 太郎'
     katoh = create :user, name: '加藤 人志'
     sato = create :user, name: '佐藤 人志'
