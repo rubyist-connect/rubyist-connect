@@ -95,6 +95,7 @@ feature 'Event management' do
     expect(page).to have_content '佐藤 人志'
 
     click_on '登録する'
+    expect(page).to have_content 'Event was successfully created.'
 
     expect(page).to have_content '山田 太郎'
     expect(page).to have_content '加藤 人志'
