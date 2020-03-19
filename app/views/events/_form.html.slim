@@ -27,11 +27,11 @@
               => fa_icon 'check-circle', class: 'result-success result-icon-success', style: 'display:none;'
               => fa_icon 'exclamation-circle', class: 'result-error result-icon-error', style: 'display:none;'
               span.event-sync-status
-          .form-group
+          .form-group.users
               = f.label :users
-              br
+              = text_field_tag :event_users, nil, name: 'event[users]', placeholder: 'User 検索', class: 'form-control user-filter'
               = f.collection_check_boxes :user_ids, @users, :id, :name_or_nickname do |b|
-                .user.col-md-4
+                .user.col-md-4 data-filter-key="#{b.text}"
                   = b.label(class: 'checkbox-inline', title: b.text) do
                     - user = b.object
                     = b.check_box
