@@ -31,12 +31,15 @@ class DoorkeeperApi < EventApi
   end
 
   def fetch_attendees(event_url)
-    if doc = read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
-      doc.xpath('//div[@class="user-profile-details"]').map do |profile|
-        name = profile.xpath('div[@class="user-name"]').text
-        social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
-        { "name" => name }.merge(extract_accounts(social_links))
-      end
+    if event_doc = read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
+      event_doc.xpath('//div[@class="member-list-item"]').map do |member_item|
+        if member_anchor = member_item.xpath('a').first
+          member_doc = read_doc_from_url(member_anchor.attributes["href"].value)
+          name = member_doc.xpath('//div[@class="community-title"]').text.strip
+          social_links = member_doc.xpath('//div[@class="social-links"]').xpath('a').map{ |a| a['href'] }
+          { "name" => name }.merge(extract_accounts(social_links))
+        end
+      end.compact
     end
   end
 
