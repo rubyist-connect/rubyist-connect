@@ -1,10 +1,12 @@
 $ ->
   $('.user-filter').on 'input', ->
-    if filter = $('input.user-filter').val()
+    if filter = $('input.user-filter').val().toLowerCase()
       $.each $('.user'), ->
-        if ~$(this).data('filter-key').indexOf(filter)
-          $(this).show()
+        targetElement = $(this)
+        userName = targetElement.data('filter-key').toLowerCase()
+        if ~userName.indexOf(filter)
+          targetElement.show()
         else
-          $(this).hide()
+          targetElement.hide()
     else
       $('.user').show()
