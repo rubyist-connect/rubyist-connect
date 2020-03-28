@@ -12,7 +12,7 @@ feature 'Doorkeeper sync', js: true do
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
     given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'takamichi.hara' }
     given!(:aki) { create :user, name: 'Aki ', nickname: 'springaki' }
-    given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'otokunaga' }
+    given!(:otokunaga) { create :user, name: 'Seiki Tokunaga', nickname: 'otokunaga2' }
 
     scenario 'Doorkeeperの情報をフォームに反映させる' do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
@@ -47,7 +47,7 @@ feature 'Doorkeeper sync', js: true do
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'Jnchito' }
     given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'Takamichi.hara' }
     given!(:aki) { create :user, name: 'Aki', nickname: 'springaki' }
-    given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'Otokunaga' }
+    given!(:otokunaga) { create :user, name: 'Seiki Tokunaga', nickname: 'Otokunaga2' }
 
     scenario '微妙な違いは無視して選択する' do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
@@ -72,7 +72,7 @@ feature 'Doorkeeper sync', js: true do
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
     given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'takamichi.hara' }
     given!(:aki) { create :user, name: 'Aki ', nickname: 'springaki' }
-    given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'otokunaga' }
+    given!(:otokunaga) { create :user, name: 'Seiki Tokunaga', nickname: 'otokunaga2' }
 
     scenario '違うユーザーを選択する可能性があるので、選択しない' do
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
