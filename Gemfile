@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.6.5'
+ruby '2.6.6'
 
-gem 'rails', '6.0.0'
+gem 'rails', '6.0.2.2'
 
 # UI/assets
 gem 'uglifier'
@@ -49,7 +49,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'letter_opener'
-  gem 'bundle_outdated_formatter'
+  gem 'bundle_outdated_formatter', github: 'JunichiIto/bundle_outdated_formatter', branch: 'fix-group-regex'
 end
 
 group :development, :test do
