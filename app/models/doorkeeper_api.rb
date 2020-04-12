@@ -1,4 +1,7 @@
 class DoorkeeperApi < EventApi
+  # 本来は1秒以上にすべきだが、Herokuの30秒タイムアウトルールをオーバーする可能性があるのでそれより短くする
+  FETCH_SLEEP_SEC = 0.5
+
   # Override
   def fetch_event_details(event_url)
     event_info = fetch_event_info(event_url)
@@ -43,6 +46,7 @@ class DoorkeeperApi < EventApi
   end
 
   def fetch_social_links(member_url)
+    sleep FETCH_SLEEP_SEC
     member_doc = read_doc_from_url(member_url)
     member_doc.xpath('//div[@class="social-links"]/a').map{ |a| a['href'] }
   end
