@@ -36,6 +36,7 @@ class DoorkeeperApi < EventApi
   def fetch_attendees(event_url)
     if event_doc = read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
       event_doc.xpath('//div[@class="member-list-item"]').map do |member_item|
+        # "アカウント非公開の参加者" は、アンカータグになっていないので情報を取得できない
         if member_anchor = member_item.xpath('a').first
           name = member_anchor.xpath('div[@class="member-body"]/div[@class="member-name"]/span').text
           social_links = fetch_social_links(member_anchor.attributes['href'].value)
