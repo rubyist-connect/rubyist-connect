@@ -1,4 +1,7 @@
 class DoorkeeperApi < EventApi
+  # 本来は1秒以上にすべきだが、Herokuの30秒タイムアウトルールをオーバーする可能性があるのでそれより短くする
+  FETCH_SLEEP_SEC = 0.5
+
   # Override
   def fetch_event_details(event_url)
     event_info = fetch_event_info(event_url)
@@ -31,13 +34,22 @@ class DoorkeeperApi < EventApi
   end
 
   def fetch_attendees(event_url)
-    if doc = read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
-      doc.xpath('//div[@class="user-profile-details"]').map do |profile|
-        name = profile.xpath('div[@class="user-name"]').text
-        social_links = profile.xpath('div[@class="user-social"]').xpath('a').map{|a| a['href']}
-        { "name" => name }.merge(extract_accounts(social_links))
-      end
+    if event_doc = read_doc_from_url(File.join(event_url.gsub(/^http:/, 'https:'), 'participants'))
+      event_doc.xpath('//div[@class="member-list-item"]').map do |member_item|
+        # "アカウント非公開の参加者" は、アンカータグになっていないので情報を取得できない
+        if member_anchor = member_item.xpath('a').first
+          name = member_anchor.xpath('div[@class="member-body"]/div[@class="member-name"]/span').text
+          social_links = fetch_social_links(member_anchor.attributes['href'].value)
+          { "name" => name }.merge(extract_accounts(social_links))
+        end
+      end.compact
     end
+  end
+
+  def fetch_social_links(member_url)
+    sleep FETCH_SLEEP_SEC
+    member_doc = read_doc_from_url(member_url)
+    member_doc.xpath('//div[@class="social-links"]/a').map{ |a| a['href'] }
   end
 
   def extract_accounts(social_links)

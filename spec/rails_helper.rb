@@ -52,6 +52,7 @@ RSpec.configure do |config|
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
   Capybara.javascript_driver = :selenium_chrome_headless
+  Capybara.default_max_wait_time = 15
 
   require 'database_cleaner'
   config.before(:suite) do
