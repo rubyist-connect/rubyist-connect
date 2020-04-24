@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta name="viewport" content="width=device-width"
-    title Rubyist Connect
+    title= page_title format: :app
     = favicon_link_tag 'favicon.ico'
     = favicon_link_tag 'touch-icon-iphone.png', :rel => 'apple-touch-icon', :type => 'image/png'
     = favicon_link_tag 'touch-icon-ipad.png', :sizes => '76x76', :rel => 'apple-touch-icon', :type => 'image/png'
@@ -11,6 +11,9 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    meta name="twitter:card" content="summary"
+    meta property="og:image" content=(image_url 'rubyist-connect-symbol-mark.png')
+    meta property="og:title" content=(page_title format: :app)
   body.toppage
     = yield
     .alart-top

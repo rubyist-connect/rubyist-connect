@@ -11,4 +11,5 @@
 //= link touch-icon-ipad.png
 //= link touch-icon-iphone-retina.png
 //= link touch-icon-ipad-retina.png
+//= link rubyist-connect-symbol-mark.png
 //= link loading.gif
