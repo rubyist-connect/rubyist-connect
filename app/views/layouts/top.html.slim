@@ -14,6 +14,8 @@ html
     meta name="twitter:card" content="summary"
     meta property="og:image" content=(image_url 'rubyist-connect-symbol-mark.png')
     meta property="og:title" content=(page_title format: :app)
+    meta property="og:description" content=(t('top.index.description'))
+    meta name="description" content=(t('top.index.description'))
   body.toppage
     = yield
     .alart-top
