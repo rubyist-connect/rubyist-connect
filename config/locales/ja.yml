@@ -214,3 +214,8 @@ ja:
   views:
     pagination:
       truncate: "..."
+  top:
+    index:
+      description: |
+        Rubyist Connect は、あなたの身近な Rubyist や趣味の近い Rubyist を探すことができます。
+        魅力的な Rubyist とつながって一緒に勉強してみませんか。
