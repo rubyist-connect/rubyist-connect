@@ -7,10 +7,7 @@ header
     h2
       | Rubyist Connect
       span beta
-    p.header-lead
-      | Rubyist Connect は、あなたの身近な Rubyist や趣味の近い Rubyist を探すことができます。
-      br
-      | 魅力的な Rubyist とつながって一緒に勉強してみませんか。
+    = simple_format(t('.description'), class: 'header-lead')
     = link_to user_github_omniauth_authorize_path, class: 'login-btn btn' do
       = fa_icon 'github-square'
       |  Sign in with GitHub

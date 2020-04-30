@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 feature 'Top spec' do
+  scenario 'トップページに OGPタグが設定されている' do
+    visit root_path
+
+    doc = Nokogiri::HTML(page.html)
+    expect(doc.css('meta[property="og:image"]')[0]['content']).to include 'rubyist-connect-symbol-mark'
+    expect(doc.css('meta[property="og:title"]')[0]['content']).to include 'Rubyist Connect'
+    expect(doc.css('meta[property="og:description"]')[0]['content']).to include I18n.t('top.index.description')
+    expect(doc.css('meta[name="description"]')[0]['content']).to include I18n.t('top.index.description')
+  end
+
   scenario 'ログイン中はトップページにアクセスできない' do
     sign_in_as_new_user
 
