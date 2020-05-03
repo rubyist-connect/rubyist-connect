@@ -17,6 +17,8 @@ class ConnpassApi < EventApi
     case response.code
       when 200
         { 'status' => :ok, 'event' => doc_to_hash(Nokogiri::HTML.parse(response.body)) }
+      when 403
+        { 'status' => :forbidden }
       when 404
         { 'status' => :not_found }
       else

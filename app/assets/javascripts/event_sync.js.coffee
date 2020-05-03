@@ -42,7 +42,7 @@ $ ->
           $imgLoading.hide()
         error: (XMLHttpRequest, textStatus, errorThrown) ->
           switch XMLHttpRequest.status
-            when 404
+            when 404, 403
               $statusMessage.text('イベントが見つかりません。URLを確認してください。')
             else
               $statusMessage.text('エラーが発生しました。しばらく経ってから再度実行してください。')
