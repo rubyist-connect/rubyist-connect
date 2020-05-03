@@ -4,7 +4,7 @@ describe DoorkeeperApi do
   describe '::fetch_event_details' do
     let(:expected) do
       {
-          "status" => "success",
+          "status" => :ok,
           "event" => {
               "title" => "Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～",
               "id" => 24544,
@@ -129,7 +129,7 @@ describe DoorkeeperApi do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24544'
       VCR.use_cassette 'doorkeeper_events/24544_test_code_discussion', match_requests_on: [:uri] do
         result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
-        expect(result.status).to eq 'success'
+        expect(result.status).to eq :ok
         event = result.event
         expect(event.title).to eq "Rubyistのためのテストコード相談会 ～テストの書き方に悩んでいませんか？～"
         profiles = event.participant_profiles
@@ -146,7 +146,7 @@ describe DoorkeeperApi do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/24'
       VCR.use_cassette 'doorkeeper_events/24_not_found', match_requests_on: [:uri] do
         result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
-        expect(result.status).to eq 'not_found'
+        expect(result.status).to eq :not_found
       end
     end
 
@@ -154,14 +154,14 @@ describe DoorkeeperApi do
       event_url = 'https://nishiwaki-koberb.doorkeeper.jp/events/1'
       VCR.use_cassette 'doorkeeper_events/1_not_found', match_requests_on: [:uri] do
         result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
-        expect(result.status).to eq 'not_found'
+        expect(result.status).to eq :not_found
       end
     end
 
     example 'unexpected error' do
       event_url = nil
       result = DoorkeeperApi.new.fetch_event_details_as_mash(event_url)
-      expect(result.status).to match /ERROR/
+      expect(result.status).to eq :internal_server_error
     end
   end
 end

@@ -3,12 +3,7 @@ require 'httpclient'
 class ConnpassApi < EventApi
   # Override
   def fetch_event_details(event_url)
-    event_info = fetch_event_info(event_url)
-    if event_info.present?
-      doc_to_hash(event_info)
-    else
-      { 'status' => 'not_found' }
-    end
+    fetch_event_info(event_url)
   end
 
   private
@@ -21,21 +16,18 @@ class ConnpassApi < EventApi
     response = cliennt.get(url, follow_redirect: true)
     case response.code
       when 200
-        Nokogiri::HTML.parse(response.body)
+        { 'status' => :ok, 'event' => doc_to_hash(Nokogiri::HTML.parse(response.body)) }
       when 404
-        nil
+        { 'status' => :not_found }
       else
         raise "Could not get event details: #{response.inspect}"
     end
   end
 
   def doc_to_hash(doc)
-    info = {
-        'status' => 'success',
-        'event' => {
-            'title' => doc.css('.event_title').text,
-            'participant_profiles' => []
-        }
+    event = {
+      'title' => doc.css('.event_title').text,
+      'participant_profiles' => []
     }
     rows = doc.css('.applicant_area .participation_table_area .participants_table tbody tr')
     rows.each do |row|
@@ -54,8 +46,8 @@ class ConnpassApi < EventApi
           profile['github'] = github
         end
       end
-      info['event']['participant_profiles'] << profile
+      event['participant_profiles'] << profile
     end
-    info
+    event
   end
 end
