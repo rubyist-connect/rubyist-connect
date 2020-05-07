@@ -37,6 +37,11 @@ article.new-members
 
   = link_to 'more...', user_github_omniauth_authorize_path, class: 'login-btn btn'
 
+  div.user-count
+    div.user-count-text
+      = User.all.length
+    = image_tag 'user-count-icon.png', id: 'user-count-img', size: '125x100', alt: 'User Count'
+
 footer
   p
     | Authored by

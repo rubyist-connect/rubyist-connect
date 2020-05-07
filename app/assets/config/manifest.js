@@ -13,3 +13,4 @@
 //= link touch-icon-ipad-retina.png
 //= link rubyist-connect-symbol-mark.png
 //= link loading.gif
+//= link user-count-icon.png

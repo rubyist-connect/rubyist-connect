@@ -2,7 +2,7 @@
   @mixin main_font
     font-family: 'Noto Sans', sans-serif
     font-weight: 700
-  
+
   margin: 0
   padding: 0
   color: #333
@@ -16,7 +16,7 @@
     text-align: center
 
   header, article
-    width: 100% 
+    width: 100%
     text-align: center
     border-bottom: 1px solid rgba(0,0,0,0.1)
     box-shadow: 0 1px 0 rgba(255,255,255,0.3)
@@ -137,7 +137,7 @@
       box-shadow: 0 0 3px rgba(0,0,0,0.15)
 
       &:first-child
-        margin-left: 0 
+        margin-left: 0
 
       h3
         margin: 10px 0
@@ -171,6 +171,25 @@
         width: 80px
         border-radius: 80px
 
+  // user count
+  .user-count
+    position: relative
+
+    img
+      margin-top: 60px
+      z-index: 10
+
+    .user-count-text
+      position: absolute
+      font-family: monospace
+      font-size: 25px
+      color: white
+      top: 60%
+      right: 50%
+      transform: translate(45%, -50%)
+      text-align: center
+      line-height: 200px
+
   footer
     p
       text-align: center
@@ -187,7 +206,7 @@
       li
         width: 90%
         float: none
-        margin: 0 
+        margin: 0
         margin: 10px auto
 
         &:first-child
