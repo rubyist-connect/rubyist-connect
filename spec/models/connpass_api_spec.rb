@@ -4,7 +4,7 @@ describe ConnpassApi do
   describe '::fetch_event_details' do
     let(:expected) do
       {
-          "status" => "success",
+          "status" => :ok,
           "event" => {
               "title" => "もくもく会＃８",
               "participant_profiles" => expected_profiles

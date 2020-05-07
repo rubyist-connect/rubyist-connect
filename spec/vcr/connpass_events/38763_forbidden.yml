@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://x.connpass.com/event/38763/participation/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.6 (2020-03-31))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 10 Jan 2013 00:00:01 GMT
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Content-Type:
+      - text/html
+      Date:
+      - Sun, 03 May 2020 12:07:48 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '162'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>403
+        Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: null
+  recorded_at: Thu, 10 Jan 2013 00:00:01 GMT
+recorded_with: VCR 5.1.0

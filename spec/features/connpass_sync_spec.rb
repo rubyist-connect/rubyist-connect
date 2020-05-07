@@ -19,7 +19,7 @@ feature 'Connpass sync', js: true do
     # 何も一致しない
     given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'otokunaga' }
 
-    scenario 'Doorkeeperの情報をフォームに反映させる' do
+    scenario 'connpassの情報をフォームに反映させる' do
       VCR.use_cassette 'connpass_events/39406', match_requests_on: [:uri] do
         visit new_event_path
         fill_in 'Url', with: 'https://connpass.com/event/39406/'
@@ -38,6 +38,47 @@ feature 'Connpass sync', js: true do
         expect(page).to have_css '.result-icon-success'
         expect(page).to_not have_css '.img-loading'
       end
+    end
+  end
+
+  context '存在しないイベントの場合' do
+    scenario 'エラーメッセージを表示する' do
+      VCR.use_cassette 'connpass_events/1_not_found', match_requests_on: [:uri] do
+        visit new_event_path
+        fill_in 'Url', with: 'https://connpass.com/event/1/'
+        click_on 'Event Sync'
+        expect(page).to have_selector '.event-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
+        expect(page).to have_css '.event-sync-status.result-error'
+        expect(page).to have_css '.result-icon-error'
+        expect(page).to_not have_css '.img-loading'
+      end
+    end
+  end
+
+  context '存在しないURLの場合' do
+    scenario 'エラーメッセージを表示する' do
+      VCR.use_cassette 'connpass_events/38763_forbidden', match_requests_on: [:uri] do
+        visit new_event_path
+        fill_in 'Url', with: 'http://x.connpass.com/event/38763'
+        click_on 'Event Sync'
+        expect(page).to have_selector '.event-sync-status', text: 'イベントが見つかりません。URLを確認してください。'
+        expect(page).to have_css '.event-sync-status.result-error'
+        expect(page).to have_css '.result-icon-error'
+        expect(page).to_not have_css '.img-loading'
+      end
+    end
+  end
+
+  context '予期せぬエラーが発生した場合' do
+    scenario 'エラーメッセージを表示する' do
+      allow_any_instance_of(ConnpassApi).to receive(:fetch_event_details).and_return({'status' => 'ERROR'})
+      visit new_event_path
+      fill_in 'Url', with: 'https://connpass.com/event/39406/'
+      click_on 'Event Sync'
+      expect(page).to have_selector '.event-sync-status', text: 'エラーが発生しました。しばらく経ってから再度実行してください。'
+      expect(page).to have_css '.event-sync-status.result-error'
+      expect(page).to have_css '.result-icon-error'
+      expect(page).to_not have_css '.img-loading'
     end
   end
 end

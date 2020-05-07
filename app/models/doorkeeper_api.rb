@@ -5,13 +5,12 @@ class DoorkeeperApi < EventApi
   # Override
   def fetch_event_details(event_url)
     event_info = fetch_event_info(event_url)
-    attendees = fetch_attendees(event_url) if event_info.present?
-    if [event_info, attendees].all?(&:present?)
-      event_info["status"] = 'success'
+    attendees = fetch_attendees(event_url) if event_info["status"] == :ok
+    if attendees.present?
       event_info["event"]["participant_profiles"] = attendees
       event_info
     else
-      { 'status' => 'not_found' }
+      { 'status' => :not_found }
     end
   end
 
@@ -25,9 +24,9 @@ class DoorkeeperApi < EventApi
     response = Net::HTTP.get_response(uri)
     case response.code
       when '200'
-        JSON.parse(response.body)
+        { 'status' => :ok, 'event' => JSON.parse(response.body)['event'] }
       when '404'
-        nil
+        { 'status' => :not_found }
       else
         raise "Could not get event details: #{response.inspect}"
     end

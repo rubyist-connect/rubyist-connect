@@ -21,14 +21,14 @@ class EventApi
 
   def fetch_event_details_with_attendee_user_ids(event_url)
     result = fetch_event_details_as_mash(event_url)
-    if result.status == 'success'
+    if result.status == :ok
       event = result.event
       { status: result.status, name: event.title, attendee_user_ids: attendee_user_ids(event.participant_profiles) }.tap do |info|
         logger.info "[INFO] Fetch event successfully: #{info.inspect}, #{event_url}"
       end
     else
       logger.info "[INFO] Fetch event unsuccessfully: #{result.status}, #{event_url}"
-      { status: result.status }
+      { status: result.status, message: result.message }
     end
   end
 
@@ -38,7 +38,7 @@ class EventApi
     rescue => e
       logger.error "[ERROR] #{e.inspect}"
       logger.error e.backtrace.join("\n")
-      hash = { 'status' => "ERROR: #{e.message}" }
+      hash = { 'status' => :internal_server_error, 'message' => e.message }
     end
     Hashie::Mash.new(hash)
   end

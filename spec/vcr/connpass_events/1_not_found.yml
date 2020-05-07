@@ -1,0 +1,219 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://connpass.com/event/1/participation/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.6 (2020-03-31))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 10 Jan 2013 00:00:18 GMT
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Language:
+      - ja
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 03 May 2020 12:31:12 GMT
+      Server:
+      - nginx
+      Set-Cookie:
+      - connpass-csrftoken=c9Xwjz4lrnTvH5glkClML4AdFL6LHHISQYmSGCVNNBSDwDGWuUn59FI5e5egT5wG;
+        Domain=.connpass.com; expires=Sun, 02-May-2021 12:31:12 GMT; Max-Age=31449600;
+        Path=/; Secure
+      Vary:
+      - Accept-Encoding
+      - Cookie, Accept-Language
+      X-Frame-Options:
+      - DENY
+      Content-Length:
+      - '15663'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<!--\n\n\n   _|_|_|    _|_|    _|_|_|    _|_|_|    _|_|_|
+        \     _|_|_|    _|_|_|    _|_|_|\n _|        _|    _|  _|    _|  _|    _|
+        \ _|    _|  _|    _|  _|_|      _|_|\n _|        _|    _|  _|    _|  _|    _|
+        \ _|    _|  _|    _|      _|_|      _|_|\n   _|_|_|    _|_|    _|    _|  _|
+        \   _|  _|_|_|      _|_|_|  _|_|_|    _|_|_|\n                                         _|\n
+        \                                        _|\n-->\n<html lang=\"ja\" xmlns:og=\"http://ogp.me/ns#\"
+        xmlns:fb=\"https://www.facebook.com/2008/fbml\">\n<head>\n\n<meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n<meta http-equiv=\"content-style-type\"
+        content=\"text/css; charset=utf-8\" />\n<meta name=\"keywords\" content=\"connpass,コンパス,イベント,IT勉強会,検索,開催,募集,参加,ソーシャル連携,アクセス解析,手数料無料\"
+        />\n<meta name=\"description\" content=\"connpassはイベントやIT勉強会の開催、さらに参加者の集客に便利です。コミュニティやグループの運営やイベントの検索、事前決済もできます。\"
+        />\n<title>404 - connpass</title>\n\n\n<link type=\"text/css\" href=\"https://connpass.com/static/css/connpass.css?20200427143528\n\"
+        rel=\"stylesheet\" media=\"all\" />\n\n\n\n\n\n<meta property=\"og:type\"
+        content=\"website\" />\n<meta property=\"og:site_name\" content=\"connpass\"
+        />\n<meta property=\"fb:app_id\" content=\"259235460759625\" />\n\n<meta property=\"og:url\"
+        content=\"https://connpass.com/event/1/participation/\" />\n\n<meta property=\"og:image\"
+        content=\"https://connpass.com/static/img/468_468.png\" />\n\n<meta itemprop=\"image\"
+        content=\"https://connpass.com/static/img/72_72.png\" />\n\n<meta property=\"og:title\"
+        content=\"connpass - エンジニアをつなぐIT勉強会支援プラットフォーム\" />\n<meta property=\"og:description\"
+        content=\"connpassはイベントやIT勉強会の開催、さらに参加者の集客に便利です。コミュニティやグループの運営やイベントの検索、事前決済もできます。\"
+        />\n<meta itemprop=\"name\" content=\"connpass - エンジニアをつなぐIT勉強会支援プラットフォーム\"
+        />\n<meta itemprop=\"description\" content=\"connpassはイベントやIT勉強会の開催、さらに参加者の集客に便利です。コミュニティやグループの運営やイベントの検索、事前決済もできます。\"
+        />\n\n\n\n\n\n\n\n\n<link rel=\"shortcut icon\" href=\"https://connpass.com/static/img/favicon.ico\"
+        type=\"image/vnd.microsoft.icon\" />\n<link rel=\"apple-touch-icon-precomposed\"
+        href=\"https://connpass.com/static/img/apple_touch_icon.png\" />\n\n<link
+        href=\"https://fonts.googleapis.com/css?family=Montserrat\" rel=\"stylesheet\"
+        type=\"text/css\">\n\n<script type=\"text/javascript\">\n  if (typeof console
+        == \"undefined\") {window.console={log: function () {}};console.warn = console.debug
+        = console.log;}\n</script>\n\n<script type=\"text/javascript\">\n  function
+        cst(cat, evt, targetUrl) {\n    if (window._gaq) {\n      _gaq.push(['_trackSocial',
+        cat, evt, targetUrl]);\n    } else {\n      console.log(\"trackSocial(\" +
+        cat + \", \" + evt + \", \" + targetUrl + \")\");\n    }\n  };\n  function
+        cet(cat, evt, label, value, non_interaction) {\n    if (!label) {\n      label
+        = 'None';\n    }\n    if (window._gaq) {\n      _gaq.push(['_trackEvent',
+        cat, evt, label, value, non_interaction]);\n    } else {\n      console.log(\"trackEvent(\"
+        + cat + \", \" + evt + \", \" + label + \", \" + value + \", \" + non_interaction
+        + \")\");\n    }\n  };\n  function tol(link, cat, evt, label, value, non_interaction)
+        {\n    cet(cat, evt, label, value, non_interaction);\n    if (link) {\n      var
+        func;\n      if (link.href) {\n        func = function() {\n          document.location.href
+        = link.href;\n        };\n      } else {\n        if (link.submit) {\n          func
+        = function() {\n            link.submit();\n          };\n        } else {\n
+        \         if (link.form) {\n            func = function() {\n              link.form.submit();\n
+        \           };\n          }\n        }\n      }\n      if (func) {\n        setTimeout(func,
+        100);\n      }\n    }\n  };\n</script>\n\n\n\n<script type=\"text/javascript\">\n
+        \ var _gaq = _gaq || [];\n  _gaq.push(['_setAccount', 'UA-26036000-1']);\n
+        \ _gaq.push(['_setDomainName', 'connpass.com']);\n  _gaq.push(['_setCustomVar',
+        1, 'Authenticated', 'false', 1]);\n  _gaq.push(['_trackPageview']);\n\n  (function()
+        {\n    var ga = document.createElement('script'); ga.type = 'text/javascript';
+        ga.async = true;\n    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+        : 'http://www') + '.google-analytics.com/ga.js';\n    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);\n  })();\n</script>\n\n\n\n\n<script language=\"JavaScript\"
+        type=\"text/javascript\" charset=\"UTF-8\" src=\"//cdn.bigmining.com/private/media/js/connpass_bigmining.js\"></script>\n\n\n\n<script
+        type=\"text/javascript\" src=\"https://www.fourmtagservices.com/p/beproud/gYEA9y3QTzOtx4oppDBJ/pc.js\"></script>\n\n<script
+        async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>\n<script>\n
+        \ var googletag = googletag || {};\n  googletag.cmd = googletag.cmd || [];\n</script>\n\n<script
+        type=\"text/javascript\">\nvar path_value = location.pathname.substr(0,40);\nvar
+        parameter_value = location.search.substr(0, 40);\nvar ref_value = \"null\";\nif
+        (document.referrer){\nvar ref_array=new Array();\nref_array=document.referrer.split(\"/\");
+        \nref_value = ref_array[2];}\n</script>\n\n<script>\n  googletag.cmd.push(function()
+        {\n\n\n    googletag.pubads().setTargeting('URLs', path_value).setTargeting('Ref',
+        ref_value).setTargeting('Para', parameter_value);\n    googletag.pubads().enableSingleRequest();\n
+        \   googletag.pubads().collapseEmptyDivs();\n    googletag.enableServices();\n
+        \ });\n</script>\n\n</head>\n\n<body>\n\n<div id=\"wrapper\" class=\"lang_ja\">\n\n
+        \ <div id=\"header\">\n    <div class=\"container clearfix\">\n      <h1><a
+        href=\"https://connpass.com/\" title=\"connpass - エンジニアをつなぐIT勉強会支援プラットフォーム\"><img
+        src=\"https://connpass.com/static/img/common/sitelogo_266x132_bp.png\" alt=\"connpass
+        - エンジニアをつなぐIT勉強会支援プラットフォーム\" height=\"66\"></a></h1>\n\n      \n        <form
+        action=\"https://connpass.com/search/\" method=\"GET\" id=\"header_event_search_form\">\n
+        \         <div class=\"header_search\">\n            <input type=\"text\"
+        class=\"form_input_text\" name=\"q\" id=\"id_q\" value=\"\" placeholder=\"イベント検索\">\n
+        \           <input type=\"hidden\" name=\"start_from\" value=\"2020/05/03\">\n
+        \           <input type=\"hidden\" name=\"start_to\" value=\"2020/11/03\">\n
+        \           <button type=\"submit\" class=\"btn btn_default btn_size_small\"><img
+        src=\"https://connpass.com/static/img/common/icon_search.png\" alt=\"イベント検索\"></button>\n
+        \         </div>\n        </form>\n      \n\n      \n        <div class=\"header_nav_contents\">\n
+        \         <ul>\n          \n            <li><a href=\"https://connpass.com/#category_link_list\">カテゴリ一覧</a></li>\n
+        \         \n            <li><a href=\"https://connpass.com/explore/\">新着イベント</a></li>\n
+        \         </ul>\n        </div>\n        \n          \n            <div class=\"header_nav_login\">\n
+        \             <a class=\"btn btn_default login\" href=\"https://connpass.com/login/\">ログイン・新規登録</a>\n
+        \           </div>\n          \n        \n      \n\n\n    </div>\n  </div>\n
+        \ \n\n\n\n  \n\n\n\n\n\n\n<div id=\"contents\" class=\"container layout_1column\">\n
+        \ <div id=\"flash_message_area\" style=\"display: none;\">\n    \n  </div>\n\n
+        \ \n  <div class=\"clearfix\">\n    \n      \n      <div id=\"main\">\n        \n
+        \ \n  <div class=\"text_center mt_20\">\n    <img src=\"https://connpass.com/static/img/status_code/404.jpg\"
+        alt=\"404 Sorry,page not found...\" />\n  </div>\n\n      </div>\n    \n    \n
+        \   <div id=\"side_area\">\n      \n    </div>\n    \n  </div>\n  \n</div>\n\n\n\n\n
+        \ <div id=\"footer\">\n    <div class=\"footer_link_area clearfix\">\n      <div
+        class=\"layout_column_4 footer_site\">\n        <div class=\"mb_5\"><a href=\"https://connpass.com/\"
+        title=\"サイトのトップページへ\"><img src=\"https://connpass.com/static/img/common/sitelogo_295x100.png\"
+        alt=\"connpass\" class=\"connpass\">エンジニアをつなぐ<br>IT勉強会支援プラットフォーム</a></div>\n
+        \       <div class=\"mb_5\">\n        \n        <a href=\"https://itunes.apple.com/jp/app/connpass/id723317753?mt=8\"
+        target=\"_blank\" style=\"display:inline-block;overflow:hidden;background:url(//linkmaker.itunes.apple.com/assets/shared/badges/ja-jp/appstore-lrg.svg)
+        no-repeat;width:135px;height:40px;background-size:contain;\" onClick=\"cet('Marketing',
+        'iphone_app_banner', 'footer_banner', undefined, true);\"></a>\n        \n
+        \       </div>\n        <a href=\"http://twitter.com/connpass_jp\" target=\"_blank\"
+        class=\"mr_5\"><img src=\"https://connpass.com/static/img/common/icon_twitter_official.png\"
+        alt=\"Twitter公式アカウント\"></a>\n        <a href=\"http://www.facebook.com/connpass\"
+        target=\"_blank\"><img src=\"https://connpass.com/static/img/common/icon_facebook_official.png\"
+        alt=\"Facebookページ\"></a>\n\n      </div>\n      <div class=\"layout_column_4
+        footer_help\">\n        <ul class=\"cmn_list\">\n          <li><a href=\"http://help.connpass.com/\"
+        target=\"_blank\" title=\"connpassのヘルプ\">ご利用ガイド</a></li>\n          <li><a
+        href=\"http://help.connpass.com/faq/\" target=\"_blank\">よくある質問</a></li>\n
+        \         <li><a href=\"https://connpass.com/inquiry/\">connpassへのお問い合わせ</a></li>\n
+        \         <li><a href=\"https://connpass.com/term/\">利用規約</a></li>\n          <li><a
+        href=\"https://www.beproud.jp/company/\" target=\"_blank\">運営会社</a></li>\n
+        \         <li><a href=\"https://connpass.com/about/api/\">API</a></li>\n          <li><a
+        href=\"https://connpass.com/law/\">特定商取引法に基づく表示</a></li>\n          <li><a
+        href=\"https://connpass.com/privacy/\">プライバシーポリシー</a></li>\n        </ul>\n
+        \     </div>\n      <div class=\"layout_column_4 footer_sns\">\n      <ul
+        class=\"cmn_list\">\n        <li class=\"li_icon_hint\"><a href=\"https://connpass.com/about/\"
+        title=\"connpassの機能をタイムライン風に紹介\">機能紹介</a></li>\n        <li class=\"li_icon_hint\"><a
+        href=\"https://connpass.com/about/comparison/\" title=\"connpassと他イベントサイトとの機能比較\">他サービスとの比較</a></li>\n
+        \       <li class=\"li_icon\"><a href=\"https://connpass.com/explore/\">新着イベント</a></li>\n
+        \       <li class=\"li_icon_feed\"><a href=\"https://connpass.com/explore/ja.atom\"
+        target=\"_blank\">新着イベントfeed</a></li>\n\n      </ul>\n      </div>\n      <div
+        class=\"layout_column_4 footer_feedback\">\n      \n\n<div class=\"feedback_area\">\n
+        \ <div id=\"FeedbackForm\">\n    <p class=\"em\">connpassへのご意見をお聞かせください</p>\n
+        \   <div class=\"FollowBox\">\n      <textarea class=\"feedback FeedbackText\"
+        cols=\"28\" rows=\"5\" name=\"feedback\"></textarea>\n      <button class=\"SendFeedback
+        btn btn_default btn_size_small\" disabled=\"disabled\">意見を送る</button>\n      <p>返答が必要な方は<a
+        href=\"https://connpass.com/inquiry/\">「connpassへのお問い合わせ」</a>をご利用ください</p>\n
+        \   </div>\n    <div class=\"PostedBox text_center\" style=\"display:none;\">\n
+        \     <p class=\"em\">ご意見ありがとうございました！</p>\n      <p>いただいたご意見はスタッフが確認いたします。個々のご意見に返信できないことを予めご了承ください。</p>\n
+        \     <button class=\"link NewFeedback btn btn_default btn_size_small\">さらに意見を送る</button>\n
+        \   </div>\n  </div>\n</div>\n\n\n      </div>\n    </div>\n    <div class=\"footer_link_area
+        clearfix\">\n      <div class=\"footer_beproud\"><a href=\"https://www.beproud.jp/company/\"
+        target=\"_blank\"><img src=\"https://connpass.com/static/img/common/logo_beproud.png\"
+        alt=\"BePROUD\" title=\"BePROUD\" />connpass は株式会社ビープラウドが開発・運営しています</a></div>\n
+        \     <address>&copy; 2020 BeProud, Inc. All Rights Reserved.</address>\n
+        \   </div>\n  </div>\n\n\n</div>\n\n\n\n\n\n<script id=\"EventCreateTemplate\"
+        type=\"text/html\">\n  <div class=\"popup\">\n    <div class=\"popup_wrapper\">\n
+        \     <div class=\"popup_header\">\n        <h2 class=\"popup_title\">イベントを作成する</h2>\n
+        \       <span class=\"close_btn_area\">\n          <span class=\"btn btn_default
+        btn_size_small corner_none modal-close\" title=\"閉じる\"><span class=\"icon_black_close\"></span></span>\n
+        \       </span>\n      </div>\n      <div class=\"popup_contents text_center\">\n
+        \       <p class=\"font_16 mb_10\"><strong>イベント名を入力してください</strong></p>\n        <input
+        name=\"title\" type=\"text\" class=\"form_input_text form_width_450 font_18\">\n\n
+        \       <div class=\"mt_10 mb_30\">\n          <button type=\"submit\" class=\"EventCreateSubmit
+        btn btn_action btn_size_large\" onClick=\"cet('Create', 'create_event');\">イベントを作成</button>\n
+        \       </div>\n        <div class=\"right\">\n          <a href=\"https://connpass.com/group/new/\"><span
+        class=\"icon_red_four_right\"></span>グループを作成</a>\n        </div>\n      </div>\n
+        \   </div>\n  </div>\n</script>\n\n<script id=\"MessageTemplate\" type=\"text/html\">\n
+        \ <p class=\"message <%= level %>\"><%- message %></p>\n</script>\n\n\n<div
+        id=\"fb-root\"></div>\n\n\n\n<div id=\"CurrentUserObj\" style=\"display:none;\"
+        ></div>\n<div id=\"CSRFToken\" style=\"display:none;\" data-csrftoken=\"yClCJwRS28N6k9ZaRezw2HVEnvN72pCxcrKY6zIkomMe9HpL1wBPqi3wWPVCeNql\"></div>\n\n\n<script
+        type=\"text/javascript\" src=\"//d-cache.microad.jp/js/td_cnp_access.js\"></script>\n<script
+        type=\"text/javascript\">\n  microadTd.CNP.start({\"article_keyword\": []})\n</script>\n\n\n<script
+        type=\"text/javascript\" src=\"https://connpass.com/static/js/require.js?20200427143528\n\"></script>\n<script
+        type=\"text/javascript\" src=\"https://connpass.com/static/js/connpass.min.js?20200427143528\n\"></script>\n<script
+        type=\"text/javascript\">\nrequire.config({\n  \n  baseUrl: 'https://connpass.com/static/js/',\n
+        \ locale: 'ja',\n\n  config: {\n    'csrf': {\n      CSRF_COOKIE_NAME: 'connpass-csrftoken'\n
+        \   },\n    'sanca': {\n      \n      LOG_LEVEL: \"WARNING\",\n      HTTP_HOST:
+        'connpass.com',\n      STATIC_URL: 'https://connpass.com/static/',\n      MEDIA_URL:
+        'https://connpass.com/media/',\n      API_BASE_URL: 'https://connpass.com/api'\n
+        \   }\n  }\n});\n</script>\n\n\n<script type=\"text/javascript\">\n  require([\n
+        \   'jquery', 'jquerytools/tooltip.dynamic',\n    'jquerytools/tooltip.slide',
+        'design'\n  ], function($, Views) {\n    $(function() {\n      $('.Help').tooltip({\n
+        \       effect: 'slide',\n        position: 'bottom center',\n        offset:
+        [20, 0],\n      }).dynamic({\n        bottom: {\n          direction: 'down',\n
+        \         bounce: true\n        }\n      });\n    });\n  });\n\n  require(['jquery',
+        'cs!sanca/views/personal_menu'], function($, Views) {\n    var personal_menu
+        = new Views.PersonalMenu({\n      el: '#header',\n      dropdown_el: '#personalMenu'\n
+        \   });\n  });\n\n  require(['jquery', 'cs!sanca/views/feedback'], function($,
+        Views) {\n    var feedbackform = new Views.FeedbackView({\n      el: '#FeedbackForm'\n
+        \   });\n  });\n\n</script>\n<script type=\"text/javascript\">\n  window.fbAsyncInit
+        = function() {\n    FB.init({\n      version: 'v2.8',\n      status: true,\n
+        \     appId: '259235460759625',\n      xfbml: true  // Like btn\n    });\n
+        \   FB.Event.subscribe('edge.create', function(targetUrl) {\n      typeof
+        cst === \"function\" && cst('facebook', 'like', targetUrl);\n    });\n    FB.Event.subscribe('edge.remove',
+        function(targetUrl) {\n      typeof cst === \"function\" && cst('facebook',
+        'unlike', targetUrl);\n    });\n  };\n\n  (function(d, s, id){\n     var js,
+        fjs = d.getElementsByTagName(s)[0];\n     if (d.getElementById(id)) {return;}\n
+        \    js = d.createElement(s); js.id = id;\n     js.src = \"//connect.facebook.net/ja_JP/sdk.js\";\n
+        \    fjs.parentNode.insertBefore(js, fjs);\n   }(document, 'script', 'facebook-jssdk'));\n</script>\n\n</body>\n</html>\n"
+    http_version: null
+  recorded_at: Thu, 10 Jan 2013 00:00:18 GMT
+recorded_with: VCR 5.1.0
