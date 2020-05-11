@@ -39,8 +39,8 @@ article.new-members
 
   div.user-count
     div.user-count-text
-      = User.all.length
-    = image_tag 'user-count-icon.png', id: 'user-count-img', size: '125x100', alt: 'User Count'
+      = User.count
+    = image_tag 'user-count-icon.png', class: 'user-count-img', size: '125x100', alt: 'User Count'
 
 footer
   p
