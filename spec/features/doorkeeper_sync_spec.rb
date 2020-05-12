@@ -10,7 +10,7 @@ feature 'Doorkeeper sync', js: true do
   context '完全一致する場合' do
     given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'yuji-shimoda' }
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
-    given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'takamichi.hara' }
+    given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy' }
     given!(:aki) { create :user, name: 'Aki ', nickname: 'springaki' }
     given!(:otokunaga) { create :user, name: 'Seiki Tokunaga', nickname: 'otokunaga2' }
 
@@ -45,7 +45,7 @@ feature 'Doorkeeper sync', js: true do
   context '大文字小文字の違いやスペースの有無がある場合' do
     given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'Yuji-shimoda' }
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'Jnchito' }
-    given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'Takamichi.hara' }
+    given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy' }
     given!(:aki) { create :user, name: 'Aki', nickname: 'springaki' }
     given!(:otokunaga) { create :user, name: 'Seiki Tokunaga', nickname: 'Otokunaga2' }
 
@@ -70,7 +70,7 @@ feature 'Doorkeeper sync', js: true do
     given!(:yuji_shimoda) { create :user, name: 'Yuji Shimoda', nickname: 'yuji-shimoda' }
     given!(:yuji_shimoda2) { create :user, name: 'Yuji Shimoda', nickname: 'yuji-shimoda2' }
     given!(:ito) { create :user, name: '伊藤淳一', nickname: 'JunichiIto', twitter_name: 'jnchito' }
-    given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy', facebook_name: 'takamichi.hara' }
+    given!(:hara) { create :user, name: '原孝道', nickname: 'takamiy' }
     given!(:aki) { create :user, name: 'Aki ', nickname: 'springaki' }
     given!(:otokunaga) { create :user, name: 'Seiki Tokunaga', nickname: 'otokunaga2' }
 

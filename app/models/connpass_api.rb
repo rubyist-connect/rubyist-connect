@@ -36,14 +36,12 @@ class ConnpassApi < EventApi
       name = row.css('.user .display_name a')[0]&.text
       next if name.blank?
 
-      profile = { 'name' => nil, 'facebook' => nil, 'twitter' => nil, 'github' => nil }
+      profile = { 'name' => nil, 'twitter' => nil, 'github' => nil }
       profile['name'] = name
       row.css('.social a').each do |link|
         href = link['href']
         if twitter = href[/(?<=screen_name=).*/]
           profile['twitter'] = twitter
-        elsif facebook = href[/(?<=app_scoped_user_id\/)[^\/]+/]
-          profile['facebook'] = facebook
         elsif github = href[/(?<=github.com\/)[^\/]+/]
           profile['github'] = github
         end

@@ -60,7 +60,6 @@ class EventApi
     condition = <<-SQL
 (LOWER(nickname) = :github)
 OR (LOWER(twitter_name) = :twitter)
-OR (LOWER(facebook_name) = :facebook)
 OR (REPLACE(LOWER(name), ' ', '') = :name)
 OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
     SQL
@@ -68,7 +67,6 @@ OR (REPLACE(LOWER(nickname), ' ', '') = :nickname)
     users = User.active.where(condition,
                               github: profile.github.try(:downcase),
                               twitter: profile.twitter.try(:downcase),
-                              facebook: profile.facebook.try(:downcase),
                               name: profile.name.gsub(' ', '').downcase,
                               nickname: profile.name.gsub(' ', '').downcase
     )
