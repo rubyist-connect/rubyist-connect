@@ -37,10 +37,10 @@ article.new-members
 
   = link_to 'more...', user_github_omniauth_authorize_path, class: 'login-btn btn'
 
-  div.user-count
-    div.user-count-text
-      = User.count
-      p rubyists
+  .user-count
+    .user-count-text
+      .user-count-number= User.count
+      .user-count-unit rubyists
     = image_tag 'user-count-icon.png', class: 'user-count-img', size: '125x100', alt: 'User Count'
 
 footer
