@@ -54,8 +54,6 @@ class DoorkeeperApi < EventApi
   def extract_accounts(social_links)
     array = social_links.map do |link|
       case link
-        when /facebook/
-          ["facebook", link[/(?<=facebook.com\/)[^\/]+/]]
         when /twitter/
           ["twitter", link[/(?<=twitter.com\/)[^\/]+/]]
         when /github/
@@ -64,7 +62,7 @@ class DoorkeeperApi < EventApi
           nil
       end
     end
-    { "facebook" => nil, "twitter" => nil, "github" => nil}.merge(array.compact.to_h)
+    {"twitter" => nil, "github" => nil}.merge(array.compact.to_h)
   end
 
   def read_doc_from_url(url)

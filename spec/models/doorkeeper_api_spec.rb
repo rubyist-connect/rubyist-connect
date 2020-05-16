@@ -32,85 +32,71 @@ describe DoorkeeperApi do
       [
           {
               "name" => "Aki ",
-              "facebook" => nil,
               "twitter" => "spring_aki",
               "github" => nil
           },
           {
               "name" => "荻 竜也",
-              "facebook" => "profile.php?id=100002275592469",
               "twitter" => "t_oginogin",
               "github" => "t-oginogin"
           },
           {
               "name" => "伊藤淳一",
-              "facebook" => "junichi.ito.717",
               "twitter" => "jnchito",
               "github" => nil
           },
           {
               "name" => "Yuji Shimoda",
-              "facebook" => nil,
               "twitter" => "yuji_shimoda",
               "github" => "yuji-shimoda"
           },
           {
               "name" => "Yuya Kato",
-              "facebook" => "app_scoped_user_id",
               "twitter" => "nayutaya",
               "github" => "nayutaya"
           },
           {
               "name" => "原孝道",
-              "facebook" => "app_scoped_user_id",
               "twitter" => nil,
               "github" => nil
           },
           {
               "name" => "zakuro",
-              "facebook" => "zakuro9715",
               "twitter" => "zakuro9715",
               "github" => "zakuro9715"
           },
           {
               "name" => "たかえす ゆうじ(yusabana)",
-              "facebook" => "yu.takaesu",
               "twitter" => "yusabana",
               "github" => "yusabana"
           },
           {
               "name" => "村上 健太",
-              "facebook" => "app_scoped_user_id",
               "twitter" => "kntmrkm",
               "github" => "kntmrkm"
           },
           {
               "name" => "knmsyk",
-              "facebook" => nil,
               "twitter" => "knmsyk",
               "github" => "knmsyk"
           },
           {
               "name" => "寺田 大輔",
-              "facebook" => "100002385268769",
               "twitter" => "aq2bq",
               "github" => "aq2bq"
           },
           {
               "name" => "やましー",
-              "facebook" => "app_scoped_user_id",
               "twitter" => "yamasy1549",
               "github" => "yamasy1549"
           },
           {
               "name" => "Seiki Tokunaga",
-              "facebook" => "app_scoped_user_id",
               "twitter" => "otokunaga2",
               "github" => "otokunaga2"
           },
           {
               "name" => "たいら",
-              "facebook" => "app_scoped_user_id",
               "twitter" => "macha3k",
               "github" => "m-taira"
           }
@@ -136,7 +122,6 @@ describe DoorkeeperApi do
         expect(profiles.size).to eq 14
         profile = profiles[3]
         expect(profile.name).to eq "Yuji Shimoda"
-        expect(profile.facebook).to be_nil
         expect(profile.twitter).to eq "yuji_shimoda"
         expect(profile.github).to eq "yuji-shimoda"
       end

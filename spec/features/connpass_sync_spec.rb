@@ -14,8 +14,6 @@ feature 'Connpass sync', js: true do
     given!(:gu_code) { create :user, name: 'Foo', nickname: 'GuCode' }
     # twitterが一致
     given!(:djokov07) { create :user, name: 'Bar', nickname: 'bar', twitter_name: 'Djokov07' }
-    # facebookが一致
-    given!(:kobayashi_shoji) { create :user, name: 'Kobayashi Shoji', nickname: 'baz', facebook_name: '883815278321042' }
     # 何も一致しない
     given!(:otokunaga) { create :user, name: 'とくなが', nickname: 'otokunaga' }
 
@@ -29,7 +27,6 @@ feature 'Connpass sync', js: true do
         expect(find("#event_user_ids_#{akira_noguchi.id}")).to be_checked
         expect(find("#event_user_ids_#{gu_code.id}")).to be_checked
         expect(find("#event_user_ids_#{djokov07.id}")).to be_checked
-        expect(find("#event_user_ids_#{kobayashi_shoji.id}")).to be_checked
         expect(find("#event_user_ids_#{otokunaga.id}")).to_not be_checked
         expect(find("#event_user_ids_#{login_user.id}")).to_not be_checked
 
