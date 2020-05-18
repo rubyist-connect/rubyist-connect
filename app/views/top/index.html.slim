@@ -39,7 +39,7 @@ article.new-members
 
   .user-count
     .user-count-text
-      .user-count-number= User.count
+      .user-count-number= @active_user_count
       .user-count-unit rubyists
     = image_tag 'user-count-icon.png', class: 'user-count-img', size: '125x100', alt: 'User Count'
 

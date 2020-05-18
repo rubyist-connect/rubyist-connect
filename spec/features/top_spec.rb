@@ -28,6 +28,17 @@ feature 'Top spec' do
       expect(imgs.size).to eq 1
       expect(imgs.first['alt']).to eq active.name
     end
+
+    100.times do |n|
+      n.even? ? (create :user) : (create :user, :with_inactive_fields)
+    end
+
+    visit root_path
+    within '.user-count-text' do
+      divs = all('div')
+      inactive_users = User.count{|user| !user.active?}
+      expect(divs.first.text.to_i).to eq User.count - inactive_users
+    end
   end
 
   scenario 'ランダムにユーザーが21名表示されること', retry: 3 do
