@@ -36,8 +36,8 @@ feature 'Top spec' do
     visit root_path
     within '.user-count-text' do
       divs = all('div')
-      inactive_users = User.count{|user| !user.active?}
-      expect(divs.first.text.to_i).to eq User.count - inactive_users
+      inactive_user_count = User.count{|user| !user.active?}
+      expect(divs.first.text.to_i).to eq User.count - inactive_user_count
     end
   end
 
