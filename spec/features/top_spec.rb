@@ -28,6 +28,8 @@ feature 'Top spec' do
       expect(imgs.size).to eq 1
       expect(imgs.first['alt']).to eq active.name
     end
+
+    expect(find('.user-count-number').text).to eq '1'
   end
 
   scenario 'ランダムにユーザーが21名表示されること', retry: 3 do
