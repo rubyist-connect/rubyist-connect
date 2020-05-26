@@ -202,8 +202,6 @@ ja:
       title: 'イベント'
     new:
       title: 'イベント作成'
-    show:
-      title: 'イベント表示'
   users:
     edit:
       title: 'ユーザー編集'
