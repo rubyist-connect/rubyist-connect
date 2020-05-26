@@ -209,8 +209,6 @@ ja:
       title: 'ユーザー編集'
     index:
       title: 'ユーザー'
-    show:
-      title: 'ユーザー表示'
   views:
     pagination:
       truncate: "..."
