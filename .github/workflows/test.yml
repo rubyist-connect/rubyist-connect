@@ -1,0 +1,59 @@
+name: Test
+
+on: [push]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+
+    services:
+      db:
+        image: postgres:9.6
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: passwd
+        ports:
+          - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+
+    - name: Install dependent packages
+      run: sudo apt-get install -y --no-install-recommends libpq-dev
+
+    - name: Cache gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          ${{ runner.os }}-gem-
+
+    - name: Install gems
+      run: |
+        gem install bundler -v 2.1.4
+        bundle config path vendor/bundle
+        bundle config with test
+        bundle install --jobs 4 --retry 3
+
+    - name: Setup Database
+      run: ./bin/rails db:create db:schema:load
+      env:
+        RAILS_ENV: test
+        DATABASE_USERNAME: postgres
+        DATABASE_PASSWORD: passwd
+
+    - name: Spec
+      run: ./bin/rspec
+      env:
+        DATABASE_USERNAME: postgres
+        DATABASE_PASSWORD: passwd
