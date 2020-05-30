@@ -18,16 +18,22 @@ jobs:
         ports:
           - 5432:5432
 
+    container:
+      image: ruby:2.7.1
+      env:
+        RAILS_ENV: test
+        DATABASE_HOST: db
+        DATABASE_USERNAME: postgres
+        DATABASE_PASSWORD: passwd
+
     steps:
     - uses: actions/checkout@v1
 
-    - name: Set up Ruby 2.7
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7.x
-
     - name: Install dependent packages
-      run: sudo apt-get install -y --no-install-recommends libpq-dev
+      run: |
+        curl -sL https://deb.nodesource.com/setup_10.x | bash -
+        curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        apt-get install -y build-essential libpq-dev nodejs ./google-chrome-stable_current_amd64.deb
 
     - name: Cache gems
       uses: actions/cache@v1
@@ -47,13 +53,6 @@ jobs:
 
     - name: Setup Database
       run: ./bin/rails db:create db:schema:load
-      env:
-        RAILS_ENV: test
-        DATABASE_USERNAME: postgres
-        DATABASE_PASSWORD: passwd
 
     - name: Spec
       run: ./bin/rspec
-      env:
-        DATABASE_USERNAME: postgres
-        DATABASE_PASSWORD: passwd
