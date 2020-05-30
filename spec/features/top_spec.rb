@@ -23,8 +23,8 @@ feature 'Top spec' do
     create :user, :with_inactive_fields
     active = create :user
     visit root_path
-    within '.new-members' do
-      imgs = all('li img')
+    within '.new-members .user-icons' do
+      imgs = all('img')
       expect(imgs.size).to eq 1
       expect(imgs.first['alt']).to eq active.name
     end
@@ -42,22 +42,22 @@ feature 'Top spec' do
     first_users = []
 
     visit root_path
-    within '.new-members' do
-      imgs = all('li img')
+    within '.new-members .user-icons' do
+      imgs = all('img')
       first_users << imgs.first['alt']
       expect(imgs.size).to eq 21
     end
 
     visit root_path
-    within '.new-members' do
-      imgs = all('li img')
+    within '.new-members .user-icons' do
+      imgs = all('img')
       first_users << imgs.first['alt']
       expect(imgs.size).to eq 21
     end
 
     visit root_path
-    within '.new-members' do
-      imgs = all('li img')
+    within '.new-members .user-icons' do
+      imgs = all('img')
       first_users << imgs.first['alt']
       expect(imgs.size).to eq 21
     end

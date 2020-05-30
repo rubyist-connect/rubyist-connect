@@ -30,7 +30,7 @@ article.about
 
 article.new-members
   h2.bold Rubyist Connect Users
-  ul
+  ul.user-icons
     - @users.each do |user|
       li
         = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname, data: {toggle: 'tooltip', placement: 'bottom'}, title: user.name_or_nickname

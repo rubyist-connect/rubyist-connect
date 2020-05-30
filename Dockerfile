@@ -1,4 +1,4 @@
-FROM ruby:2.6.6
+FROM ruby:2.7.1
 ENV LANG C.UTF-8
 LABEL maintainer 'Yuji Shimoda <yuji.shimoda@gmail.com>'
 
