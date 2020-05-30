@@ -25,7 +25,8 @@ feature 'Event management' do
     expect(page).to have_content 'Event was successfully created.'
     expect(page).not_to have_css('.event_url')
 
-    # ユーザー一覧を表示する
+    # イベント一覧を表示する
+    expect(page).to have_title 'KRCハッカソン | Rubyist Connect'
     within 'h1' do
       expect(page).to have_content 'KRCハッカソン'
     end
@@ -45,6 +46,7 @@ feature 'Event management' do
     expect(page).to have_content 'Event was successfully updated.'
     expect(page).to have_css '.event_url'
     expect(page).to have_link 'http://rubyist-connect.co', href: 'http://rubyist-connect.co'
+    expect(page).to have_title 'KRC Hackathon | Rubyist Connect'
     within 'h1' do
       expect(page).to have_content 'KRC Hackathon'
     end

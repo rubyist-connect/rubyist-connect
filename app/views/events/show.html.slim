@@ -1,5 +1,5 @@
 .event-header
-  h1.event-title= @event.name
+  h1.event-title= page_title!(@event.name)
   p.event-edit-link= link_to fa_icon('edit', text: '編集'), edit_event_path(@event)
   p #{@event.participations.count} 人
 - if @event.url.present?

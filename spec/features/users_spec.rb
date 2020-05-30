@@ -24,6 +24,7 @@ feature 'Users spec' do
       click_on '更新'
     end
 
+    expect(page).to have_title 'ありす | Rubyist Connect'
     expect(page).to have_content "参加日時:2015/02/08 14:59"
     expect(page).to have_content "更新日時:2015/03/09 15:22"
 

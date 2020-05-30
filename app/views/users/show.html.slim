@@ -1,7 +1,7 @@
 .col-sm-6.col-md-4
   = image_tag @user.image, class: 'img-circle', size: '150x150'
   br
-  = @user.name_or_nickname
+  = page_title!(@user.name_or_nickname)
   br
   = display_age(@user)
   br

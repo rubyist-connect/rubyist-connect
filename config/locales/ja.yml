@@ -202,15 +202,11 @@ ja:
       title: 'イベント'
     new:
       title: 'イベント作成'
-    show:
-      title: 'イベント表示'
   users:
     edit:
       title: 'ユーザー編集'
     index:
       title: 'ユーザー'
-    show:
-      title: 'ユーザー表示'
   views:
     pagination:
       truncate: "..."
