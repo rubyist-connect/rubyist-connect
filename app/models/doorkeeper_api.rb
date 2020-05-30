@@ -67,7 +67,7 @@ class DoorkeeperApi < EventApi
 
   def read_doc_from_url(url)
     logger.info "[INFO] Reading #{url}"
-    html = open(url)
+    html = URI.open(url)
     Nokogiri::HTML.parse(html, nil)
   rescue OpenURI::HTTPError => e
     e.io.status.first =~ /^4\d\d$/ ? nil : raise
