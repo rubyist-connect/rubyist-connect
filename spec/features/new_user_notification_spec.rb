@@ -58,4 +58,30 @@ feature 'New user notification' do
       expect { click_on '更新' }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
+
+  context 'when name is nil' do
+    given!(:alice) { create :user, :with_inactive_fields, name: nil, nickname: 'alice' }
+
+    scenario 'new rubyist name using User.nickname' do
+      fill_in '自己紹介文', with: 'Hello!'
+      expect { click_on '更新' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(page).to have_content '更新しました。'
+
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.body).to include 'New Rubyist: <b>alice</b>'
+    end
+  end
+
+  context 'when name is not nil' do
+    given!(:alice) { create :user, :with_inactive_fields, name: 'ありす', nickname: 'alice' }
+
+    scenario 'new rubyist name using User.name' do
+      fill_in '自己紹介文', with: 'Hello!'
+      expect { click_on '更新' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(page).to have_content '更新しました。'
+
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.body).to include 'New Rubyist: <b>ありす</b>'
+    end
+  end
 end
