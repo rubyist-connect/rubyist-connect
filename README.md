@@ -1,5 +1,6 @@
 # rubyist-connect
 
+[![Test](https://github.com/soruma/rubyist-connect/workflows/Test/badge.svg)](https://github.com/rubyist-connect/rubyist-connect/actions?query=workflow%3ATest)
 [![Gitter](https://badges.gitter.im/rubyist-connect/rubyist-connect.svg)](https://gitter.im/rubyist-connect/rubyist-connect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 rubyist-connect は、Rubyist と Rubyist を繋げるための Rails アプリケーションです。
