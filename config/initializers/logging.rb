@@ -4,7 +4,7 @@ Rails.configuration.log_tags = [
     session_key = (Rails.application.config.session_options || {})[:key]
     session_data = request.cookie_jar.encrypted[session_key] || {}
 
-    user_id = session_data.dig("warden.user.user.key", 0, 0)
-    User.find(user_id).nickname if user_id
+    # warden.user.user.key で User#id を取得
+    session_data.dig("warden.user.user.key", 0, 0)
   }
 ]
