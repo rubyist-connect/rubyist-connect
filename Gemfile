@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.1'
 
-gem 'rails', '6.0.3.1'
+gem 'rails', '6.0.3.2'
 
 # UI/assets
 gem 'uglifier'
@@ -49,7 +49,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'letter_opener'
-  gem 'bundle_outdated_formatter', github: 'JunichiIto/bundle_outdated_formatter', branch: 'fix-group-regex'
+  gem 'bundle_outdated_formatter'
 end
 
 group :development, :test do
