@@ -27,8 +27,8 @@ module ApplicationHelper
   end
 
   # Clean up user introduction text when paginating users
-  def strip_and_truncate(text)
+  def strip_and_truncate(text, length = 25)
     text = strip_tags(markdown_to_html(text))
-    truncate(text, length: 25)
+    truncate(text, length: length)
   end
 end
