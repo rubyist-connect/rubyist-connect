@@ -8,5 +8,4 @@
       = user.name_or_nickname
     = render 'users/sns_links', user: user
     .user-text
-      = markdown_to_html user.introduction.to_s.lines.first
-
+      = strip_and_truncate user.introduction.to_s.lines.first

@@ -25,4 +25,10 @@ module ApplicationHelper
 
     markdown.render(text).html_safe unless text.blank?
   end
+
+  # Clean up user introduction text when paginating users
+  def strip_and_truncate(text)
+    text = strip_tags(markdown_to_html(text))
+    truncate(text, length: 25)
+  end
 end
