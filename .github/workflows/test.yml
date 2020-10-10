@@ -19,7 +19,7 @@ jobs:
           - 5432:5432
 
     container:
-      image: ruby:2.7.1
+      image: ruby:2.7.2
       env:
         RAILS_ENV: test
         DATABASE_HOST: db
