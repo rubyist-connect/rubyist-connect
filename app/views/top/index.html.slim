@@ -35,7 +35,7 @@ article.new-members
       li
         = image_tag user.image, class: 'img-circle', size: '80x80', alt: user.name_or_nickname, data: {toggle: 'tooltip', placement: 'bottom'}, title: user.name_or_nickname
 
-  = link_to 'more...', user_github_omniauth_authorize_path, class: 'login-btn btn'
+  = link_to 'more...', user_github_omniauth_authorize_path, class: 'login-btn btn',  method: :post
 
   .user-count
     .user-count-text
