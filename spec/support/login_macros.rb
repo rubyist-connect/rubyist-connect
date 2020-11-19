@@ -35,6 +35,6 @@ module LoginMacros
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(oauth_params(user))
 
-    visit user_github_omniauth_authorize_path
+    page.first('.login-btn').click
   end
 end
