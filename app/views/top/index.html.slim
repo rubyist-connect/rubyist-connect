@@ -8,7 +8,7 @@ header
       | Rubyist Connect
       span beta
     = simple_format(t('.description'), class: 'header-lead')
-    = link_to user_github_omniauth_authorize_path, class: 'login-btn btn' do
+    = link_to user_github_omniauth_authorize_path, class: 'login-btn btn', method: :post do
       = fa_icon 'github-square'
       |  Sign in with GitHub
 
