@@ -321,6 +321,7 @@ GEM
       rspec-core (> 3.3)
     rspec-support (3.10.2)
     ruby2_keywords (0.0.4)
+    ruby_http_client (3.5.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -335,6 +336,11 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sendgrid-actionmailer (3.1.1)
+      mail (~> 2.7)
+      sendgrid-ruby (~> 6.0)
+    sendgrid-ruby (6.4.0)
+      ruby_http_client (~> 3.4)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -443,6 +449,7 @@ DEPENDENCIES
   rspec-retry
   sass-rails
   selenium-webdriver
+  sendgrid-actionmailer
   slim-rails
   spring
   spring-commands-rspec
