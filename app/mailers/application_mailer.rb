@@ -1,6 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
+  FROM_ADDRESS = "noreply@rubyist.co".freeze
   def self.from_text
-    address = Mail::Address.new "noreply@rubyist.co"
+    address = Mail::Address.new FROM_ADDRESS
     address.display_name = "Rubyist Connect"
     address.format
   end
