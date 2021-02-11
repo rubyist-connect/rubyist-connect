@@ -19,6 +19,7 @@ gem 'redcarpet'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'page_title_helper'
+gem 'sendgrid-actionmailer'
 
 # Authorization
 gem 'devise'
