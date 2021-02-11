@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 ruby '2.7.2'
 
-gem 'rails', '6.0.3.4'
+gem 'rails', '6.1.2.1'
 
 # UI/assets
 gem 'uglifier'
 gem 'jquery-rails'
 
+gem 'bootsnap', '>= 1.4.4', require: false
 gem 'coffee-rails'
 gem 'sass-rails'
 gem 'bootstrap-sass'
@@ -33,7 +34,7 @@ gem 'email_validator'
 
 # Middleware
 gem 'pg'
-gem 'puma'
+gem 'puma', '~> 5.0'
 gem 'httpclient'
 
 # Common
@@ -45,12 +46,12 @@ gem 'newrelic_rpm'
 gem 'rack-dev-mark'
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'listen', '~> 3.3'
   gem 'spring'
   gem 'letter_opener'
   gem 'bundle_outdated_formatter'
+  gem 'web-console', '>= 4.1.0'
+  gem 'rack-mini-profiler', '~> 2.0'
 end
 
 group :development, :test do
