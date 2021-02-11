@@ -21,7 +21,7 @@ gem 'page_title_helper'
 
 # Authorization
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth', '~> 1.9.1' # Deviseが対応するまで2.0に上げない
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
