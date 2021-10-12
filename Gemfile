@@ -35,7 +35,7 @@ gem 'email_validator'
 
 # Middleware
 gem 'pg'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.5'
 gem 'httpclient'
 
 # Common
