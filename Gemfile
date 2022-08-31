@@ -23,7 +23,7 @@ gem 'sendgrid-actionmailer'
 
 # Authorization
 gem 'devise'
-gem 'omniauth', '~> 1.9.1' # Deviseが対応するまで2.0に上げない
+gem 'omniauth', '~> 1.9.2' # Deviseが対応するまで2.0に上げない
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
